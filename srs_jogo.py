@@ -1,0 +1,387 @@
+import copy
+import math
+import random
+import config
+import funcoes
+import pygame
+import os
+import sqlite3
+from srs_ponto_turistico import criar_pontos_santa_rita
+
+# Garante que a pasta dados exista no diretório antes de conectar
+if not os.path.exists("dados"):
+    os.makedirs("dados", exist_ok=True)
+
+banco_srs = os.path.join("dados", "SRSDATA.db")
+
+
+class JogoSantaRita:
+
+    def __init__(self):
+        # BANCO DE PERGUNTAS -----------------------------------------------
+        banco_carregado = funcoes.carregar_questoes_txt(os.path.join("dados", "srs_perguntas.txt"))
+        lista_questoes = banco_carregado.get("SRS", [])
+        
+        self.perguntas_disponiveis = copy.deepcopy(lista_questoes)
+        random.shuffle(self.perguntas_disponiveis) #embaralha as perguntas
+        self.perguntas_disponiveis = self.perguntas_disponiveis[:15] #pega a quantidade em [] para por no jogo
+
+        self.total_questoes = len(self.perguntas_disponiveis)
+
+        # PONTOS TURISTICOS E BANCO SQLITE --------------------------------
+        self.pontos = criar_pontos_santa_rita()
+        self.banco_caminho = funcoes.resource_path("dados/SRSDATA.db")
+        self.inicializar_banco()
+
+        #Armazena os feedbacks dados APENAS na partida atual
+        self.feedbacks_sessao = {}
+
+        # BLOCO DE PERGUNTAS -----------------------------------------------
+        self.bloco_perguntas = pygame.Rect(config.centroX - 380, 50, 760, 600)
+
+        # PRIMEIRA PERGUNTA -----------------------------------------------
+        if len(self.perguntas_disponiveis) > 0:
+            self.questao_atual = self.perguntas_disponiveis.pop(0)
+            self.perg_sorteada = self.questao_atual["pergunta"]
+            self.alternativas_sorteadas = self.questao_atual["opcoes"]
+        else:
+            self.questao_atual = None
+            self.perg_sorteada = ""
+            self.alternativas_sorteadas = []
+
+        #BOTOES DE ALTERNATIVAS
+        self.botoes_alternativas = []
+        for i in range(4):
+            rect_opcao = pygame.Rect(self.bloco_perguntas.x + 30, self.bloco_perguntas.y + 195 + (i * 72), 700, 58)
+            self.botoes_alternativas.append(rect_opcao)
+
+        # BOTAO REINICIAR -------------------------------------------------
+        self.botao_reiniciar = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/botao_reiniciar.png")), (50, 50))
+        self.botao_reiniciar_rect = self.botao_reiniciar.get_rect(x=114, y=2)
+
+        # SPAM DE ERRO E ACERTO -------------------------------------------
+        self.Errou_img = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/Errou.png")), (200, 200))
+        self.Errou_rect = self.Errou_img.get_rect(centerx=config.centroX, centery=config.altura / 2)
+        
+        self.Acerto_img = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/Acertou.png")), (200, 200))
+        self.Acerto_rect = self.Acerto_img.get_rect(centerx=config.centroX, centery=config.altura / 2)
+
+        self.erro_sound = pygame.mixer.Sound(funcoes.resource_path("assets/AUDIOS/error_som.mp3"))
+        self.erro_sound.set_volume(1.0)
+
+        self.acerto_sound = pygame.mixer.Sound(funcoes.resource_path("assets/AUDIOS/acerto.mp3"))
+        self.acerto_sound.set_volume(1.0)
+
+        # CONTROLE DE ESTADOS E FEEDBACK VISUAL ----------------------------
+        self.estado = "QUIZ"
+        self.Errou_status = False
+        self.Acerto_status = False
+        self.mostrar_feedback_cores = False
+        self.opcao_selecionada = None
+        self.SUMIR_STATUS_EVENTO = pygame.USEREVENT + 4
+        self.ler_clique = True
+        self.reiniciar = False
+
+        self.contAcertos = 0
+        self.contErros = 0
+        self.num_questao = 1
+
+        # FEEDBACK / BANCO ------------------------------------------------
+        self.ponto_selecionado = None
+        self.texto_feedback = ""
+        self.scroll_y = 0
+
+        self.botao_finalizar_rect = pygame.Rect(config.largura - 180, config.altura - 55, 150, 45)
+        self.botao_salvar_fb_rect = pygame.Rect(config.centroX + 20, config.altura // 2 + 130, 140, 40)
+        self.botao_cancelar_fb_rect = pygame.Rect(config.centroX - 160, config.altura // 2 + 130, 140, 40)
+
+    def inicializar_banco(self):
+        conexao = sqlite3.connect(banco_srs)
+        cursor = conexao.cursor()
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS feedbacks (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                jogador TEXT,
+                ponto_turistico TEXT,
+                feedback TEXT,
+                data_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+        """)
+        conexao.commit()
+        conexao.close()
+
+    def salvar_feedback_banco(self, ponto_nome, texto):
+        jogador = getattr(config, "nome_jogador", "")
+        if jogador == "":
+            jogador = "Explorador"
+
+        # Salva na sessão atual da partida
+        self.feedbacks_sessao[ponto_nome] = texto
+
+        conexao = sqlite3.connect(banco_srs)
+        cursor = conexao.cursor()
+        cursor.execute("""
+            INSERT INTO feedbacks (jogador, ponto_turistico, feedback)
+            VALUES (?, ?, ?)
+        """, (jogador, ponto_nome, texto))
+        conexao.commit()
+        conexao.close()
+
+    def obter_feedback_jogador(self, ponto_nome):
+        # Retorna apenas o feedback registrado nesta rodada
+        return self.feedbacks_sessao.get(ponto_nome, "")
+
+    def verificar_resposta(self, indice_clicado):
+        self.opcao_selecionada = indice_clicado
+        self.mostrar_feedback_cores = True
+
+        if indice_clicado == self.questao_atual["correta"]:
+            self.acerto_sound.play()
+            self.Acerto_status = True
+            self.contAcertos += 1
+        else:
+            self.erro_sound.play()
+            self.Errou_status = True
+            self.contErros += 1
+
+        pygame.time.set_timer(self.SUMIR_STATUS_EVENTO, 800, loops=1)
+
+    def gerenciar_eventos(self, evento):
+        pos_mouse = pygame.mouse.get_pos()
+
+        if self.botao_reiniciar_rect.collidepoint(pos_mouse):
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+        else:
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
+
+        if evento.type == self.SUMIR_STATUS_EVENTO:
+            self.Errou_status = False
+            self.Acerto_status = False
+            self.mostrar_feedback_cores = False
+            self.opcao_selecionada = None
+            self.ler_clique = True
+
+            if len(self.perguntas_disponiveis) > 0:
+                self.questao_atual = self.perguntas_disponiveis.pop(0)
+                self.perg_sorteada = self.questao_atual["pergunta"]
+                self.alternativas_sorteadas = self.questao_atual["opcoes"]
+                self.num_questao += 1
+            else:
+                self.estado = "SELECAO_PONTO"
+
+        if evento.type == pygame.MOUSEBUTTONDOWN:
+            if evento.button == 1:
+                if self.botao_reiniciar_rect.collidepoint(pos_mouse):
+                    self.reiniciar = True
+
+                if self.estado == "QUIZ" and self.ler_clique:
+                    for i in range(len(self.botoes_alternativas)):
+                        if self.botoes_alternativas[i].collidepoint(pos_mouse):
+                            self.ler_clique = False
+                            self.verificar_resposta(i)
+                            break
+
+                elif self.estado == "SELECAO_PONTO":
+                    if self.botao_finalizar_rect.collidepoint(pos_mouse):
+                        return "MENU"
+
+                    y_item = 80 + self.scroll_y
+                    for ponto in self.pontos:
+                        item_rect = pygame.Rect(40, y_item, config.largura - 80, 56)
+                        if item_rect.top >= 75 and item_rect.bottom <= config.altura - 60:
+                            if item_rect.collidepoint(pos_mouse):
+                                self.ponto_selecionado = ponto
+                                self.texto_feedback = self.obter_feedback_jogador(ponto.nome)
+                                self.estado = "FEEDBACK_POPUP"
+                                break
+                        y_item += 66
+
+                elif self.estado == "FEEDBACK_POPUP":
+                    if self.botao_salvar_fb_rect.collidepoint(pos_mouse):
+                        if self.texto_feedback.strip() != "":
+                            self.salvar_feedback_banco(self.ponto_selecionado.nome, self.texto_feedback.strip())
+                        self.estado = "SELECAO_PONTO"
+
+                    if self.botao_cancelar_fb_rect.collidepoint(pos_mouse):
+                        self.estado = "SELECAO_PONTO"
+
+            # Rolagem com trava superior em 0
+            elif evento.button == 4 and self.estado == "SELECAO_PONTO":
+                if self.scroll_y < 0:
+                    self.scroll_y = min(0, self.scroll_y + 35)
+            elif evento.button == 5 and self.estado == "SELECAO_PONTO":
+                limite_scroll = -max(0, (len(self.pontos) * 66) - (config.altura - 160))
+                if self.scroll_y > limite_scroll:
+                    self.scroll_y = max(limite_scroll, self.scroll_y - 35)
+
+        if self.estado == "FEEDBACK_POPUP" and evento.type == pygame.KEYDOWN:
+            if evento.key == pygame.K_BACKSPACE:
+                self.texto_feedback = self.texto_feedback[:-1]
+            elif evento.key == pygame.K_ESCAPE:
+                self.estado = "SELECAO_PONTO"
+            elif evento.key == pygame.K_RETURN:
+                self.texto_feedback += " "
+            else:
+                if len(self.texto_feedback) < 250 and evento.unicode.isprintable():
+                    self.texto_feedback += evento.unicode
+
+        return "JOGO_SRS"
+
+    def atualizar(self, reiniciar):
+        if self.reiniciar:
+            reiniciar = True
+            return "MENU", reiniciar
+        return "JOGO_SRS", reiniciar
+
+    def desenhar(self, tela):
+        tela.fill((79, 148, 77))
+        pos_mouse = pygame.mouse.get_pos()
+
+        # QUIZ -------------------------------------------------------------
+        if self.estado == "QUIZ":
+            tela.blit(self.botao_reiniciar, self.botao_reiniciar_rect)
+
+            pygame.draw.rect(tela, config.bege, self.bloco_perguntas, border_radius=12)
+            pygame.draw.rect(tela, (50, 30, 15), self.bloco_perguntas, 3, border_radius=12)
+
+            txt_progresso = config.fonte_dicas.render(f"Questao {self.num_questao} de {self.total_questoes}", False, (50, 30, 15))
+            tela.blit(txt_progresso, (self.bloco_perguntas.x + 30, self.bloco_perguntas.y + 20))
+
+            txt_placar = config.fonte_dicas.render(f"Acertos: {self.contAcertos} | Erros: {self.contErros}", False, (50, 30, 15))
+            tela.blit(txt_placar, (self.bloco_perguntas.right - txt_placar.get_width() - 30, self.bloco_perguntas.y + 20))
+
+            linhas_pergunta = funcoes.formatar_texto_largura(self.perg_sorteada, config.fonte_fases, 680)
+            y_texto = self.bloco_perguntas.y + 60
+            for linha in linhas_pergunta:
+                linha_render = config.fonte_fases.render(linha, False, config.verde)
+                linha_rect = linha_render.get_rect()
+                linha_rect.centerx = self.bloco_perguntas.centerx
+                linha_rect.y = y_texto
+                tela.blit(linha_render, linha_rect)
+                y_texto += linha_render.get_height() + 5
+
+            letras = ["A", "B", "C", "D"]
+            for i in range(len(self.alternativas_sorteadas)):
+                btn_rect = self.botoes_alternativas[i]
+                
+                # Feedback de cores ao responder
+                if self.mostrar_feedback_cores:
+                    if i == self.questao_atual["correta"]:
+                        cor_fundo = (46, 204, 113)  # Verde (resposta correta)
+                    elif i == self.opcao_selecionada:
+                        cor_fundo = (231, 76, 60)   # Vermelho (opção errada que o usuário clicou)
+                    else:
+                        cor_fundo = config.azul
+                else:
+                    cor_fundo = (90, 150, 220) if btn_rect.collidepoint(pos_mouse) else config.azul
+
+                pygame.draw.rect(tela, cor_fundo, btn_rect, border_radius=8)
+                pygame.draw.rect(tela, (50, 30, 15), btn_rect, 2, border_radius=8)
+
+                # Quebra de linha e alinhamento vertical dentro do botão
+                texto_alt = f"{letras[i]})  {self.alternativas_sorteadas[i]}"
+                largura_maxima_alt = btn_rect.width - 35
+                linhas_alt = funcoes.formatar_texto_largura(texto_alt, config.fonte_dicas, largura_maxima_alt)
+
+                altura_linha = config.fonte_dicas.get_height()
+                altura_total_alt = len(linhas_alt) * altura_linha + (len(linhas_alt) - 1) * 3
+                pos_y_inicial_alt = btn_rect.centery - (altura_total_alt // 2)
+
+                for j in range(len(linhas_alt)):
+                    alt_render = config.fonte_dicas.render(linhas_alt[j], False, (255, 255, 255))
+                    tela.blit(alt_render, (btn_rect.x + 18, pos_y_inicial_alt + j * (altura_linha + 3)))
+
+            if self.Errou_status:
+                tela.blit(self.Errou_img, self.Errou_rect)
+            elif self.Acerto_status:
+                tela.blit(self.Acerto_img, self.Acerto_rect)
+
+        #LISTA DE PONTOS TURISTICOS ---------------------------------------
+        elif self.estado in ("SELECAO_PONTO", "FEEDBACK_POPUP"):
+            #Desenha os itens com área útil limitada
+            y_item = 80 + self.scroll_y
+            for ponto in self.pontos:
+                item_rect = pygame.Rect(40, y_item, config.largura - 80, 56)
+
+                if item_rect.top >= 75 and item_rect.bottom <= config.altura - 60:
+                    fb_existe = self.obter_feedback_jogador(ponto.nome) != ""
+                    
+                    cor_fundo_item = config.bege
+                    if fb_existe:
+                        cor_fundo_item = (220, 245, 220)
+                    if item_rect.collidepoint(pos_mouse):
+                        cor_fundo_item = (210, 230, 245)
+
+                    pygame.draw.rect(tela, cor_fundo_item, item_rect, border_radius=8)
+                    pygame.draw.rect(tela, (50, 30, 15), item_rect, 2, border_radius=8)
+
+                    txt_nome = config.fonte_dicas.render(ponto.nome, False, (50, 30, 15))
+                    tela.blit(txt_nome, (item_rect.x + 20, item_rect.y + 6))
+
+                    msg_status = "Feedback registrado" if fb_existe else "Clique para avaliar este local"
+                    cor_status = (40, 140, 40) if fb_existe else (110, 110, 110)
+                    txt_st = config.fonte_dicas.render(msg_status, False, cor_status)
+                    tela.blit(txt_st, (item_rect.x + 20, item_rect.y + 30))
+
+                y_item += 66
+
+            # 2. Cabeçalho fixo no topo
+            cabecalho_rect = pygame.Rect(0, 0, config.largura, 76)
+            pygame.draw.rect(tela, (79, 148, 77), cabecalho_rect)
+
+            tela.blit(self.botao_reiniciar, self.botao_reiniciar_rect)
+
+            txt_titulo = config.fonte_fases.render("Pontos Turisticos de Santa Rita do Sapucai", False, (50, 30, 15))
+            txt_titulo_rect = txt_titulo.get_rect(centerx=config.centroX, y=14)
+            tela.blit(txt_titulo, txt_titulo_rect)
+
+            txt_sub = config.fonte_dicas.render("Clique em um ponto turistico para registrar seu feedback:", False, (240, 240, 240))
+            txt_sub_rect = txt_sub.get_rect(centerx=config.centroX, y=44)
+            tela.blit(txt_sub, txt_sub_rect)
+
+            # 3. Rodapé fixo para o botão Finalizar
+            rodape_rect = pygame.Rect(0, config.altura - 60, config.largura, 60)
+            pygame.draw.rect(tela, (79, 148, 77), rodape_rect)
+
+            pygame.draw.rect(tela, config.verde, self.botao_finalizar_rect, border_radius=8)
+            pygame.draw.rect(tela, (50, 30, 15), self.botao_finalizar_rect, 2, border_radius=8)
+            txt_finalizar = config.fonte_dicas.render("Finalizar", False, (255, 255, 255))
+            tela.blit(txt_finalizar, txt_finalizar.get_rect(center=self.botao_finalizar_rect.center))
+
+        # POP-UP DE FEEDBACK -----------------------------------------------
+        if self.estado == "FEEDBACK_POPUP" and self.ponto_selecionado != None:
+            escurecer = pygame.Surface((config.largura, config.altura), pygame.SRCALPHA)
+            escurecer.fill((0, 0, 0, 160))
+            tela.blit(escurecer, (0, 0))
+
+            pop_rect = pygame.Rect(config.centroX - 320, config.altura // 2 - 200, 640, 400)
+            pygame.draw.rect(tela, config.bege, pop_rect, border_radius=12)
+            pygame.draw.rect(tela, (50, 30, 15), pop_rect, 3, border_radius=12)
+
+            tit_ponto = config.fonte_fases.render(self.ponto_selecionado.nome, False, (50, 30, 15))
+            tela.blit(tit_ponto, (pop_rect.x + 25, pop_rect.y + 20))
+
+            jogador_nome = getattr(config, "nome_jogador", "Explorador")
+            sub_inst = config.fonte_dicas.render(f"Avaliacao de {jogador_nome}:", False, (80, 80, 80))
+            tela.blit(sub_inst, (pop_rect.x + 25, pop_rect.y + 55))
+
+            campo_rect = pygame.Rect(pop_rect.x + 25, pop_rect.y + 85, 590, 200)
+            pygame.draw.rect(tela, (255, 255, 255), campo_rect, border_radius=8)
+            pygame.draw.rect(tela, (140, 140, 140), campo_rect, 2, border_radius=8)
+
+            linhas_fb = funcoes.formatar_texto_largura(self.texto_feedback + "|", config.fonte_dicas, 560)
+            y_fb = campo_rect.y + 12
+            for l in linhas_fb[:7]:
+                txt_render = config.fonte_dicas.render(l, False, (30, 30, 30))
+                tela.blit(txt_render, (campo_rect.x + 12, y_fb))
+                y_fb += 24
+
+            pygame.draw.rect(tela, config.verde, self.botao_salvar_fb_rect, border_radius=8)
+            pygame.draw.rect(tela, (50, 30, 15), self.botao_salvar_fb_rect, 2, border_radius=8)
+            txt_salvar = config.fonte_dicas.render("Salvar", False, (255, 255, 255))
+            tela.blit(txt_salvar, txt_salvar.get_rect(center=self.botao_salvar_fb_rect.center))
+
+            pygame.draw.rect(tela, (180, 60, 50), self.botao_cancelar_fb_rect, border_radius=8)
+            pygame.draw.rect(tela, (50, 30, 15), self.botao_cancelar_fb_rect, 2, border_radius=8)
+            txt_canc = config.fonte_dicas.render("Cancelar", False, (255, 255, 255))
+            tela.blit(txt_canc, txt_canc.get_rect(center=self.botao_cancelar_fb_rect.center))

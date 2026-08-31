@@ -1,0 +1,7 @@
+{
+    "python-envs.defaultEnvManager": "ms-python.python:system",
+    "editor.fontFamily": "'Departure Mono', 'Fixedsys Excelsior', monospace",
+    "editor.fontLigatures": true,
+    "window.renderLineHighlight": "all"
+    
+}

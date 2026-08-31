@@ -1,0 +1,107 @@
+pergunta: Qual é a região do estado do Amazonas?
+regiao: Norte
+dicas: Fica localizado na porção noroeste do mapa do Brasil.; Faz fronteira internacional com o Peru e com a Colômbia.; Faz divisa ao sul com o estado de Mato Grosso.
+
+pergunta: Qual é a região do estado do Pará?
+regiao: Norte
+dicas: Está localizado na porção superior do mapa, com litoral voltado para o Oceano Atlântico.; Faz divisa ao sul com Mato Grosso e com o estado de Tocantins.; Faz divisa a leste com o estado do Maranhão.
+
+pergunta: Qual é a região do estado do Acre?
+regiao: Norte
+dicas: Fica localizado no extremo oeste do território brasileiro.; Faz fronteira internacional com dois países: Peru e Bolívia.; Está situado diretamente à esquerda do estado de Rondônia.
+
+pergunta: Qual é a região do estado de Rondônia?
+regiao: Norte
+dicas: Fica localizado na porção oeste, diretamente à esquerda de Mato Grosso.; Faz fronteira internacional com a Bolívia ao sul e a oeste.; Está posicionado diretamente abaixo do estado do Amazonas.
+
+pergunta: Qual é a região do estado de Roraima?
+regiao: Norte
+dicas: Fica no ponto mais alto da porção superior do mapa do Brasil.; Faz fronteira internacional com a Venezuela e com a Guiana.; Está situado diretamente acima do estado do Amazonas.
+
+pergunta: Qual é a região do estado do Amapá?
+regiao: Norte
+dicas: Fica no litoral da porção superior do mapa do Brasil.; Faz fronteira internacional com a Guiana Francesa.; Está localizado diretamente acima do estado do Pará.
+
+pergunta: Qual é a região do estado do Tocantins?
+regiao: Norte
+dicas: Fica no centro do mapa, fazendo divisa ao sul com Goiás.; Faz divisa a leste com os estados da Bahia e do Piauí.; Está localizado diretamente abaixo do Pará e do Maranhão.
+
+pergunta: Qual é a região do estado da Bahia?
+regiao: Nordeste
+dicas: Fica no litoral leste, fazendo divisa ao sul com Minas Gerais e Espírito Santo.; Faz divisa a oeste com o estado de Goiás e com o Tocantins.; Possui um extenso litoral banhado pelo Oceano Atlântico.
+
+pergunta: Qual é a região do estado de Pernambuco?
+regiao: Nordeste
+dicas: Está localizado no litoral leste do mapa do Brasil.; Faz divisa ao sul com o estado da Bahia.; Faz divisa a oeste com o estado do Piauí.
+
+pergunta: Qual é a região do estado do Ceará?
+regiao: Nordeste
+dicas: Fica localizado no litoral do trecho superior/norte da sua faixa do mapa.; Está situado diretamente a leste do estado do Piauí.; Faz divisa ao sul com o estado de Pernambuco.
+
+pergunta: Qual é a região do estado do Maranhão?
+regiao: Nordeste
+dicas: Fica no litoral norte, situado diretamente entre o Pará (a oeste) e o Piauí (a leste).; Faz divisa ao sul com o estado do Tocantins.; Possui a porção leste do seu litoral voltada para o Oceano Atlântico.
+
+pergunta: Qual é a região do estado do Piauí?
+regiao: Nordeste
+dicas: Está localizado no interior, com uma pequena saída para o litoral entre o Maranhão e o Ceará.; Faz divisa ao sul diretamente com o estado da Bahia.; Faz divisa a leste com o estado de Pernambuco.
+
+pergunta: Qual é a região do Rio Grande do Norte?
+regiao: Nordeste
+dicas: Fica bem na curva superior da 'esquina' leste do mapa do Brasil.; Está localizado diretamente acima do estado da Paraíba.; Faz divisa a oeste com o estado do Ceará.
+
+pergunta: Qual é a região do estado da Paraíba?
+regiao: Nordeste
+dicas: Fica na ponta mais litorânea e oriental do mapa brasileiro.; Está situado exatamente entre o Rio Grande do Norte (ao norte) e Pernambuco (ao sul).; Faz divisa a oeste com o estado do Ceará.
+
+pergunta: Qual é a região do estado de Alagoas?
+regiao: Nordeste
+dicas: Fica localizado na faixa litorânea do leste brasileiro.; Está posicionado entre Pernambuco (ao norte) e Sergipe (ao sul).; Sua fronteira a oeste faz divisa com o estado da Bahia.
+
+pergunta: Qual é a região do estado de Sergipe?
+regiao: Nordeste
+dicas: Fica na faixa litorânea entre o estado da Bahia e Alagoas.; Está localizado no litoral logo acima do estado da Bahia.; Faz divisa ao norte com o estado de Alagoas.
+
+pergunta: Qual é a região do estado do Mato Grosso?
+regiao: Centro-Oeste
+dicas: Fica localizado no interior central do país, sem nenhum acesso ao litoral.; Faz fronteira internacional a oeste com a Bolívia.; Faz divisa ao norte com o Amazonas e o Pará, e a leste com Goiás.
+
+pergunta: Qual é a região do Mato Grosso do Sul?
+regiao: Centro-Oeste
+dicas: Fica no interior do mapa, sem litoral, fazendo divisa a leste com São Paulo e Minas Gerais.; Faz fronteira internacional com dois países: Paraguai e Bolívia.; Faz divisa ao sul com o estado do Paraná.
+
+pergunta: Qual é a região do estado de Goiás?
+regiao: Centro-Oeste
+dicas: Fica localizado no coração interior do mapa do Brasil, sem saída para o mar.; Cerca totalmente o território do Distrito Federal.; Faz divisa com Mato Grosso (oeste), Minas Gerais (sudeste) e Tocantins (norte).
+
+pergunta: Qual é a região do Distrito Federal?
+regiao: Centro-Oeste
+dicas: É uma unidade autônoma localizada no interior do estado de Goiás.; Fica situado na porção central e interior do país.; Está localizado muito próximo da divisa entre Goiás e Minas Gerais.
+
+pergunta: Qual é a região do estado de São Paulo?
+regiao: Sudeste
+dicas: Fica no litoral sul/sudeste, fazendo divisa ao sul com o estado do Paraná.; Faz divisa ao norte com Minas Gerais e a leste com o Rio de Janeiro.; Faz divisa a oeste com o estado de Mato Grosso do Sul.
+
+pergunta: Qual é a região do Rio de Janeiro?
+regiao: Sudeste
+dicas: Fica no litoral banhado pelo Oceano Atlântico, situado entre São Paulo e o Espírito Santo.; Está localizado diretamente abaixo do estado de Minas Gerais.; Faz divisa a oeste com o estado de São Paulo.
+
+pergunta: Qual é a região do estado de Minas Gerais?
+regiao: Sudeste
+dicas: É um estado no interior que não possui nenhuma saída para o mar.; Faz divisa ao sul com São Paulo e o Rio de Janeiro.; Faz divisa ao norte com a Bahia e a oeste com Goiás e Mato Grosso do Sul.
+
+pergunta: Qual é a região do Espírito Santo?
+regiao: Sudeste
+dicas: Fica no litoral leste, posicionado diretamente acima do estado do Rio de Janeiro.; Está localizado a leste do estado de Minas Gerais.; Faz divisa no seu limite norte com o estado da Bahia.
+
+pergunta: Qual é a região do estado do Paraná?
+regiao: Sul
+dicas: Está localizado no litoral sul, fazendo divisa ao norte com o estado de São Paulo.; Está situado diretamente acima do estado de Santa Catarina.; Faz divisa a oeste com Mato Grosso do Sul e fronteira internacional com o Paraguai.
+
+pergunta: Qual é a região do estado de Santa Catarina?
+regiao: Sul
+dicas: Fica no litoral sul, posicionado exatamente entre o Paraná (ao norte) e o Rio Grande do Sul (ao sul).; Faz fronteira internacional a oeste com a Argentina.; Possui a sua costa leste banhada pelo Oceano Atlântico.
+
+pergunta: Qual é a região do Rio Grande do Sul?
+regiao: Sul
+dicas: Fica no ponto mais baixo do mapa do Brasil.; Está localizado diretamente abaixo do estado de Santa Catarina.; Faz fronteira internacional ao sul com o Uruguai e a oeste com a Argentina.
