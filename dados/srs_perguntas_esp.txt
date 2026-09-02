@@ -1,0 +1,96 @@
+Estado: SRS
+pergunta: ¿Por qué apodo es conocida nacionalmente Santa Rita do Sapucaí?
+opcoes: Vale do Silício; Vale da Eletrônica; Capital da Tecnologia; Cidade Digital
+correta: 1
+
+pergunta: ¿Cuál es el principal bioma presente en Santa Rita do Sapucaí?
+opcoes: Cerrado; Caatinga; Mata Atlántica; Pampa
+correta: 2
+
+pergunta: ¿En qué día se celebra a la patrona de la ciudad, Santa Rita de Cássia?
+opcoes: 24 de junio; 15 de agosto; 1º de octubre; 22 de mayo
+correta: 3
+
+pergunta: ¿Qué institución es considerada la primera escuela de electrónica de nivel medio de América Latina?
+opcoes: INATEL; FAI; ETE FMC; UFMG
+correta: 2
+
+pergunta: ¿Qué río atraviesa el municipio de Santa Rita do Sapucaí y le da nombre a la ciudad?
+opcoes: Rio das Mortes; Rio Sapucaí; Rio Grande; Rio Doce
+correta: 1
+
+pergunta: ¿En qué estado brasileño queda Santa Rita do Sapucaí?
+opcoes: São Paulo; Rio de Janeiro; Espírito Santo; Minas Gerais
+correta: 3
+
+pergunta: ¿Qué punto turístico es conocido por ofrecer puestas de sol espectaculares, incluso sin una estructura formal?
+opcoes: GAAU; Morro do Cruzeiro; Mercado Municipal; Teatro Municipal
+correta: 1
+
+pergunta: ¿Quién fue el antiguo habitante de la casa que hoy alberga el Museu Histórico Dr. Delfim Moreira?
+opcoes: Un obispo de la región; Un empresario del café; Un expresidente de la República; El fundador de la ciudad
+correta: 2
+
+pergunta: ¿En qué década fue construido el Teatro Municipal Monsenhor José Carneiro Pinto?
+opcoes: 1950; 1980; 2000; 1920
+correta: 3
+
+pergunta: ¿Qué ayuda a proteger la Reserva Biológica Mítzi Brandão?
+opcoes: Los manantiales y recursos hídricos de la región; Las plantaciones de café; Los caminos rurales; El comercio local
+correta: 0
+
+pergunta: ¿Dónde está ubicada la Galeria Aberta de Arte Urbana (GAAU)?
+opcoes: Dentro del Museu Histórico; En la Serra do Paredão; A orillas del Rio Sapucaí (Beira Rio); En el Morro do Cruzeiro
+correta: 2
+
+pergunta: ¿Qué hace que la Rampa de Vuelo Libre de Santa Rita sea conocida entre los practicantes de este deporte?
+opcoes: Ser la mayor rampa de Brasil; Sus condiciones aerológicas entre las mejores del país; Haber sido utilizada en competiciones olímpicas; Estar dentro del centro de la ciudad
+correta: 1
+
+pergunta: Además de la industria tecnológica, ¿qué actividades agropecuarias tienen importancia histórica en la economía de Santa Rita do Sapucaí?
+opcoes: Café, leche y ganadería; Pesca y extracción de sal; Minería y extracción de petróleo; Solo producción de frutas
+correta: 0
+
+pergunta: ¿Cuántos días dura, en promedio, la Festa de Santa Rita cuando se realiza entre los días 17 y 25 de mayo?
+opcoes: 9 días; 2 días; 30 días; 1 día
+correta: 0
+
+pergunta: ¿En qué año la ETE FMC inició sus actividades educativas?
+opcoes: 1945; 1959; 1971; 1980
+correta: 1
+
+pergunta: ¿Con qué autoridad articuló apoyo Doña Sinhá Moreira para hacer posible la enseñanza técnica de electrónica en Brasil?
+opcoes: Con el presidente de la República Juscelino Kubitschek; Con el entonces gobernador Juscelino Kubitschek; Con el Ministerio de Educación; Con la Iglesia Católica
+correta: 0
+
+pergunta: ¿Quién fundó el INATEL y en qué año?
+opcoes: José Nogueira Leite, en 1965; Sinhá Moreira, en 1959; Francisco Ribeiro de Magalhães, en 1971; Juscelino Kubitschek, en 1965
+correta: 0
+
+pergunta: ¿Cuál fue el carácter pionero de la FAI al ser fundada en 1971?
+opcoes: Primer curso de Administración del Sur de Minas; Primera escuela de electrónica de Brasil; Primer curso de Ingeniería de Minas Gerais; Primera universidad pública de la región
+correta: 0
+
+pergunta: El HackTown, realizado en Santa Rita do Sapucaí, es considerado:
+opcoes: El mayor festival de tecnología e innovación de América Latina; Un evento exclusivo para universitarios de la FAI; Una feria solo de productos agrícolas; Un festival de música regional
+correta: 0
+
+pergunta: ¿Aproximadamente cuántas industrias de productos eléctricos y electrónicos forman el Valle de la Electrónica actualmente?
+opcoes: 39; 239; 39 mil; 2.390
+correta: 1
+
+pergunta: En reportajes y materiales de divulgación, ¿con qué polo tecnológico mundial se compara al Valle de la Electrónica (Santa Rita do Sapucaí)?
+opcoes: Valle del Silicio; Silicon Fen (Reino Unido); Zhongguancun (China); Bangalore (India)
+correta: 0
+
+pergunta: ¿El Parque Municipal Natural Dr. Cyro de Luna Dias queda en las proximidades de qué área de preservación?
+opcoes: GAAU; Reserva Biológica Mítzi Brandão; Morro do Cruzeiro; Serra do Paredão
+correta: 1
+
+pergunta: ¿En qué década fue creada la Reserva Biológica Mítzi Brandão?
+opcoes: Década de 2010; Década de 1990; Década de 1980; Siglo XIX
+correta: 2
+
+pergunta: ¿Qué mantiene el Parque Municipal Natural Dr. Cyro de Luna Dias para apoyar la preservación ambiental?
+opcoes: Un zoológico; Un vivero de plantas; Una hacienda modelo; Un laboratorio de minería
+correta: 1

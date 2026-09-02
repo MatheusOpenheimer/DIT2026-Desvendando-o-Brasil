@@ -27,10 +27,15 @@ verde_pastel = (157, 242, 157)
 amarelo_pastel = (250, 226, 105)
 
 #FONTES (Com suporte ao resource_path)
-fonte_input = pygame.font.Font(funcoes.resource_path("assets/FONTES/04B_11__.TTF"), 16)
-fonte_fases = pygame.font.Font(funcoes.resource_path("assets/FONTES/Afonte.ttf"), 14)
-fonte_dicas = pygame.font.Font(funcoes.resource_path("assets/FONTES/Afonte.ttf"), 13)
-fonte_grossa = pygame.font.Font(funcoes.resource_path("assets/FONTES/fonte_grossa.ttf"), 34)
+fonte_input = pygame.font.Font(funcoes.resource_path("assets/FONTES/Afonte.ttf"), 16)
+
+fonte_fases_bold = pygame.font.SysFont("Franklin Gothic Medium", 24, bold=True)
+fonte_fases = pygame.font.SysFont("Franklin Gothic Medium", 24)
+fonte_dicas = pygame.font.SysFont("Franklin Gothic Medium", 18)
+
+fonte_media = pygame.font.SysFont("Franklin Gothic Medium", 20)
+
+fonte_grossa = pygame.font.SysFont("Franklin Gothic Medium", 40, bold=True)
 
 #AUDIOS (Com suporte ao resource_path)
 click_sound = pygame.mixer.Sound(funcoes.resource_path("assets/AUDIOS/click.2.ogg"))
@@ -46,6 +51,6 @@ tempo_sobra = 0
 #------------------------------------------------------
 #config dos objetos
 config_botao = [0, 0, 250, 100]
-tamanho_botao = (250, 100)
+tamanho_botao = (255, 100)
 posicoes_botao_y = [320, 450, 580]
 centroX = largura / 2

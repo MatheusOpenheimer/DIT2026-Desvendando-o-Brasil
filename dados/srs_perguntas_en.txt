@@ -1,0 +1,97 @@
+Estado: SRS
+
+pergunta: What nickname is Santa Rita do Sapucaí nationally known by?
+opcoes: Silicon Valley; Electronics Valley; Technology Capital; Digital City
+correta: 1
+
+pergunta: What is the biome of Santa Rita do Sapucaí?
+opcoes: Cerrado; Caatinga; Atlantic Forest; Pampas
+correta: 2
+
+pergunta: On what date is the city's patron saint, Santa Rita de Cássia, celebrated?
+opcoes: June 24; August 15; October 1; May 22
+correta: 3
+
+pergunta: Which institution was the first secondary-level electronics school in Latin America?
+opcoes: INATEL; FAI; ETE FMC; UFMG
+correta: 2
+
+pergunta: Which river flows through Santa Rita do Sapucaí?
+opcoes: Rio das Mortes; Rio Sapucaí; Rio Grande; Rio Doce
+correta: 1
+
+pergunta: In which Brazilian state is Santa Rita do Sapucaí located?
+opcoes: São Paulo; Rio de Janeiro; Espírito Santo; Minas Gerais
+correta: 3
+
+pergunta: Which tourist attraction is known for its spectacular sunsets and has no formal visitor infrastructure?
+opcoes: OUAG; Morro do Cruzeiro; Municipal Market; Municipal Theater
+correta: 1
+
+pergunta: Who was the former resident of the house that now houses the Dr. Delfim Moreira Historical Museum?
+opcoes: A bishop from the region; A coffee entrepreneur; A former President of the Republic; The founder of the city
+correta: 2
+
+pergunta: In which decade was the Teatro Municipal Monsenhor José Carneiro Pinto built?
+opcoes: 1950s; 1980s; 2000s; 1920s
+correta: 3
+
+pergunta: What does the Mítzi Brandão Biological Reserve help protect?
+opcoes: The city's water sources and water resources; Coffee plantations; Rural roads; Local commerce
+correta: 0
+
+pergunta: Where is the Open Urban Art Gallery (OUAG) located?
+opcoes: Inside the Historical Museum; On Serra do Paredão; Along the Rio Sapucaí (Beira Rio); On Morro do Cruzeiro
+correta: 2
+
+pergunta: What makes the Santa Rita Free-Flight Launch Ramp known among practitioners of the sport?
+opcoes: Being the largest launch ramp in Brazil; Its aerological conditions are among the best in the country; Having been used in Olympic competitions; Being located in the city center
+correta: 1
+
+pergunta: Which agricultural activities have historically been important to the municipality's economy?
+opcoes: Coffee, milk production, and livestock farming; Mining and fishing; Oil extraction and mining; Fishing and tourism
+correta: 0
+
+pergunta: How many days did the Festa de Santa Rita last when the 2025 official program ran from May 17 to May 25?
+opcoes: 9 days; 2 days; 30 days; 1 day
+correta: 0
+
+pergunta: In what year did ETE FMC begin its educational activities?
+opcoes: 1945; 1959; 1971; 1980
+correta: 1
+
+pergunta: Which authority supported Dona Sinhá Moreira in authorizing technical electronics education in Brazil?
+opcoes: President Juscelino Kubitschek; President Getúlio Vargas; The Ministry of Education; The Catholic Church
+correta: 0
+
+pergunta: Who founded INATEL and in what year?
+opcoes: José Nogueira Leite, in 1965; Sinhá Moreira, in 1959; Francisco Ribeiro de Magalhães, in 1971; Juscelino Kubitschek, in 1965
+correta: 0
+
+pergunta: What was FAI's pioneering achievement when it was founded in 1971?
+opcoes: The first Administration course in Southern Minas Gerais; The first electronics school in Brazil; The first Engineering course in Minas Gerais; The first public university in the region
+correta: 0
+
+pergunta: HackTown, held in Santa Rita do Sapucaí, is considered:
+opcoes: The largest technology and innovation festival in Latin America; An event exclusively for FAI university students; A fair exclusively for agricultural products; A regional music festival
+correta: 0
+
+pergunta: Approximately how many electronics and electrical industries make up the Electronics Valley today?
+opcoes: 39; 239; 39,000; 2,390
+correta: 1
+
+pergunta: The Electronics Valley has been compared to which global technology hub?
+opcoes: Silicon Valley; Silicon Fen (United Kingdom); Zhongguancun (China); Bangalore (India)
+correta: 0
+
+pergunta: The Dr. Cyro de Luna Dias Municipal Natural Park is located near which protected area?
+opcoes: OUAG; Mítzi Brandão Biological Reserve; Morro do Cruzeiro; Serra do Paredão
+correta: 1
+
+pergunta: In which decade was the Mítzi Brandão Biological Reserve created?
+opcoes: 2010s; 1990s; 1980s; 19th century
+correta: 2
+
+pergunta: What does the Dr. Cyro de Luna Dias Municipal Natural Park maintain to support environmental preservation?
+opcoes: A zoo; A plant nursery; A model farm; A mining laboratory
+correta: 1

@@ -1,25 +1,36 @@
 import copy
-import math
+import banco
 import random
 import config
 import funcoes
 import pygame
 import os
-import sqlite3
 from srs_ponto_turistico import criar_pontos_santa_rita
-
-# Garante que a pasta dados exista no diretório antes de conectar
-if not os.path.exists("dados"):
-    os.makedirs("dados", exist_ok=True)
-
-banco_srs = os.path.join("dados", "SRSDATA.db")
 
 
 class JogoSantaRita:
 
-    def __init__(self):
+    def __init__(self, modo):
+
+        self.fundo_img = pygame.image.load(funcoes.resource_path("assets/IMAGENS_SRS/img_morro.png")).convert_alpha()
+        self.fundo_img = pygame.transform.scale(self.fundo_img, (config.largura, config.altura))
+        
+        self.modo = modo
+        self.estado = "QUIZ"
+
+        # PONTOS TURISTICOS -----------------------------------------------
+        self.pontos, _, _, _ = criar_pontos_santa_rita(self.modo)
+
         # BANCO DE PERGUNTAS -----------------------------------------------
-        banco_carregado = funcoes.carregar_questoes_txt(os.path.join("dados", "srs_perguntas.txt"))
+        if self.modo == "en":
+            arquivo_perguntas = "srs_perguntas_en.txt"
+        elif self.modo == "esp":
+            arquivo_perguntas = "srs_perguntas_esp.txt"
+        else:
+            arquivo_perguntas = "srs_perguntas.txt"
+
+        caminho_perguntas = os.path.join("dados", arquivo_perguntas)
+        banco_carregado = funcoes.carregar_questoes_txt(caminho_perguntas)
         lista_questoes = banco_carregado.get("SRS", [])
         
         self.perguntas_disponiveis = copy.deepcopy(lista_questoes)
@@ -27,17 +38,6 @@ class JogoSantaRita:
         self.perguntas_disponiveis = self.perguntas_disponiveis[:15] #pega a quantidade em [] para por no jogo
 
         self.total_questoes = len(self.perguntas_disponiveis)
-
-        # PONTOS TURISTICOS E BANCO SQLITE --------------------------------
-        self.pontos = criar_pontos_santa_rita()
-        self.banco_caminho = funcoes.resource_path("dados/SRSDATA.db")
-        self.inicializar_banco()
-
-        #Armazena os feedbacks dados APENAS na partida atual
-        self.feedbacks_sessao = {}
-
-        # BLOCO DE PERGUNTAS -----------------------------------------------
-        self.bloco_perguntas = pygame.Rect(config.centroX - 380, 50, 760, 600)
 
         # PRIMEIRA PERGUNTA -----------------------------------------------
         if len(self.perguntas_disponiveis) > 0:
@@ -49,14 +49,21 @@ class JogoSantaRita:
             self.perg_sorteada = ""
             self.alternativas_sorteadas = []
 
-        #BOTOES DE ALTERNATIVAS
+        #Armazena os feedbacks dados APENAS na partida atual
+        self.feedbacks_sessao = {}
+
+        # BLOCO DE PERGUNTAS -----------------------------------------------
+        self.bloco_perguntas = pygame.Rect(config.centroX - 380, 50, 760, 600)
+
+        # BOTOES DE ALTERNATIVAS
         self.botoes_alternativas = []
         for i in range(4):
             rect_opcao = pygame.Rect(self.bloco_perguntas.x + 30, self.bloco_perguntas.y + 195 + (i * 72), 700, 58)
             self.botoes_alternativas.append(rect_opcao)
 
         # BOTAO REINICIAR -------------------------------------------------
-        self.botao_reiniciar = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/botao_reiniciar.png")), (50, 50))
+        caminho_btn = funcoes.resource_path("assets/IMAGENS/botao_reiniciar.png")
+        self.botao_reiniciar = pygame.transform.scale(pygame.image.load(caminho_btn), (50, 50))
         self.botao_reiniciar_rect = self.botao_reiniciar.get_rect(x=114, y=2)
 
         # SPAM DE ERRO E ACERTO -------------------------------------------
@@ -73,7 +80,6 @@ class JogoSantaRita:
         self.acerto_sound.set_volume(1.0)
 
         # CONTROLE DE ESTADOS E FEEDBACK VISUAL ----------------------------
-        self.estado = "QUIZ"
         self.Errou_status = False
         self.Acerto_status = False
         self.mostrar_feedback_cores = False
@@ -81,6 +87,7 @@ class JogoSantaRita:
         self.SUMIR_STATUS_EVENTO = pygame.USEREVENT + 4
         self.ler_clique = True
         self.reiniciar = False
+        self.finalizar = False
 
         self.contAcertos = 0
         self.contErros = 0
@@ -95,41 +102,13 @@ class JogoSantaRita:
         self.botao_salvar_fb_rect = pygame.Rect(config.centroX + 20, config.altura // 2 + 130, 140, 40)
         self.botao_cancelar_fb_rect = pygame.Rect(config.centroX - 160, config.altura // 2 + 130, 140, 40)
 
-    def inicializar_banco(self):
-        conexao = sqlite3.connect(banco_srs)
-        cursor = conexao.cursor()
-        cursor.execute("""
-            CREATE TABLE IF NOT EXISTS feedbacks (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                jogador TEXT,
-                ponto_turistico TEXT,
-                feedback TEXT,
-                data_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-            )
-        """)
-        conexao.commit()
-        conexao.close()
-
     def salvar_feedback_banco(self, ponto_nome, texto):
         jogador = getattr(config, "nome_jogador", "")
         if jogador == "":
             jogador = "Explorador"
 
-        # Salva na sessão atual da partida
         self.feedbacks_sessao[ponto_nome] = texto
-
-        conexao = sqlite3.connect(banco_srs)
-        cursor = conexao.cursor()
-        cursor.execute("""
-            INSERT INTO feedbacks (jogador, ponto_turistico, feedback)
-            VALUES (?, ?, ?)
-        """, (jogador, ponto_nome, texto))
-        conexao.commit()
-        conexao.close()
-
-    def obter_feedback_jogador(self, ponto_nome):
-        # Retorna apenas o feedback registrado nesta rodada
-        return self.feedbacks_sessao.get(ponto_nome, "")
+        banco.salvar_feedback_srs(jogador, ponto_nome, texto)
 
     def verificar_resposta(self, indice_clicado):
         self.opcao_selecionada = indice_clicado
@@ -183,15 +162,15 @@ class JogoSantaRita:
 
                 elif self.estado == "SELECAO_PONTO":
                     if self.botao_finalizar_rect.collidepoint(pos_mouse):
-                        return "MENU"
+                        self.finalizar = True
 
                     y_item = 80 + self.scroll_y
-                    for ponto in self.pontos:
+                    for ponto in sorted(self.pontos, key=lambda p: p.nome.lower()): #pega em ordem alfabética
                         item_rect = pygame.Rect(40, y_item, config.largura - 80, 56)
                         if item_rect.top >= 75 and item_rect.bottom <= config.altura - 60:
                             if item_rect.collidepoint(pos_mouse):
                                 self.ponto_selecionado = ponto
-                                self.texto_feedback = self.obter_feedback_jogador(ponto.nome)
+                                self.texto_feedback = self.feedbacks_sessao.get(ponto.nome, "")
                                 self.estado = "FEEDBACK_POPUP"
                                 break
                         y_item += 66
@@ -205,7 +184,7 @@ class JogoSantaRita:
                     if self.botao_cancelar_fb_rect.collidepoint(pos_mouse):
                         self.estado = "SELECAO_PONTO"
 
-            # Rolagem com trava superior em 0
+            #Rolagem com trava superior em 0
             elif evento.button == 4 and self.estado == "SELECAO_PONTO":
                 if self.scroll_y < 0:
                     self.scroll_y = min(0, self.scroll_y + 35)
@@ -225,17 +204,62 @@ class JogoSantaRita:
                 if len(self.texto_feedback) < 250 and evento.unicode.isprintable():
                     self.texto_feedback += evento.unicode
 
-        return "JOGO_SRS"
-
-    def atualizar(self, reiniciar):
+    def atualizar(self, reiniciar, salvarBD):
         if self.reiniciar:
             reiniciar = True
-            return "MENU", reiniciar
-        return "JOGO_SRS", reiniciar
+            return "MENU", reiniciar, salvarBD
+        elif self.finalizar:
+            config.acertos_jogador = self.contAcertos
+            config.erros_jogador = self.contErros
+            salvarBD = "SRS"
+            return "FINAL", reiniciar, salvarBD
+        
+        return "JOGO_SRS", reiniciar, salvarBD
 
     def desenhar(self, tela):
-        tela.fill((79, 148, 77))
+        tela.blit(self.fundo_img, (0,0))
         pos_mouse = pygame.mouse.get_pos()
+
+        # DICIONARIO DE IDIOMA --------------------------------------------
+        textos_interface = {
+            "pt": {
+                "questao": f"Questao {self.num_questao} de {self.total_questoes}",
+                "placar": f"Acertos: {self.contAcertos} | Erros: {self.contErros}",
+                "titulo_pontos": "Pontos Turisticos de Santa Rita do Sapucai",
+                "sub_pontos": "Clique em um ponto turistico para registrar seu feedback:",
+                "finalizar": "Finalizar",
+                "fb_feito": "Feedback registrado",
+                "fb_pendente": "Clique para avaliar este local",
+                "avaliacao_de": f"Avaliacao de {getattr(config, 'nome_jogador', 'Explorador')}:",
+                "salvar": "Salvar",
+                "cancelar": "Cancelar"
+            },
+            "en": {
+                "questao": f"Question {self.num_questao} of {self.total_questoes}",
+                "placar": f"Correct: {self.contAcertos} | Wrong: {self.contErros}",
+                "titulo_pontos": "Tourist Attractions of Santa Rita do Sapucai",
+                "sub_pontos": "Click on a tourist spot to submit your feedback:",
+                "finalizar": "Finish",
+                "fb_feito": "Feedback registered",
+                "fb_pendente": "Click to review this place",
+                "avaliacao_de": f"Review by {getattr(config, 'nome_jogador', 'Explorer')}:",
+                "salvar": "Save",
+                "cancelar": "Cancel"
+            },
+            "esp": {
+                "questao": f"Pregunta {self.num_questao} de {self.total_questoes}",
+                "placar": f"Aciertos: {self.contAcertos} | Errores: {self.contErros}",
+                "titulo_pontos": "Puntos Turisticos de Santa Rita do Sapucai",
+                "sub_pontos": "Haga clic en un punto turistico para registrar su opinion:",
+                "finalizar": "Finalizar",
+                "fb_feito": "Comentario registrado",
+                "fb_pendente": "Haga clic para evaluar este lugar",
+                "avaliacao_de": f"Evaluacion de {getattr(config, 'nome_jogador', 'Explorador')}:",
+                "salvar": "Guardar",
+                "cancelar": "Cancelar"
+            }
+        }
+        ui = textos_interface.get(self.modo, textos_interface["pt"])
 
         # QUIZ -------------------------------------------------------------
         if self.estado == "QUIZ":
@@ -244,10 +268,10 @@ class JogoSantaRita:
             pygame.draw.rect(tela, config.bege, self.bloco_perguntas, border_radius=12)
             pygame.draw.rect(tela, (50, 30, 15), self.bloco_perguntas, 3, border_radius=12)
 
-            txt_progresso = config.fonte_dicas.render(f"Questao {self.num_questao} de {self.total_questoes}", False, (50, 30, 15))
+            txt_progresso = config.fonte_dicas.render(ui["questao"], False, (50, 30, 15))
             tela.blit(txt_progresso, (self.bloco_perguntas.x + 30, self.bloco_perguntas.y + 20))
 
-            txt_placar = config.fonte_dicas.render(f"Acertos: {self.contAcertos} | Erros: {self.contErros}", False, (50, 30, 15))
+            txt_placar = config.fonte_dicas.render(ui["placar"], False, (50, 30, 15))
             tela.blit(txt_placar, (self.bloco_perguntas.right - txt_placar.get_width() - 30, self.bloco_perguntas.y + 20))
 
             linhas_pergunta = funcoes.formatar_texto_largura(self.perg_sorteada, config.fonte_fases, 680)
@@ -296,15 +320,15 @@ class JogoSantaRita:
             elif self.Acerto_status:
                 tela.blit(self.Acerto_img, self.Acerto_rect)
 
-        #LISTA DE PONTOS TURISTICOS ---------------------------------------
+        # LISTA DE PONTOS TURISTICOS ---------------------------------------
         elif self.estado in ("SELECAO_PONTO", "FEEDBACK_POPUP"):
-            #Desenha os itens com área útil limitada
+            # Desenha os itens com área útil limitada
             y_item = 80 + self.scroll_y
-            for ponto in self.pontos:
+            for ponto in sorted(self.pontos, key=lambda p: p.nome.lower()): #pega em ordem alfabética
                 item_rect = pygame.Rect(40, y_item, config.largura - 80, 56)
 
                 if item_rect.top >= 75 and item_rect.bottom <= config.altura - 60:
-                    fb_existe = self.obter_feedback_jogador(ponto.nome) != ""
+                    fb_existe = self.feedbacks_sessao.get(ponto.nome, "") != ""
                     
                     cor_fundo_item = config.bege
                     if fb_existe:
@@ -318,34 +342,34 @@ class JogoSantaRita:
                     txt_nome = config.fonte_dicas.render(ponto.nome, False, (50, 30, 15))
                     tela.blit(txt_nome, (item_rect.x + 20, item_rect.y + 6))
 
-                    msg_status = "Feedback registrado" if fb_existe else "Clique para avaliar este local"
+                    msg_status = ui["fb_feito"] if fb_existe else ui["fb_pendente"]
                     cor_status = (40, 140, 40) if fb_existe else (110, 110, 110)
                     txt_st = config.fonte_dicas.render(msg_status, False, cor_status)
                     tela.blit(txt_st, (item_rect.x + 20, item_rect.y + 30))
 
                 y_item += 66
 
-            # 2. Cabeçalho fixo no topo
+            # Cabeçalho fixo no topo
             cabecalho_rect = pygame.Rect(0, 0, config.largura, 76)
             pygame.draw.rect(tela, (79, 148, 77), cabecalho_rect)
 
             tela.blit(self.botao_reiniciar, self.botao_reiniciar_rect)
 
-            txt_titulo = config.fonte_fases.render("Pontos Turisticos de Santa Rita do Sapucai", False, (50, 30, 15))
+            txt_titulo = config.fonte_fases.render(ui["titulo_pontos"], False, (50, 30, 15))
             txt_titulo_rect = txt_titulo.get_rect(centerx=config.centroX, y=14)
             tela.blit(txt_titulo, txt_titulo_rect)
 
-            txt_sub = config.fonte_dicas.render("Clique em um ponto turistico para registrar seu feedback:", False, (240, 240, 240))
+            txt_sub = config.fonte_dicas.render(ui["sub_pontos"], False, (240, 240, 240))
             txt_sub_rect = txt_sub.get_rect(centerx=config.centroX, y=44)
             tela.blit(txt_sub, txt_sub_rect)
 
-            # 3. Rodapé fixo para o botão Finalizar
+            # Rodapé fixo para o botão Finalizar
             rodape_rect = pygame.Rect(0, config.altura - 60, config.largura, 60)
             pygame.draw.rect(tela, (79, 148, 77), rodape_rect)
 
-            pygame.draw.rect(tela, config.verde, self.botao_finalizar_rect, border_radius=8)
+            pygame.draw.rect(tela, config.azul, self.botao_finalizar_rect, border_radius=8)
             pygame.draw.rect(tela, (50, 30, 15), self.botao_finalizar_rect, 2, border_radius=8)
-            txt_finalizar = config.fonte_dicas.render("Finalizar", False, (255, 255, 255))
+            txt_finalizar = config.fonte_dicas.render(ui["finalizar"], False, (255, 255, 255))
             tela.blit(txt_finalizar, txt_finalizar.get_rect(center=self.botao_finalizar_rect.center))
 
         # POP-UP DE FEEDBACK -----------------------------------------------
@@ -361,8 +385,7 @@ class JogoSantaRita:
             tit_ponto = config.fonte_fases.render(self.ponto_selecionado.nome, False, (50, 30, 15))
             tela.blit(tit_ponto, (pop_rect.x + 25, pop_rect.y + 20))
 
-            jogador_nome = getattr(config, "nome_jogador", "Explorador")
-            sub_inst = config.fonte_dicas.render(f"Avaliacao de {jogador_nome}:", False, (80, 80, 80))
+            sub_inst = config.fonte_dicas.render(ui["avaliacao_de"], False, (80, 80, 80))
             tela.blit(sub_inst, (pop_rect.x + 25, pop_rect.y + 55))
 
             campo_rect = pygame.Rect(pop_rect.x + 25, pop_rect.y + 85, 590, 200)
@@ -378,10 +401,10 @@ class JogoSantaRita:
 
             pygame.draw.rect(tela, config.verde, self.botao_salvar_fb_rect, border_radius=8)
             pygame.draw.rect(tela, (50, 30, 15), self.botao_salvar_fb_rect, 2, border_radius=8)
-            txt_salvar = config.fonte_dicas.render("Salvar", False, (255, 255, 255))
+            txt_salvar = config.fonte_dicas.render(ui["salvar"], False, (255, 255, 255))
             tela.blit(txt_salvar, txt_salvar.get_rect(center=self.botao_salvar_fb_rect.center))
 
             pygame.draw.rect(tela, (180, 60, 50), self.botao_cancelar_fb_rect, border_radius=8)
             pygame.draw.rect(tela, (50, 30, 15), self.botao_cancelar_fb_rect, 2, border_radius=8)
-            txt_canc = config.fonte_dicas.render("Cancelar", False, (255, 255, 255))
+            txt_canc = config.fonte_dicas.render(ui["cancelar"], False, (255, 255, 255))
             tela.blit(txt_canc, txt_canc.get_rect(center=self.botao_cancelar_fb_rect.center))

@@ -4,6 +4,9 @@ import funcoes
 
 class Intro:
     def __init__(self):
+        #FUNDO
+        self.fundo_img = pygame.image.load(funcoes.resource_path("assets/IMAGENS/fundo_fase2.png")).convert_alpha()
+        self.fundo_img = pygame.transform.scale(self.fundo_img, (config.largura, config.altura))
         # BLOCO DE INSTRUÇÃO----------------------------------------------------------
         self.pergaminho_img = pygame.image.load(funcoes.resource_path("assets/IMAGENS/pergaminho.png"))
         self.pergaminho_img = pygame.transform.scale(self.pergaminho_img, (1000, 550))
@@ -34,7 +37,7 @@ class Intro:
         self.botao_dificil_rect = self.botao_dificil_img.get_rect(centerx=config.centroX, centery=self.pergaminho_rect.centery + 10)
         self.dificil_clicado_img = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/dificil_clicado.png")), (230, 80))
 
-        # BOTÃO ESPECIAL (Provisório com input_name)----------------------
+        # BOTÃO ESPECIAL----------------------
         self.botao_especial_img = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/especial.png")), (230, 80))
         self.botao_especial_rect = self.botao_especial_img.get_rect(centerx=config.centroX, centery=self.botao_dificil_rect.centery + 90)
         self.botao_especial_clicado_img = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/especial_clicado.png")), (230, 80))
@@ -43,6 +46,11 @@ class Intro:
         self.botao_reiniciar = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/botao_reiniciar.png")), (50, 50))
         self.botao_reiniciar_rect = self.botao_reiniciar.get_rect(x=114, y=2)
 
+        self.person_girl = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/spritesGirl/reddown.png")), (100, 200))
+        self.person_girl_rect = self.person_girl.get_rect(centerx=config.centroX - 80, centery = self.pergaminho_rect.centery)
+        self.person_boy = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/spritesBoy/reddown.png")), (100, 200))
+        self.person_boy_rect = self.person_boy.get_rect(centerx=config.centroX + 80, centery = self.pergaminho_rect.centery)
+        
         self.mudar = False
         self.questao = 0
 
@@ -53,6 +61,7 @@ class Intro:
         self.segurando_mouse_dificil = False
         self.segurando_mouse_facil = False
         self.segurando_mouse_especial = False
+        self.selected_person = "boy" #Fica menino por default
 
         self.modo = None
 
@@ -68,8 +77,8 @@ class Intro:
                 "",
                 "BOTÃO DE REINICIAR (Canto superior esquerdo):",
                 "Cuidado! Ao clicar no ícone de reiniciar,",
-                "a partida é resetada instantaneamente, sem confirmação",
-                "voltando ao Menu e zerando seu progresso!",
+                "a partida é reiniciada instantaneamente, sem confirmação",
+                "voltando ao menu e zerando seu progresso!",
                 ""
             ],
             [
@@ -96,7 +105,7 @@ class Intro:
                 "para abrir suas perguntas de múltipla escolha.",
                 "",
                 "O personagem marcará os estados já visitados.",
-                "DICA DE OURO (Cuidado com os Estados Pequenos!):",
+                "DICA DE OURO (Cuidado com os estados pequenos!):",
                 "Não se esqueça do DISTRITO FEDERAL e",
                 "dos estados menores (principalmente na Região Nordeste)!",
                 "O personagem pode parecer estar em cima",
@@ -109,8 +118,8 @@ class Intro:
             [
                 "GUIA DO MINIGAME DO APRENDIZADO",
                 "",
-                "Ande com as setas do teclado para visitar os estados,",
-                "ao passar por um estado, você verá curiosidades",
+                "Ande com as setas do teclado para visitar os estados.",
+                "Ao passar por um estado, você verá curiosidades",
                 "sobre ele",
                 "",
                 "Se não quiser ver as curiosidades ou tiver finalizado",
@@ -127,17 +136,18 @@ class Intro:
                 "",
                 "Fase 2: Apresenta apenas 1 questão por estado, proporcionando",
                 "uma rodada mais rápida e focada nos conceitos principais.",
-                "Modo Difícil:",
+                "Modo Difícil",
                 "Fase 1: Sem nenhuma dica. O jogador possui apenas",
-                "uma única chance: acertando ou errando, o sistema registra",
+                "uma única chance: ao acertar ou errar, o sistema registra",
                 "a resposta e avança imediatamente para a próxima questão.",
                 "",
                 "Fase 2: Apresenta 5 questões por estado, exigindo",
                 "conhecimento aprofundado sobre história, geografia e aspectos",
                 "culturais de cada unidade federativa.",
                 "",
-                "VAMOS INICIAR!?"
+                "VAMOS INICIAR ?"
             ],
+            ["SELECIONE UM PERSONAGEM:"],
             ["SELECIONE UM MODO:"]
         ]
 
@@ -154,6 +164,8 @@ class Intro:
             self.botao_especial_rect.collidepoint(pos_mouse) or 
             self.placa_iniciar_rect.collidepoint(pos_mouse) or 
             self.botao_reiniciar_rect.collidepoint(pos_mouse)):
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+        elif self.person_girl_rect.collidepoint(pos_mouse) or self.person_boy_rect.collidepoint(pos_mouse):
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
         else:
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
@@ -180,6 +192,16 @@ class Intro:
                     self.segurando_mouse_dificil = False
                     self.modo = "especial"
 
+                elif self.person_girl_rect.collidepoint(pos_mouse) and self.questao == 5:
+                    self.selected_person = "girl" #ja salva e muda de tela
+                    self.questao += 1
+                    self.mudar = True
+
+                elif self.person_boy_rect.collidepoint(pos_mouse) and self.questao == 5:
+                    self.selected_person = "boy"
+                    self.questao += 1
+                    self.mudar = True  #ja salva e muda de tela
+
                 elif self.botao_reiniciar_rect.collidepoint(pos_mouse):
                     self.reiniciar = True
 
@@ -198,8 +220,8 @@ class Intro:
         if self.mudar:
             if self.questao < 0:
                 self.questao = 0
-            elif self.questao > 5:
-                self.questao = 5
+            elif self.questao > 6:
+                self.questao = 6
 
             self.instrucoes_tela = self.instrucoes[self.questao]
 
@@ -208,7 +230,7 @@ class Intro:
             if self.questao == 0:
                 self.btn_next_rect.centerx = config.centroX
                 self.btn_back_rect.centerx = 1000
-            elif self.questao == 5:
+            elif self.questao == 6:
                 self.btn_back_rect.centerx = config.centroX
                 self.btn_next_rect.centerx = 1000
                 self.tela_final = True
@@ -222,17 +244,17 @@ class Intro:
     def atualizar(self, reiniciar):
         if self.reiniciar:
             reiniciar = True
-            return "MENU", reiniciar, self.modo
+            return "MENU", reiniciar, self.modo, self.selected_person
         elif self.iniciarJogo:
             if self.modo == "especial":
-                return "GAME_SRS", reiniciar, self.modo
+                return "GAME_SRS", reiniciar, self.modo, self.selected_person
             else:
-                return "GAME", reiniciar, self.modo
+                return "GAME", reiniciar, self.modo, self.selected_person
         else:
-            return "INTRO", reiniciar, self.modo
+            return "INTRO", reiniciar, self.modo, self.selected_person
 
     def desenhar(self, tela):
-        tela.fill(config.verde)
+        tela.blit(self.fundo_img, (0,0))
         tela.blit(self.pergaminho_img, self.pergaminho_rect)
         tela.blit(self.botao_reiniciar, self.botao_reiniciar_rect)
 
@@ -252,7 +274,7 @@ class Intro:
 
         if self.questao != 0:
             tela.blit(self.btn_back_img, self.btn_back_rect)
-        if self.questao != 5:
+        if self.questao != 6:
             tela.blit(self.btn_next_img, self.btn_next_rect)
 
         if self.tela_final:
@@ -278,3 +300,6 @@ class Intro:
                 fase_selecionada = config.fonte_fases.render(texto_selecionado, True, config.preto)
                 fase_selecionada_renderizada = fase_selecionada.get_rect(centerx=config.centroX, y=self.botao_especial_rect.bottom + 10)
                 tela.blit(fase_selecionada, fase_selecionada_renderizada)
+        elif self.questao == 5:
+            tela.blit(self.person_girl, self.person_girl_rect)
+            tela.blit(self.person_boy, self.person_boy_rect)

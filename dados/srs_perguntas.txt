@@ -11,11 +11,11 @@ pergunta: Em que dia é celebrada a padroeira da cidade, Santa Rita de Cássia?
 opcoes: 24 de junho; 15 de agosto; 1º de outubro; 22 de maio
 correta: 3
 
-pergunta: Qual instituição é considerada a primeira escola de eletrônica da América Latina?
+pergunta: Qual instituição é considerada a primeira escola de eletrônica de nível médio da América Latina?
 opcoes: INATEL; FAI; ETE FMC; UFMG
 correta: 2
 
-pergunta: Qual rio banha a cidade de Santa Rita do Sapucaí?
+pergunta: Qual rio atravessa o município de Santa Rita do Sapucaí e dá nome à cidade?
 opcoes: Rio das Mortes; Rio Sapucaí; Rio Grande; Rio Doce
 correta: 1
 
@@ -35,8 +35,8 @@ pergunta: Em que década foi construído o Teatro Municipal Monsenhor José Carn
 opcoes: 1950; 1980; 2000; 1920
 correta: 3
 
-pergunta: O que a Reserva Biológica Mítzi Brandão ajuda a proteger há quase 80 anos?
-opcoes: Os mananciais que abastecem a cidade; As plantações de café; As estradas rurais; O comércio local
+pergunta: O que a Reserva Biológica Mítzi Brandão ajuda a proteger?
+opcoes: Os mananciais e recursos hídricos da região; As plantações de café; As estradas rurais; O comércio local
 correta: 0
 
 pergunta: Onde fica localizada a Galeria Aberta de Arte Urbana (GAAU)?
@@ -47,21 +47,21 @@ pergunta: O que torna a Rampa de Voo Livre de Santa Rita conhecida entre pratica
 opcoes: Ser a maior rampa do Brasil; Suas condições aerológicas entre as melhores do país; Ter sido usada em competições olímpicas; Ficar dentro do centro da cidade
 correta: 1
 
-pergunta: Além do café e da eletrônica, qual outra atividade histórica sustenta a economia do município?
-opcoes: Mineração; Pesca; Extração de petróleo; Pecuária
-correta: 3
+pergunta: Além da indústria tecnológica, quais atividades agropecuárias possuem importância histórica na economia de Santa Rita do Sapucaí?
+opcoes: Café, leite e pecuária; Pesca e extração de sal; Mineração e extração de petróleo; Apenas produção de frutas
+correta: 0
 
-pergunta: Quantos dias dura, em média, a Festa de Santa Rita?
+pergunta: Quantos dias dura, em média, a Festa de Santa Rita quando realizada entre os dias 17 e 25 de maio?
 opcoes: 9 dias; 2 dias; 30 dias; 1 dia
 correta: 0
 
-pergunta: Em que ano Dona Sinhá Moreira fundou a ETE FMC, marco zero do Vale da Eletrônica?
+pergunta: Em que ano a ETE FMC iniciou suas atividades educacionais?
 opcoes: 1945; 1959; 1971; 1980
 correta: 1
 
-pergunta: Com qual autoridade Dona Sinhá Moreira negociou pessoalmente a autorização para ensinar eletrônica no Brasil?
-opcoes: Com o presidente Getúlio Vargas; Com o então governador Juscelino Kubitschek; Com o Ministério da Educação; Com a Igreja Católica
-correta: 1
+pergunta: Com qual autoridade Dona Sinhá Moreira articulou o apoio para viabilizar o ensino técnico de eletrônica no Brasil?
+opcoes: Com o Presidente da República Juscelino Kubitschek; Com o então governador Juscelino Kubitschek; Com o Ministério da Educação; Com a Igreja Católica
+correta: 0
 
 pergunta: Quem fundou o INATEL e em que ano?
 opcoes: José Nogueira Leite, em 1965; Sinhá Moreira, em 1959; Francisco Ribeiro de Magalhães, em 1971; Juscelino Kubitschek, em 1965
@@ -75,20 +75,20 @@ pergunta: O HackTown, realizado em Santa Rita do Sapucaí, é considerado:
 opcoes: O maior festival de tecnologia e inovação da América Latina; Um evento exclusivo para universitários da FAI; Uma feira apenas de produtos agrícolas; Um festival de música regional
 correta: 0
 
-pergunta: Aproximadamente quantas indústrias de eletroeletrônicos formam o Vale da Eletrônica hoje?
+pergunta: Aproximadamente quantas indústrias de eletroeletrônicos formam o Vale da Eletrônica atualmente?
 opcoes: 39; 239; 39 mil; 2.390
 correta: 1
 
-pergunta: Em reportagens nacionais recentes, o Vale da Eletrônica já foi comparado a qual polo tecnológico mundial?
-opcoes: Vale do Silício; Sillicon Fen (Reino Unido); Zhongguancun (China); Bangalore (Índia)
+pergunta: Em reportagens e materiais de divulgação,o Vale da Eletrônica é comparados a qual polo tecnológico mundial?
+opcoes: Vale do Silício; Silicon Fen (Reino Unido); Zhongguancun (China); Bangalore (Índia)
 correta: 0
 
-pergunta: O Parque Municipal Natural Dr. Cyro de Luna Dias fica ao lado de qual área de preservação?
+pergunta: O Parque Municipal Natural Dr. Cyro de Luna Dias fica nas proximidades de qual área de preservação?
 opcoes: GAAU; Reserva Biológica Mítzi Brandão; Morro do Cruzeiro; Serra do Paredão
 correta: 1
 
-pergunta: Desde quando, aproximadamente, a Reserva Biológica Mítzi Brandão protege os mananciais da cidade?
-opcoes: Desde a década de 2010; Desde a década de 1990; Desde a década de 1980; Desde o século XIX
+pergunta: Em que década foi criada a Reserva Biológica Mítzi Brandão?
+opcoes: Década de 2010; Década de 1990; Década de 1980; Século XIX
 correta: 2
 
 pergunta: O que o Parque Municipal Natural Dr. Cyro de Luna Dias mantém para apoiar a preservação ambiental?

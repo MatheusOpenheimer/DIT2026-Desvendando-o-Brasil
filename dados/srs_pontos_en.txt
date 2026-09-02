@@ -1,0 +1,65 @@
+[INTERFACE]
+pular: SKIP
+contador: Visited Points:
+qr_aviso: Scan the QR
+instrucao: Press [SPACE] or [ENTER] to close
+
+[ENTRADA_CIDADE]
+Santa Rita Statue – City Entrance
+Welcome to Santa Rita do Sapucaí, the famous Electronics Valley! You are at the city entrance, standing before the monument of our patron saint, where Minas Gerais tradition meets high technology, faith, and innovation. Use the arrow keys to walk through the streets and embark on the Innovation Route: each visited spot reveals stories, curiosities, and secrets behind our heritage. When you approach a location, check the QR Code to unlock exclusive details and see its exact spot on the real map. The pink markers point toward incredible destinations located a bit further out, perfectly indicating their direction. Once you visit all the tourist spots or click the skip button, you will go straight to a quiz about Santa Rita to test your knowledge! Furthermore, after finishing the game, you can leave your feedback and share your review about any tourist attraction you have visited. Explore every corner and discover what makes our city truly unique!
+
+[EVENTO_RIO_SAPUCAI]
+Crossing the Sapucaí River
+You have just crossed the waters of the Sapucaí River, the river that gives the municipality its name and flows through Santa Rita do Sapucaí. The Sapucaí River is part of the city's geographic identity, and its watershed is directly connected to the municipality's landscape. In the historic center, the river passes through the Beira Rio area, where the Open Urban Art Gallery is also located. The meeting of the river, the city, and art transforms this area into one of the most characteristic spaces of Santa Rita do Sapucaí.
+
+[SANTUARIO]
+Sanctuary of Saint Rita of Cascia
+Located in the heart of Santa Rita Square, this sanctuary preserves the faith that gives the city its name. Saint Rita of Cascia is the patron saint of Santa Rita do Sapucaí, and May 22 is celebrated as the city's Patron Saint's Day. Every year, the traditional Festa de Santa Rita brings together residents, visitors, and devotees in religious and cultural celebrations. In 2025, the official festival program took place from May 17 to May 25, including novenas, Masses, processions, and other moments of faith and fellowship. The tradition of the festival dates back to the 19th century and remains one of the city's most important religious celebrations.
+
+[TEATRO]
+Municipal Theater
+The Monsignor José Carneiro Pinto Municipal Theater is one of the historic cultural spaces of Santa Rita do Sapucaí. Its construction dates back to the 1920s, a period when the city was still developing its cultural and social life at the beginning of the 20th century. Today, the theater continues to be used for cultural activities, performances, and events, preserving part of the municipality's artistic and architectural heritage. It is an example of how Santa Rita do Sapucaí keeps its cultural history alive while moving forward into the present.
+
+[MERCADO]
+Municipal Market
+The Benedito Pereira dos Reis Municipal Market is an important place for commerce and social interaction in Santa Rita do Sapucaí. On Sunday mornings, the area hosts the traditional Municipal Street Market, held in the city center. There, visitors can find agricultural products, food, cheese, sweets, coffee, and other products connected to local production and the culture of the countryside of Minas Gerais. Agriculture and livestock farming have historically been important to the municipality's economy, especially coffee and milk production. In addition to these traditional activities, livestock farming is also part of Santa Rita do Sapucaí's agricultural economy.
+
+[EVENTOS]
+Events and Festivals Center
+This is where Santa Rita do Sapucaí shows one of the main reasons why it is known as the Electronics Valley. The municipality has developed an important ecosystem of education, technology, innovation, and entrepreneurship, formed by educational institutions, companies, and events. Among them is HackTown, a festival held in the city that brings together technology, innovation, business, creativity, culture, and entrepreneurship. HackTown is currently presented by its own organization as the largest technology and innovation festival in Latin America. The event occupies different spaces throughout the city and transforms streets, schools, universities, squares, restaurants, and other locations into places for meetings and the exchange of ideas. Tradition, creativity, and technology come together here, in the heart of Santa Rita do Sapucaí.
+
+[MUSEU]
+Dr. Delfim Moreira Historical Museum
+This house was the residence of Delfim Moreira da Costa Ribeiro, one of the most important figures in the history of Santa Rita do Sapucaí. Delfim Moreira was born in the city, built a prominent political career, and became President of the Republic in 1918. The house where he lived and died now houses the Dr. Delfim Moreira Historical Museum. The property was listed as a municipal cultural heritage site in 2006. The museum preserves documents, photographs, objects, and other elements related to local history and the memory of Delfim Moreira, connecting the city's political past to its present.
+
+[ETE]
+ETE FMC
+The Francisco Moreira da Costa School of Electronics, known as ETE FMC, is one of the fundamental landmarks of the Electronics Valley. Founded by Luzia Rennó Moreira, known as Dona Sinhá Moreira, it began its educational activities in March 1959 and was the first secondary-level electronics school in Latin America. To make the project possible, Sinhá Moreira sought political support and obtained the support of the then President of the Republic, Juscelino Kubitschek, who authorized the creation of technical electronics education in Brazil. The school became a starting point for technological education that helped transform Santa Rita do Sapucaí into a center for electronics, telecommunications, information technology, and innovation. Sinhá Moreira's vision was to transform the city through education and prepare it for the future.
+
+[FAI]
+FAI Center for Higher Education
+FAI - Center for Higher Education in Management, Technology, and Education was founded in 1971 and played an important role in the professional development of Santa Rita do Sapucaí. That year, the institution established the first Administration course in Southern Minas Gerais. In 1978, FAI established its higher education Information Technology course, recognized as the second higher education Information Technology course in Minas Gerais and one of the first twelve in Brazil. The institution became part of the Electronics Valley's educational ecosystem, helping to train professionals in management, technology, and education while strengthening the connection between knowledge, entrepreneurship, and innovation in the city.
+
+[INATEL]
+INATEL
+The National Institute of Telecommunications, known as INATEL, was founded in 1965 by Professor José Nogueira Leite and played a fundamental role in continuing the technological education begun by ETE FMC. The institute was created to provide higher education in telecommunications and became a reference institution in education, research, technological development, and innovation. Throughout its history, INATEL has contributed to establishing Santa Rita do Sapucaí as a national center for telecommunications and technology. Today, the institution also participates in research and technological development related to new generations of mobile networks, including 5G and 6G technologies.
+
+[CRUZEIRO]
+Morro do Cruzeiro
+Morro do Cruzeiro is one of the main landmarks of Santa Rita do Sapucaí. Located in an urban area and freely accessible, the site offers a panoramic view of the city and is especially known for its spectacular sunsets. The site has no formal visitor infrastructure, but it has been adopted by the local population as an important tourist attraction. In addition to enjoying the landscape, Morro do Cruzeiro is also connected to religious traditions and processions held by the community. Visiting Cruzeiro means discovering a simple, accessible, and highly representative place of Santa Rita do Sapucaí's identity.
+
+[GAAU]
+OUAG - Open Urban Art Gallery
+Along the banks of the Sapucaí River, in the area known as Beira Rio, the OUAG transforms the city's walls into an open-air art gallery. The Open Urban Art Gallery features graffiti, murals, and other forms of urban art, bringing contemporary artistic expression closer to the community. The location of the OUAG, next to the Sapucaí River, brings together art, the urban landscape, and nature in the same space and represents the creativity that is also part of Santa Rita do Sapucaí's identity.
+
+[VOO_LIVRE]
+Free-Flight Launch Ramp
+In the Serra do Paredão, in a rural area of Santa Rita do Sapucaí, there is one of the country's main free-flight sites. The region has favorable natural conditions for paragliding and hang gliding, attracting practitioners of these sports. The local aerological conditions are among the best in Brazil, especially for Cross Country flying. The altitude and landscape of Serra do Paredão also provide a wide view of the surrounding mountains and valley. The launch ramp represents the adventure and nature-tourism side of Santa Rita do Sapucaí.
+
+[PARQUE]
+Dr. Cyro de Luna Dias Municipal Natural Park
+The Dr. Cyro de Luna Dias Municipal Natural Park is a protected area located in the Piedade neighborhood, near the Mítzi Brandão Biological Reserve. The park protects natural areas, flora, fauna, and other natural resources of the region and also has educational, scientific, recreational, and tourism purposes. The park maintains a plant nursery used to support environmental preservation initiatives and the distribution of seedlings. The existence of the park shows that Santa Rita do Sapucaí also has areas dedicated to nature conservation and environmental education.
+
+[REBIO]
+Prof. Dr. Mítzi Brandão Biological Reserve
+The Serra de Santa Rita Biological Reserve, Professor Dr. Mítzi Brandão, is a fully protected conservation area located in Santa Rita do Sapucaí. The reserve was created by Municipal Law No. 1,096, dated October 15, 1980, and preserves an area of more than 300 hectares within the Atlantic Forest biome. Its purpose is to fully protect the ecosystems and natural resources of the region, as well as contribute to research and educational activities. The reserve is also important for protecting the city's water sources and water resources. Because it is a fully protected area, visitation is controlled and primarily limited to activities compatible with its conservation objectives. The REBIO represents an important natural heritage site of Santa Rita do Sapucaí.

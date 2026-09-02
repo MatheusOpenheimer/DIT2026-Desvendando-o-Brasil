@@ -30,7 +30,7 @@ class Estatisticas():
 
         self.senha_lida = ""
 
-        #ÁREA DE CORTE DO SCROLL (Área abaixo do cabeçalho onde as linhas aparecem)
+        #ÁREA DE CORTE DO SCROLL
         self.largura_tabela = self.bloco_estatisticas.width - 20
         self.altura_area_linhas = 450  # Espaço vertical disponível para mostrar as linhas
         self.pos_y_tabela = self.bloco_estatisticas.y + 180  # Começa logo abaixo do cabeçalho
@@ -56,7 +56,7 @@ class Estatisticas():
             config.click_sound.play()
             if self.botao_fechar_estatisticas.collidepoint(pos_mouse):
                 self.visivel = False
-                return False #saí do modo senha
+                return False #sai do modo senha
 
             if self.modo_senha and self.input_senha_rect.collidepoint(pos_mouse):
                 self.lendo_senha = True
@@ -93,7 +93,7 @@ class Estatisticas():
         pygame.draw.rect(tela, config.bege, self.bloco_estatisticas, border_radius=16)
         pygame.draw.rect(tela, config.amarelo, self.bloco_estatisticas, width=4, border_radius=16)
 
-        titulo = config.fonte_grossa.render("ESTATISTICAS", True, config.preto)
+        titulo = config.fonte_grossa.render("ESTATÍSTICAS DO JOGADOR", True, config.preto)
         titulo_rect = titulo.get_rect(centerx=self.bloco_estatisticas.centerx, y=self.bloco_estatisticas.y + 35)
         tela.blit(titulo, titulo_rect)
         
@@ -107,7 +107,7 @@ class Estatisticas():
             tela.blit(senha_escondida, senha_rect)
 
         elif self.estatisticas:
-            texto_tela_est = config.fonte_fases.render("Porcentagem de erros por regiao", True, config.preto)
+            texto_tela_est = config.fonte_fases.render("Porcentagem de erros por região", True, config.preto)
             texto_tela_est_rect = texto_tela_est.get_rect(centerx=self.bloco_estatisticas.centerx, y=self.bloco_estatisticas.y + 95)
             tela.blit(texto_tela_est, texto_tela_est_rect)
     
@@ -120,7 +120,7 @@ class Estatisticas():
             ]
     
             for i in range(len(colunas)):
-                cabecalho = config.fonte_dicas.render(colunas[i], True, config.preto)
+                cabecalho = config.fonte_media.render(colunas[i], False, config.preto)
                 cabecalho_rect = cabecalho.get_rect(centerx=posicoes_x[i], y=self.bloco_estatisticas.y + 145)
                 tela.blit(cabecalho, cabecalho_rect)
 
@@ -142,13 +142,13 @@ class Estatisticas():
                     L = 0
 
                 # 1. Nome do Jogador (sem %)
-                texto_nome = config.fonte_dicas.render(str(jogador[0]), True, config.preto)
+                texto_nome = config.fonte_fases.render(str(jogador[0]), True, config.preto)
                 rect_nome = texto_nome.get_rect(centerx=posicoes_x_relativas[0], y=y_linha)
                 superficie_linhas.blit(texto_nome, rect_nome)
 
                 # 2. Regiões (Norte até Sul, com %)
                 for i in range(1, len(posicoes_x_relativas)):
-                    texto_regiao = config.fonte_dicas.render(f"{jogador[i]}%", True, config.preto)
+                    texto_regiao = config.fonte_dicas.render(f"{jogador[i]}%", False, config.preto)
                     rect_regiao = texto_regiao.get_rect(centerx=posicoes_x_relativas[i], y=y_linha)
                     superficie_linhas.blit(texto_regiao, rect_regiao)
 

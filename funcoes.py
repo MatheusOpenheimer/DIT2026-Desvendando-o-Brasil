@@ -434,3 +434,59 @@ def carregar_curiosidades_txt(caminho_arquivo):
             curiosidades[estado_atual] = " ".join(linhas_texto).strip()
 
     return curiosidades
+
+
+#FUNÇOES SANTA RITA LER TEXTO
+
+def carregar_textos_srs(modo="pt"):
+    if modo == "pt":
+        arquivo = "srs_pontos.txt"
+    elif modo == "en":
+        arquivo = "srs_pontos_en.txt"
+    elif modo == "esp":
+        arquivo = "srs_pontos_esp.txt"
+    else:
+        arquivo = "srs_pontos.txt"
+
+    caminho = resource_path(os.path.join("dados", arquivo))
+    dados = {"INTERFACE": {}}
+    chave_atual = None
+    linhas_bloco = []
+
+    if not os.path.exists(caminho):
+        return dados
+
+    with open(caminho, "r", encoding="utf-8") as f:
+        for linha in f:
+            linha_limpa = linha.strip()
+
+            if not linha_limpa:
+                continue
+
+            # Identifica início de uma nova tag [TAG]
+            if linha_limpa.startswith("[") and linha_limpa.endswith("]"):
+                # Salva o bloco anterior se não for da interface
+                if chave_atual and chave_atual != "INTERFACE" and len(linhas_bloco) >= 1:
+                    nome = linhas_bloco[0]
+                    texto = " ".join(linhas_bloco[1:]).strip() if len(linhas_bloco) > 1 else ""
+                    dados[chave_atual] = {"nome": nome, "texto": texto}
+                
+                chave_atual = linha_limpa[1:-1].strip()
+                linhas_bloco = []
+                continue
+
+            # Processamento do conteúdo da tag atual
+            if chave_atual == "INTERFACE":
+                if ":" in linha_limpa:
+                    k, v = linha_limpa.split(":", 1)
+                    dados["INTERFACE"][k.strip()] = v.strip()
+            elif chave_atual:
+                linhas_bloco.append(linha_limpa)
+
+        # Salva o último bloco do arquivo
+        if chave_atual and chave_atual != "INTERFACE" and len(linhas_bloco) >= 1:
+            nome = linhas_bloco[0]
+            texto = " ".join(linhas_bloco[1:]).strip() if len(linhas_bloco) > 1 else ""
+            dados[chave_atual] = {"nome": nome, "texto": texto}
+
+    return dados

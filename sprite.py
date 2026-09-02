@@ -3,14 +3,24 @@ import config
 import funcoes
 
 class Personagem(pygame.sprite.Sprite):
-    def __init__(self):
+    def __init__(self, selected="girl"):
         super().__init__()
+
+        self.selected = selected
+
+        if self.selected == "girl":
+            SPRITES = "spritesGirl"
+        elif self.selected == "boy":
+            SPRITES = "spritesBoy"
+        else:
+            SPRITES = "spritesBoy"
+
         
         caminhos_sprites = [ #Organizado em ordem para o sistema de mudança na direção
-            "assets/SPRITES/reddown.png",  "assets/SPRITES/reddown1.png",  "assets/SPRITES/reddown2.png",
-            "assets/SPRITES/redback.png",  "assets/SPRITES/redback1.png",  "assets/SPRITES/redback2.png",
-            "assets/SPRITES/redright.png", "assets/SPRITES/redright1.png", "assets/SPRITES/redright2.png",
-            "assets/SPRITES/redleft.png",  "assets/SPRITES/redleft1.png",  "assets/SPRITES/redleft2.png"
+            f"assets/{SPRITES}/reddown.png",  f"assets/{SPRITES}/reddown1.png",  f"assets/{SPRITES}/reddown2.png",
+            f"assets/{SPRITES}/redback.png",  f"assets/{SPRITES}/redback1.png",  f"assets/{SPRITES}/redback2.png",
+            f"assets/{SPRITES}/redright.png", f"assets/{SPRITES}/redright1.png", f"assets/{SPRITES}/redright2.png",
+            f"assets/{SPRITES}/redleft.png",  f"assets/{SPRITES}/redleft1.png",  f"assets/{SPRITES}/redleft2.png"
         ]
         
         self.sprites = []

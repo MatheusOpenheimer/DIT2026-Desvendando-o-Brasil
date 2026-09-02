@@ -70,8 +70,7 @@ class Fase2:
     self.person_rect = self.person_img.get_rect()
 
     # reiniciar botao----------------------------------------------------
-    self.botao_reiniciar = pygame.transform.scale(
-        pygame.image.load(funcoes.resource_path("assets/IMAGENS/botao_reiniciar.png")),(50, 50))
+    self.botao_reiniciar = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/botao_reiniciar.png")),(50, 50))
     self.botao_reiniciar_rect = self.botao_reiniciar.get_rect(x=114, y=2)
 
     # SPAM DE FIM-----------------------------------------------------
@@ -84,7 +83,7 @@ class Fase2:
     self.duracao_espera_esgotado = 1000
 
     self.acabou_img = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/final.png")),(500, 500),)
-    self.acabou_rect = self.acabou_img.get_rect(centerx=config.centroX, centery=-300)
+    self.acabou_rect = self.acabou_img.get_rect(centerx = config.centroX, centery = -300)
 
     self.acabou_estado = "ENTRANDO"
     self.alvo_y_acabou = config.altura // 2
@@ -373,7 +372,7 @@ class Fase2:
       config.acertos_jogador += self.contAcertos# soma erros e acertos aos da fase 1
       config.erros_jogador += self.contErros
       config.tempo_sobra = tempo_restante
-      salvarBD = True
+      salvarBD = "BRASIL" #True
       return "FINAL", salvarBD, reiniciar
 
     else:

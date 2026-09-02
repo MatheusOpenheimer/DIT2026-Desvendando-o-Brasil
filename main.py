@@ -17,6 +17,7 @@ from srs_minigame import MinigameSRS
 from srs_jogo import JogoSantaRita
 
 banco.criar_banco()
+banco.criar_banco_srs()
 tela = pygame.display.set_mode((config.largura, config.altura), pygame.FULLSCREEN)
 pygame.display.set_caption("Desvendando o Brasil")
 
@@ -63,6 +64,7 @@ minigame = None
 minigame_srs = None
 jogo_srs = None
 modo = "facil"
+personagem = "boy" #menino por default
 
 EVENTO_CRONOMETRO = pygame.USEREVENT + 2
 tempo_iniciado = False
@@ -115,16 +117,11 @@ while rodando:
             intro.gerenciar_eventos(evento)
         elif FASE == "GAME" and minigame is not None:
             minigame.gerenciar_eventos(evento)
+
         elif FASE == "GAME_SRS" and minigame_srs is not None:
-            PROXIMA_FASE = minigame_srs.gerenciar_eventos(evento)
-            if PROXIMA_FASE and PROXIMA_FASE != "GAME_SRS":
-                minigame_srs = None
-                FASE = PROXIMA_FASE
+            minigame_srs.gerenciar_eventos(evento)
         elif FASE == "JOGO_SRS" and jogo_srs is not None:
-            PROXIMA_FASE = jogo_srs.gerenciar_eventos(evento)
-            if PROXIMA_FASE and PROXIMA_FASE != "JOGO_SRS":
-                jogo_srs = None
-                FASE = PROXIMA_FASE
+            jogo_srs.gerenciar_eventos(evento)
         elif FASE == "FASE1" and fase1 is not None:
             fase1.gerenciar_eventos(evento, modo)
         elif FASE == "FASE2" and fase2 is not None:
@@ -160,31 +157,31 @@ while rodando:
     elif FASE == "INTRO":
         if intro is None:
             intro = Intro()
-        PROXIMA_FASE, reiniciar, modo = intro.atualizar(reiniciar)
+        PROXIMA_FASE, reiniciar, modo, personagem = intro.atualizar(reiniciar)
         if PROXIMA_FASE != "INTRO":
             intro = None
             FASE = PROXIMA_FASE
 
     elif FASE == "GAME":
         if minigame is None:
-            minigame = Minigame()
-        PROXIMA_FASE = minigame.atualizar()
+            minigame = Minigame(personagem)
+        PROXIMA_FASE, reiniciar = minigame.atualizar(reiniciar)
         if PROXIMA_FASE != "GAME":
             minigame = None
             FASE = PROXIMA_FASE
 
     elif FASE == "GAME_SRS":
         if minigame_srs is None:
-            minigame_srs = MinigameSRS()
-        PROXIMA_FASE, reiniciar = minigame_srs.atualizar(reiniciar)
+            minigame_srs = MinigameSRS(personagem)
+        PROXIMA_FASE, reiniciar, idioma = minigame_srs.atualizar(reiniciar)
         if PROXIMA_FASE != "GAME_SRS":
             minigame_srs = None
             FASE = PROXIMA_FASE
 
     elif FASE == "JOGO_SRS":
         if jogo_srs is None:
-            jogo_srs = JogoSantaRita()
-        PROXIMA_FASE, reiniciar = jogo_srs.atualizar(reiniciar)
+            jogo_srs = JogoSantaRita(idioma)
+        PROXIMA_FASE, reiniciar, salvarBD = jogo_srs.atualizar(reiniciar, salvarBD)
         if PROXIMA_FASE != "JOGO_SRS":
             jogo_srs = None
             FASE = PROXIMA_FASE
@@ -218,7 +215,6 @@ while rodando:
             final = Final()
         tempo_iniciado = False
         PROXIMA_FASE, reiniciar = final.atualizar(salvarBD, reiniciar)
-        salvarBD = False
         if PROXIMA_FASE != "FINAL":
             final = None
             FASE = PROXIMA_FASE
@@ -242,15 +238,6 @@ while rodando:
         final.desenhar(tela)
 
     tela.blit(botao_fechar_img, botao_fechar_rect)
-
-    # AJUSTE DA POSIÇÃO DOS BOTÕES
-    if FASE == "GAME":
-        botao_som_rect = botao_som.get_rect(x=config.largura - 75, y=5)
-    elif FASE == "FINAL":
-        botao_som_rect = botao_som.get_rect(x=164, y=2)
-    else:
-        botao_som_rect = botao_som.get_rect(x=58, y=2)
-
     if mutado:
         tela.blit(botao_mutado, botao_som_rect)
     else:
@@ -268,7 +255,7 @@ while rodando:
         segundos = tempo_restante % 60
         texto_relogio = f"{minutos:02d}:{segundos:02d}"
         texto_relogio_renderizado = config.fonte_input.render(texto_relogio, True, config.bege)
-        tela.blit(texto_relogio_renderizado, (config.largura - 70, 10))
+        tela.blit(texto_relogio_renderizado, (config.largura - 90, 10))
 
     relogio.tick(60)
     pygame.display.flip()

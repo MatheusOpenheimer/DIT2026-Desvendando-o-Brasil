@@ -1,0 +1,65 @@
+[INTERFACE]
+pular: PULAR
+contador: Pontos Visitados:
+qr_aviso: Escaneie o QR
+instrucao: Pressione [ESPAÇO] ou [ENTER] para fechar
+
+[ENTRADA_CIDADE]
+Estátua de Santa Rita – Entrada da Cidade
+Bem-vindo a Santa Rita do Sapucaí, o famoso Vale da Eletrônica! Você está na entrada da cidade, aos pés do monumento da nossa padroeira, onde a tradição mineira se conecta à alta tecnologia, à fé e à inovação. Use as setas do teclado para caminhar pelas ruas e embarcar na Rota da Inovação: cada local visitado revela histórias, curiosidades e segredos dos nossos patrimônios. Ao se aproximar de um ponto, use o QR Code para abrir detalhes exclusivos e conferir sua localização no mapa real. Os marcadores em rosa indicam destinos incríveis que ficam um pouco mais afastados, mas seguem exatamente naquela direção. Ao visitar todos os pontos turísticos ou clicar no botão de pular, você irá direto para um quiz sobre Santa Rita para testar seus conhecimentos! Além disso, ao finalizar o jogo, você poderá deixar seu feedback e compartilhar sua avaliação sobre os pontos turísticos que já conheceu. Explore cada canto e descubra o que faz a nossa cidade tão especial!
+
+[EVENTO_RIO_SAPUCAI]
+Travessia do Rio Sapucaí
+Você acabou de cruzar as águas do Rio Sapucaí, o rio que dá nome ao município e atravessa Santa Rita do Sapucaí. O Rio Sapucaí faz parte da identidade geográfica da cidade e sua bacia hidrográfica está diretamente relacionada à paisagem do município. No Centro histórico, o rio passa pela região da Beira Rio, onde também está localizada a Galeria Aberta de Arte Urbana. O encontro entre o rio, a cidade e a arte transforma essa região em um dos espaços mais característicos de Santa Rita do Sapucaí.
+
+[SANTUARIO]
+Santuário Santa Rita de Cássia
+Bem no coração da Praça Santa Rita, este santuário guarda a fé que dá nome à cidade. Santa Rita de Cássia é a padroeira de Santa Rita do Sapucaí, e o dia 22 de maio é celebrado como o Dia da Padroeira do município. Todos os anos, a tradicional Festa de Santa Rita reúne moradores, visitantes e devotos em celebrações religiosas e culturais. Em 2025, a programação oficial da festa aconteceu entre os dias 17 e 25 de maio, incluindo novenas, missas, procissões e outros momentos de fé e confraternização. A tradição da festa remonta ao século XIX e continua sendo uma das manifestações religiosas mais importantes da cidade.
+
+[TEATRO]
+Teatro Municipal
+O Teatro Municipal Monsenhor José Carneiro Pinto é um dos espaços culturais históricos de Santa Rita do Sapucaí. Sua construção remonta à década de 1920, período em que a cidade ainda desenvolvia sua vida cultural e social no início do século XX. Atualmente, o teatro continua sendo utilizado para atividades culturais, apresentações e eventos, preservando parte da memória artística e arquitetônica do município. É um exemplo de como Santa Rita do Sapucaí mantém sua história cultural viva enquanto acompanha o presente.
+
+[MERCADO]
+Mercado Municipal
+O Mercado Municipal Benedito Pereira dos Reis é um importante espaço de comércio e convivência de Santa Rita do Sapucaí. Aos domingos pela manhã, a região recebe a tradicional Feira Livre Municipal, realizada no centro da cidade. Ali podem ser encontrados produtos agrícolas, alimentos, queijos, doces, cafés e outros produtos ligados à produção local e à cultura do interior de Minas Gerais. A agricultura e a agropecuária possuem importância histórica para a economia do município, especialmente a produção de café e leite. Além dessas atividades tradicionais, a pecuária também faz parte da economia agropecuária de Santa Rita do Sapucaí.
+
+[EVENTOS]
+Centro de Eventos e Festivais
+É aqui que Santa Rita do Sapucaí mostra uma das principais razões de ser conhecida como Vale da Eletrônica. O município construiu um importante ecossistema de educação, tecnologia, inovação e empreendedorismo, formado por instituições de ensino, empresas e eventos. Entre eles está o HackTown, festival realizado pela cidade que reúne tecnologia, inovação, negócios, criatividade, cultura e empreendedorismo. Atualmente, o HackTown é apresentado pela própria organização como o maior festival de tecnologia e inovação da América Latina. O evento ocupa diferentes espaços da cidade e transforma ruas, escolas, universidades, praças, restaurantes e outros locais em ambientes de encontro e troca de ideias. Tradição, criatividade e tecnologia se cruzam aqui, no coração de Santa Rita do Sapucaí.
+
+[MUSEU]
+Museu Histórico Dr. Delfim Moreira
+Esta casa foi residência de Delfim Moreira da Costa Ribeiro, um dos personagens mais importantes da história de Santa Rita do Sapucaí. Delfim Moreira nasceu na cidade, construiu uma carreira política de destaque e chegou à Presidência da República em 1918. A casa onde ele residiu e faleceu abriga atualmente o Museu Histórico Delfim Moreira. O imóvel foi tombado como Patrimônio Cultural do município em 2006. O museu preserva documentos, fotografias, objetos e outros elementos relacionados à história local e à memória de Delfim Moreira, conectando o passado político da cidade ao seu presente.
+
+[ETE]
+ETE FMC
+A Escola Técnica de Eletrônica Francisco Moreira da Costa, conhecida como ETE FMC, é considerada um dos marcos fundamentais do Vale da Eletrônica. Fundada por Luzia Rennó Moreira, a Dona Sinhá Moreira, iniciou suas atividades educacionais em março de 1959 e foi a primeira escola de eletrônica de nível médio da América Latina. Para tornar o projeto possível, Sinhá Moreira articulou apoio político e conseguiu o apoio do então Presidente da República, Juscelino Kubitschek, que autorizou a criação do ensino técnico de eletrônica no Brasil. A escola foi o ponto de partida da formação tecnológica que ajudou a transformar Santa Rita do Sapucaí em um polo de eletrônica, telecomunicações, informática e inovação. A visão de Sinhá Moreira era transformar a cidade por meio da educação e prepará-la para o futuro.
+
+[FAI]
+FAI Centro de Ensino Superior
+A FAI - Centro de Ensino Superior em Gestão, Tecnologia e Educação foi fundada em 1971 e teve papel importante na formação profissional de Santa Rita do Sapucaí. Naquele ano, a instituição implantou o primeiro curso de Administração do Sul de Minas. Em 1978, a FAI implantou seu curso superior de Informática, reconhecido como o segundo curso de Informática de nível superior de Minas Gerais e um dos doze primeiros do país. A instituição passou a integrar o ecossistema educacional do Vale da Eletrônica, ajudando a formar profissionais nas áreas de gestão, tecnologia e educação e fortalecendo a relação entre conhecimento, empreendedorismo e inovação na cidade.
+
+[INATEL]
+INATEL
+O Instituto Nacional de Telecomunicações, conhecido como INATEL, foi fundado em 1965 pelo professor José Nogueira Leite e teve papel fundamental na continuidade da formação tecnológica iniciada pela ETE FMC. O instituto nasceu voltado à formação superior em telecomunicações e tornou-se uma instituição de referência em educação, pesquisa, desenvolvimento tecnológico e inovação. Ao longo de sua história, o INATEL contribuiu para consolidar Santa Rita do Sapucaí como um polo nacional de telecomunicações e tecnologia. Atualmente, a instituição também participa de pesquisas e desenvolvimentos relacionados às novas gerações das redes móveis, incluindo tecnologias 5G e 6G.
+
+[CRUZEIRO]
+Morro do Cruzeiro
+O Morro do Cruzeiro é um dos principais cartões-postais de Santa Rita do Sapucaí. Localizado em área urbana e de acesso gratuito, o local oferece uma vista panorâmica da cidade e é conhecido especialmente por proporcionar pores do sol espetaculares. O ponto não possui estrutura formal de visitação, mas foi adotado pela própria população como um importante atrativo turístico. Além da contemplação da paisagem, o Morro do Cruzeiro também possui relação com manifestações religiosas e procissões realizadas pela comunidade. Visitar o Cruzeiro é conhecer um espaço simples, acessível e muito representativo da identidade de Santa Rita do Sapucaí.
+
+[GAAU]
+GAAU - Galeria Aberta de Arte Urbana
+Às margens do Rio Sapucaí, na região conhecida como Beira Rio, a GAAU transforma os muros da cidade em uma galeria de arte a céu aberto. A Galeria Aberta de Arte Urbana reúne grafites, murais e outras manifestações de arte urbana, aproximando a produção artística contemporânea da população. A localização da GAAU, junto ao Rio Sapucaí, integra arte, paisagem urbana e natureza em um mesmo espaço e representa a criatividade que também faz parte da identidade de Santa Rita do Sapucaí.
+
+[VOO_LIVRE]
+Rampa de Voo Livre
+Na Serra do Paredão, em área rural de Santa Rita do Sapucaí, encontra-se uma das principais pistas de voo livre do país. A região possui condições naturais favoráveis à prática de parapente e asa-delta, atraindo praticantes do esporte. As condições aerológicas locais estão entre as melhores do Brasil, especialmente para a modalidade de Cross Country. A altitude e a paisagem da Serra do Paredão também proporcionam uma ampla vista das montanhas e do vale. A rampa representa o lado de aventura e turismo de natureza de Santa Rita do Sapucaí.
+
+[PARQUE]
+Parque Mun. Natural Dr. Cyro de Luna Dias
+O Parque Municipal Natural Dr. Cyro de Luna Dias é uma unidade de conservação localizada no bairro Piedade, nas proximidades da Reserva Biológica Mítzi Brandão. O parque protege áreas naturais, flora, fauna e outros recursos naturais da região e também possui finalidade educativa, científica, recreativa e turística. O parque mantém um viveiro de mudas florestais, utilizado para apoiar ações de preservação ambiental e distribuição de mudas. A existência do parque mostra que Santa Rita do Sapucaí também possui áreas dedicadas à conservação da natureza e à educação ambiental.
+
+[REBIO]
+REBIO - Reserva Biológica Profª. Dra. Mítzi Brandão
+A Reserva Biológica da Serra de Santa Rita Professora Doutora Mítzi Brandão é uma unidade de conservação de proteção integral localizada em Santa Rita do Sapucaí. A reserva foi criada pela Lei Municipal nº 1.096, de 15 de outubro de 1980, e possui aproximadamente 305 hectares de área preservada no bioma Mata Atlântica. Sua finalidade é proteger integralmente os ecossistemas e os recursos naturais da região, além de contribuir para pesquisas e atividades educacionais. A reserva também possui importância para a proteção dos mananciais e dos recursos hídricos utilizados pelo município. Por ser uma área de proteção integral, sua visitação é controlada e voltada principalmente a atividades compatíveis com seus objetivos de conservação. A REBIO representa um importante patrimônio natural de Santa Rita do Sapucaí.

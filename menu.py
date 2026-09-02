@@ -153,19 +153,32 @@ class Menu:
             tela.blit(self.botao_iniciar_img, self.botao_iniciar_rect)
 
         # Nome
+        texto_nome = config.fonte_fases_bold.render("NOME:", True, config.branco)
+        texto_nome_rect = texto_nome.get_rect(centerx=self.input_name_rect.centerx)
+        texto_nome_rect.bottom = self.input_name_rect.top + 40
+        tela.blit(texto_nome, texto_nome_rect)
+
         nome_na_tela = self.nome_usuario
         if self.status_input_name:
             nome_na_tela = self.nome_usuario + "|"
+
         nome_renderizado = config.fonte_input.render(nome_na_tela, False, config.branco)
         nome_renderizado_rect = nome_renderizado.get_rect()
         nome_renderizado_rect.centerx = self.input_name_rect.centerx + 8
         nome_renderizado_rect.y = self.input_name_rect.y + 64
         tela.blit(nome_renderizado, nome_renderizado_rect)
 
+
         # Idade
-        idade_na_tela = self.idade_usuario    
+        texto_idade = config.fonte_fases_bold.render("IDADE:", True, config.branco)
+        texto_idade_rect = texto_idade.get_rect(centerx=self.input_idade_rect.centerx)
+        texto_idade_rect.bottom = self.input_idade_rect.top + 40
+        tela.blit(texto_idade, texto_idade_rect)
+
+        idade_na_tela = self.idade_usuario
         if self.status_input_idade:
             idade_na_tela = self.idade_usuario + "|"
+
         idade_renderizada = config.fonte_input.render(idade_na_tela, True, config.branco)
         idade_renderizada_rect = idade_renderizada.get_rect()
         idade_renderizada_rect.centerx = self.input_idade_rect.centerx

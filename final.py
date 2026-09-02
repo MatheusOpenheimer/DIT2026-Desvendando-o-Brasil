@@ -14,7 +14,7 @@ class Final:
         self.botao_qr_rect = self.botao_qr.get_rect(x=114, y=2)
 
         self.botao_estatisticas = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/botao_estatisticas.png")), (50, 50))
-        self.botao_estatisticas_rect = self.botao_estatisticas.get_rect(x=108, y=2)
+        self.botao_estatisticas_rect = self.botao_estatisticas.get_rect(x=168, y=2)
 
         self.bloco_qr = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/bloco_qr.png")), (400, 600))
         self.bloco_qr_rect = self.bloco_qr.get_rect(centerx = config.centroX, centery = config.altura // 2)
@@ -28,8 +28,9 @@ class Final:
         self.botao_fechar = pygame.Rect(0, 0, 35, 35)
         self.botao_fechar.topright = (self.bloco_qr_rect.right - 27, self.bloco_qr_rect.top + 32)
 
-        self.reiniciar = False
+        self.jogarNov = False
         self.status_qr = False
+        self.salvo = False
 
     def gerenciar_eventos(self, evento):
         estatisticas.gerenciar_eventos(evento)
@@ -50,19 +51,24 @@ class Final:
                 elif self.botao_fechar.collidepoint(pos_mouse):
                     self.status_qr = False
                 elif self.botao_replay_rect.collidepoint(pos_mouse):
-                    self.reiniciar = True
+                    self.jogarNov = True
 
     def atualizar(self, rodar_ranking, reiniciar): #recebe o salvarBD se for true significa que pode salavr uma vez o ranking
 
-        if self.reiniciar:
+        if self.jogarNov:
             reiniciar = True
             return "MENU", reiniciar
 
-        if rodar_ranking:
-            banco.salvar_dados(config.nome_jogador, config.idade_jogador, config.acertos_jogador, config.erros_jogador, config.tempo_sobra)
-            self.top_jogadores = banco.carregar_ranking()
-            # BD.salvar_dados_jogador(config.nome_jogador, config.idade_jogador, config.acertos_jogador, config.erros_jogador, config.tempo_sobra)
-            # self.top_jogadores = BD.rankear()
+        if rodar_ranking and not self.salvo:
+            if rodar_ranking == "SRS": #se for true é pq tem texto dentro, se for SRS salva o de srs, se for BRASIL salva o do brasil
+                banco.salvar_ranking_srs(config.nome_jogador, config.acertos_jogador, config.erros_jogador)
+                self.top_jogadores = banco.carregar_ranking_srs()
+            elif rodar_ranking == "BRASIL":
+                banco.salvar_dados(config.nome_jogador, config.idade_jogador, config.acertos_jogador, config.erros_jogador, config.tempo_sobra)
+                self.top_jogadores = banco.carregar_ranking()
+
+            self.salvo = True # se chegou aqui ja salvou, pra não entrar no if mais
+
         return "FINAL", reiniciar
     
     def desenhar(self, tela):
@@ -96,10 +102,16 @@ class Final:
         y_linha = rect_ranking.y + 65
         for pos, jogador in enumerate(self.top_jogadores):
             nome = jogador[0]
-            acertos = jogador[2]
-            erros = jogador[3]
+            
+            # Trata a diferença entre o formato do Brasil (5 colunas) e de Santa Rita (3 colunas)
+            if len(jogador) >= 5:
+                acertos = jogador[2]
+                erros = jogador[3]
+            else:
+                acertos = jogador[1]
+                erros = jogador[2]
 
-            #ORGANIZAÇÃO DE BACKGROUND DOS JOGADORES
+            # ORGANIZAÇÃO DE BACKGROUND DOS JOGADORES
             blocos_rect = pygame.Rect(0, y_linha, largura_ranking - 15, 45)
             blocos_rect.centerx = config.centroX
             blocos_rect.centery = y_linha
