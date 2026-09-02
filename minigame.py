@@ -23,7 +23,7 @@ class Minigame:
         self.tempo_inicio_espera = 0
         self.duracao_espera = 1000
         # MAPA----------------------------------
-        self.mapa = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/brasil_verde.png")), (900, 900))
+        self.mapa = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/mapaTelaRegiao.png")), (900, 900))
         self.mapa_rect = self.mapa.get_rect(centerx=config.centroX, centery=(config.altura // 2) + 20)
         # ------------------------------------------------------------------------------------
         self.botao_reiniciar = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/botao_reiniciar.png")),(50, 50))

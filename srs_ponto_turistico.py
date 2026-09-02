@@ -225,7 +225,7 @@ def criar_pontos_santa_rita(modo="pt"):
         ),
         PontoTuristico(
             nome=info.get("REBIO", {}).get("nome", "REBIO - Reserva Biológica Profª. Dra. Mítzi"),
-            x=170, y=95,
+            x=185, y=95,
             curiosidade=info.get("REBIO", {}).get("texto", ""),
             imagem_path="assets/IMAGENS_SRS/ponto.png",
             foto_popup_path="assets/IMAGENS_SRS/img_rebio.png",
