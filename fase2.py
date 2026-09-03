@@ -340,12 +340,12 @@ class Fase2:
     else:
       return 0.0
   
-  def atualizar(self, tempo_restante, salvarBD, reiniciar):  # gerencia eventos a todo momento, sem esperar cliques etc
+  def atualizar(self, tempo_restante, salvarBD, reiniciar, nome):  # gerencia eventos a todo momento, sem esperar cliques etc
     # Roda a CADA FRAME no loop principal para checar tempo e troca de fase.
 
     if self.reiniciar:
       reiniciar = True
-      return "MENU", salvarBD, reiniciar
+      return "MENU", salvarBD, reiniciar, None, None
 
     if len(self.Jogados) == len(self.mapas_disponiveis):
       self.acabou_finalizacao = True
@@ -362,21 +362,20 @@ class Fase2:
       sudeste_erros = self.calcular_porcentagem("Sudeste")
       sul_erros = self.calcular_porcentagem("Sul")
       banco.salvar_estatisticas(
-          config.nome_jogador,
+          nome,
           norte_erros,
           nordeste_erros,
           centroOeste_erros,
           sudeste_erros,
           sul_erros,
       )
-      config.acertos_jogador += self.contAcertos# soma erros e acertos aos da fase 1
-      config.erros_jogador += self.contErros
-      config.tempo_sobra = tempo_restante
+      acertos = self.contAcertos# soma erros e acertos aos da fase 1
+      erros = self.contErros
       salvarBD = "BRASIL" #True
-      return "FINAL", salvarBD, reiniciar
+      return "FINAL", salvarBD, reiniciar, acertos, erros
 
     else:
-      return "FASE2", salvarBD, reiniciar
+      return "FASE2", salvarBD, reiniciar, None, None
 
   def desenhar(self, tela):
     tela.blit(self.fundo_img, (0, 0))

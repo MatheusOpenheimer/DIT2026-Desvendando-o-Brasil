@@ -70,7 +70,6 @@ class MinigameSRS:
 
         # Variáveis de controle de jogo
         self.rio_apresentado = False
-        self.eh_entrada = True
         self.mostrar_popup = True
         self.ponto_atual = None
         self.finalizado = False
@@ -100,15 +99,15 @@ class MinigameSRS:
         self.personagem.rect.center = (self.entrada_cidade["x"], self.entrada_cidade["y"])
         self.pos_y_anterior = self.personagem.rect.y
 
-        # Define os textos e imagens iniciais do pop-up da entrada
+        # Define os textos e imagens iniciais do pop-up da entrada (com QR code padrão)
         self.popup_nome = self.entrada_cidade["nome"]
         self.popup_texto = self.entrada_cidade["mensagem"]
 
         caminho_foto_entrada = funcoes.resource_path(self.entrada_cidade["foto_popup_path"])
         self.popup_img = pygame.image.load(caminho_foto_entrada).convert_alpha() if os.path.exists(caminho_foto_entrada) else None
 
-        caminho_icone_entrada = funcoes.resource_path(self.entrada_cidade.get("icone_lateral_path", self.entrada_cidade["imagem_path"]))
-        self.popup_qr = pygame.image.load(caminho_icone_entrada).convert_alpha() if os.path.exists(caminho_icone_entrada) else None
+        caminho_qr_entrada = funcoes.resource_path(self.entrada_cidade["qr_path"])
+        self.popup_qr = pygame.image.load(caminho_qr_entrada).convert_alpha() if os.path.exists(caminho_qr_entrada) else None
 
         self.estado = "JOGO"
 
@@ -183,7 +182,6 @@ class MinigameSRS:
             cruzou_subindo = (self.pos_y_anterior >= self.linha_rio_y and self.personagem.rect.y < self.linha_rio_y)
             if cruzou_subindo:
                 self.rio_apresentado = True
-                self.eh_entrada = False
                 self.popup_nome = self.evento_rio["nome"]
                 self.popup_texto = self.evento_rio["mensagem"]
                 caminho_foto_rio = funcoes.resource_path(self.evento_rio["foto_popup_path"])
@@ -200,7 +198,6 @@ class MinigameSRS:
             centro_y = self.personagem.rect.centery
             if not p.visitado and p.dentro_do_raio(centro_x, centro_y, 32):
                 self.ponto_atual = p
-                self.eh_entrada = False
                 self.popup_nome = p.nome
                 self.popup_texto = p.curiosidade
                 self.popup_img = p.foto_popup
@@ -311,10 +308,10 @@ class MinigameSRS:
                 pygame.draw.rect(tela, (220, 220, 220), quadrado_vazio)
                 pygame.draw.rect(tela, (50, 30, 15), quadrado_vazio, 2)
 
-            if not self.eh_entrada:
-                texto_qr = self.interface.get("qr_aviso", "Escaneie o QR")
-                txt_qr = self.fonte_hud.render(texto_qr, True, (80, 50, 20))
-                tela.blit(txt_qr, (x_popup + 35 + (tam_qr // 2) - (txt_qr.get_width() // 2), y_caixa + 72 + tam_qr))
+            # Legenda do QR Code padronizada para todos os pontos e entrada
+            texto_qr = self.interface.get("qr_aviso", "Escaneie o QR")
+            txt_qr = self.fonte_hud.render(texto_qr, True, (80, 50, 20))
+            tela.blit(txt_qr, (x_popup + 35 + (tam_qr // 2) - (txt_qr.get_width() // 2), y_caixa + 72 + tam_qr))
 
             x_texto = x_popup + tam_qr + 60
             largura_util_texto = (x_popup + largura_popup - 35) - x_texto

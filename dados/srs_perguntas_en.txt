@@ -4,6 +4,10 @@ pergunta: What nickname is Santa Rita do Sapucaí nationally known by?
 opcoes: Silicon Valley; Electronics Valley; Technology Capital; Digital City
 correta: 1
 
+pergunta: What are the two most traditional Carnival blocks in Santa Rita?
+opcoes: Democráticos and Ride Palhaço; Mangueira and Portela; Vila Matilde and Alegria; Esquina and Uai Sô
+correta: 0
+
 pergunta: What is the biome of Santa Rita do Sapucaí?
 opcoes: Cerrado; Caatinga; Atlantic Forest; Pampas
 correta: 2

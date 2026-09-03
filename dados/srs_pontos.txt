@@ -12,6 +12,10 @@ Bem-vindo a Santa Rita do Sapucaí, o famoso Vale da Eletrônica! Você está na
 Travessia do Rio Sapucaí
 Você acabou de cruzar as águas do Rio Sapucaí, o rio que dá nome ao município e atravessa Santa Rita do Sapucaí. O Rio Sapucaí faz parte da identidade geográfica da cidade e sua bacia hidrográfica está diretamente relacionada à paisagem do município. No Centro histórico, o rio passa pela região da Beira Rio, onde também está localizada a Galeria Aberta de Arte Urbana. O encontro entre o rio, a cidade e a arte transforma essa região em um dos espaços mais característicos de Santa Rita do Sapucaí.
 
+[CARNAVAL]
+Patrimônio e Tradição: O Carnaval Santa-Ritense
+Este ponto não representa um monumento físico, mas sim a memória viva das festas da cidade! Celebrado anualmente entre fevereiro e início de março durante o feriado nacional, o Carnaval de Santa Rita do Sapucaí guarda quase um século de história marcado pela disputa sadia entre os dois blocos mais tradicionais e emblemáticos do município: o Democráticos e o Ride Palhaço. Essa rivalidade cultural começou pelo orgulho de apresentar o melhor estandarte, as fantasias mais ricas e as marchinhas mais marcantes na avenida, dividindo as famílias locais em torcidas apaixonadas por gerações. Unindo a força dessas agremiações ao turismo contemporâneo, a cidade também se consagrou ao sediar no mesmo período o Bloco do Urso — festival em espaço fechado que se transformou em um dos maiores eventos privados de Carnaval do país, reunindo dezenas de milhares de foliões anualmente.
+
 [SANTUARIO]
 Santuário Santa Rita de Cássia
 Bem no coração da Praça Santa Rita, este santuário guarda a fé que dá nome à cidade. Santa Rita de Cássia é a padroeira de Santa Rita do Sapucaí, e o dia 22 de maio é celebrado como o Dia da Padroeira do município. Todos os anos, a tradicional Festa de Santa Rita reúne moradores, visitantes e devotos em celebrações religiosas e culturais. Em 2025, a programação oficial da festa aconteceu entre os dias 17 e 25 de maio, incluindo novenas, missas, procissões e outros momentos de fé e confraternização. A tradição da festa remonta ao século XIX e continua sendo uma das manifestações religiosas mais importantes da cidade.
@@ -63,3 +67,7 @@ O Parque Municipal Natural Dr. Cyro de Luna Dias é uma unidade de conservação
 [REBIO]
 REBIO - Reserva Biológica Profª. Dra. Mítzi Brandão
 A Reserva Biológica da Serra de Santa Rita Professora Doutora Mítzi Brandão é uma unidade de conservação de proteção integral localizada em Santa Rita do Sapucaí. A reserva foi criada pela Lei Municipal nº 1.096, de 15 de outubro de 1980, e possui aproximadamente 305 hectares de área preservada no bioma Mata Atlântica. Sua finalidade é proteger integralmente os ecossistemas e os recursos naturais da região, além de contribuir para pesquisas e atividades educacionais. A reserva também possui importância para a proteção dos mananciais e dos recursos hídricos utilizados pelo município. Por ser uma área de proteção integral, sua visitação é controlada e voltada principalmente a atividades compatíveis com seus objetivos de conservação. A REBIO representa um importante patrimônio natural de Santa Rita do Sapucaí.
+
+[RODOVIARIA]
+Terminal Rodoviário
+Principal porta de entrada e saída da cidade para viajantes de ônibus intermunicipais e interestaduais. Dica de rota: saindo da rodoviária, volte até a estátua de Santa Rita na entrada, vire à esquerda e siga reto para acessar a área central da cidade.

@@ -108,9 +108,9 @@ class Menu:
                         self.confirmacao = True
                         pygame.time.set_timer(self.SUMIR_ALERTA_EVENTO, 2000, loops=1)
                     else:
-                        config.nome_jogador = self.nome_usuario
-                        config.idade_jogador = self.idade_usuario
-                        return "INTRO"
+                        nome = self.nome_usuario
+                        idade = self.idade_usuario
+                        return "INTRO", nome, idade
 
         elif evento.type == pygame.MOUSEBUTTONUP and evento.button == 1:
             self.segurando_mouse = False
@@ -132,7 +132,7 @@ class Menu:
                 if evento.key == pygame.K_BACKSPACE:
                     self.idade_usuario = self.idade_usuario[:-1]
                     
-        return "MENU"
+        return "MENU", None, None
                     
     def desenhar(self, tela):   
         tela.blit(self.fundo, self.fundo_rect)

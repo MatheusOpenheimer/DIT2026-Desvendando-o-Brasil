@@ -112,8 +112,8 @@ def criar_pontos_santa_rita(modo="pt"):
         "y": 750,
         "imagem_path": "assets/IMAGENS_SRS/santa_estatua.png",
         "foto_popup_path": "assets/IMAGENS_SRS/srs.png",
-        "qr_path": "assets/IMAGENS_SRS/img_santa.png",
-        "mensagem": item_entrada.get("texto", ""),
+        "qr_path": "assets/IMAGENS_SRS/qr_guiaTuristico.png",
+        "mensagem": item_entrada.get("texto", "")
     }
 
     # Dados do Evento do Rio Sapucaí
@@ -122,7 +122,7 @@ def criar_pontos_santa_rita(modo="pt"):
         "nome": item_rio.get("nome", "Travessia do Rio Sapucaí"),
         "foto_popup_path": "assets/IMAGENS_SRS/img_rio.png",
         "qr_path": "assets/IMAGENS_SRS/qr_rio.png",
-        "mensagem": item_rio.get("texto", ""),
+        "mensagem": item_rio.get("texto", "")
     }
 
     # Lista com todos os Pontos Turísticos
@@ -133,7 +133,7 @@ def criar_pontos_santa_rita(modo="pt"):
             curiosidade=info.get("SANTUARIO", {}).get("texto", ""),
             imagem_path="assets/IMAGENS_SRS/igreja.png",
             foto_popup_path="assets/IMAGENS_SRS/img_igreja.png",
-            qr_path="assets/IMAGENS_SRS/qr_igreja.png",
+            qr_path="assets/IMAGENS_SRS/qr_igreja.png"
         ),
         PontoTuristico(
             nome=info.get("TEATRO", {}).get("nome", "Teatro Municipal"),
@@ -141,7 +141,7 @@ def criar_pontos_santa_rita(modo="pt"):
             curiosidade=info.get("TEATRO", {}).get("texto", ""),
             imagem_path="assets/IMAGENS_SRS/teatro.png",
             foto_popup_path="assets/IMAGENS_SRS/img_teatro.jpg",
-            qr_path="assets/IMAGENS_SRS/qr_teatro.png",
+            qr_path="assets/IMAGENS_SRS/qr_teatro.png"
         ),
         PontoTuristico(
             nome=info.get("MERCADO", {}).get("nome", "Mercado Municipal"),
@@ -149,7 +149,7 @@ def criar_pontos_santa_rita(modo="pt"):
             curiosidade=info.get("MERCADO", {}).get("texto", ""),
             imagem_path="assets/IMAGENS_SRS/mercadao.png",
             foto_popup_path="assets/IMAGENS_SRS/img_mercadao.png",
-            qr_path="assets/IMAGENS_SRS/qr_mercado.png",
+            qr_path="assets/IMAGENS_SRS/qr_mercado.png"
         ),
         PontoTuristico(
             nome=info.get("EVENTOS", {}).get("nome", "Centro de Eventos e Festivais"),
@@ -157,7 +157,7 @@ def criar_pontos_santa_rita(modo="pt"):
             curiosidade=info.get("EVENTOS", {}).get("texto", ""),
             imagem_path="assets/IMAGENS_SRS/eventos.png",
             foto_popup_path="assets/IMAGENS_SRS/img_eventos.png",
-            qr_path="assets/IMAGENS_SRS/qr_eventos.png",
+            qr_path="assets/IMAGENS_SRS/qr_eventos.png"
         ),
         PontoTuristico(
             nome=info.get("MUSEU", {}).get("nome", "Museu Histórico Dr. Delfim Moreira"),
@@ -165,7 +165,7 @@ def criar_pontos_santa_rita(modo="pt"):
             curiosidade=info.get("MUSEU", {}).get("texto", ""),
             imagem_path="assets/IMAGENS_SRS/museu.png",
             foto_popup_path="assets/IMAGENS_SRS/img_museu.png",
-            qr_path="assets/IMAGENS_SRS/qr_museu.png",
+            qr_path="assets/IMAGENS_SRS/qr_museu.png"
         ),
         PontoTuristico(
             nome=info.get("ETE", {}).get("nome", "ETE FMC"),
@@ -173,7 +173,7 @@ def criar_pontos_santa_rita(modo="pt"):
             curiosidade=info.get("ETE", {}).get("texto", ""),
             imagem_path="assets/IMAGENS_SRS/ete.png",
             foto_popup_path="assets/IMAGENS_SRS/img_ete.png",
-            qr_path="assets/IMAGENS_SRS/qr_ete.png",
+            qr_path="assets/IMAGENS_SRS/qr_ete.png"
         ),
         PontoTuristico(
             nome=info.get("FAI", {}).get("nome", "FAI Centro de Ensino Superior"),
@@ -181,7 +181,7 @@ def criar_pontos_santa_rita(modo="pt"):
             curiosidade=info.get("FAI", {}).get("texto", ""),
             imagem_path="assets/IMAGENS_SRS/fai.png",
             foto_popup_path="assets/IMAGENS_SRS/img_fai.png",
-            qr_path="assets/IMAGENS_SRS/qr_fai.png",
+            qr_path="assets/IMAGENS_SRS/qr_fai.png"
         ),
         PontoTuristico(
             nome=info.get("INATEL", {}).get("nome", "INATEL"),
@@ -189,7 +189,7 @@ def criar_pontos_santa_rita(modo="pt"):
             curiosidade=info.get("INATEL", {}).get("texto", ""),
             imagem_path="assets/IMAGENS_SRS/inatel.png",
             foto_popup_path="assets/IMAGENS_SRS/img_inatel.png",
-            qr_path="assets/IMAGENS_SRS/qr_inatel.png",
+            qr_path="assets/IMAGENS_SRS/qr_inatel.png"
         ),
         PontoTuristico(
             nome=info.get("CRUZEIRO", {}).get("nome", "Morro do Cruzeiro"),
@@ -197,7 +197,7 @@ def criar_pontos_santa_rita(modo="pt"):
             curiosidade=info.get("CRUZEIRO", {}).get("texto", ""),
             imagem_path="assets/IMAGENS_SRS/morro.png",
             foto_popup_path="assets/IMAGENS_SRS/img_morro.png",
-            qr_path="assets/IMAGENS_SRS/qr_morro.png",
+            qr_path="assets/IMAGENS_SRS/qr_morro.png"
         ),
         PontoTuristico(
             nome=info.get("GAAU", {}).get("nome", "GAAU - Galeria Aberta de Arte Urbana"),
@@ -205,7 +205,7 @@ def criar_pontos_santa_rita(modo="pt"):
             curiosidade=info.get("GAAU", {}).get("texto", ""),
             imagem_path="assets/IMAGENS_SRS/ponto.png",
             foto_popup_path="assets/IMAGENS_SRS/img_gaau.png",
-            qr_path="assets/IMAGENS_SRS/qr_gaau.png",
+            qr_path="assets/IMAGENS_SRS/qr_gaau.png"
         ),
         PontoTuristico(
             nome=info.get("VOO_LIVRE", {}).get("nome", "Rampa de Voo Livre"),
@@ -213,7 +213,7 @@ def criar_pontos_santa_rita(modo="pt"):
             curiosidade=info.get("VOO_LIVRE", {}).get("texto", ""),
             imagem_path="assets/IMAGENS_SRS/ponto.png",
             foto_popup_path="assets/IMAGENS_SRS/img_voo.png",
-            qr_path="assets/IMAGENS_SRS/qr_voo.png",
+            qr_path="assets/IMAGENS_SRS/qr_voo.png"
         ),
         PontoTuristico(
             nome=info.get("PARQUE", {}).get("nome", "Parque Mun. Natural Dr. Cyro de Luna Dias"),
@@ -221,7 +221,7 @@ def criar_pontos_santa_rita(modo="pt"):
             curiosidade=info.get("PARQUE", {}).get("texto", ""),
             imagem_path="assets/IMAGENS_SRS/ponto.png",
             foto_popup_path="assets/IMAGENS_SRS/img_parque.png",
-            qr_path="assets/IMAGENS_SRS/qr_parque.png",
+            qr_path="assets/IMAGENS_SRS/qr_parque.png"
         ),
         PontoTuristico(
             nome=info.get("REBIO", {}).get("nome", "REBIO - Reserva Biológica Profª. Dra. Mítzi"),
@@ -229,8 +229,24 @@ def criar_pontos_santa_rita(modo="pt"):
             curiosidade=info.get("REBIO", {}).get("texto", ""),
             imagem_path="assets/IMAGENS_SRS/ponto.png",
             foto_popup_path="assets/IMAGENS_SRS/img_rebio.png",
-            qr_path="assets/IMAGENS_SRS/qr_rebio.png",
+            qr_path="assets/IMAGENS_SRS/qr_rebio.png"
         ),
+        PontoTuristico(
+            nome=info.get("RODOVIARIA", {}).get("nome", "Terminal Rodoviário"),
+            x=840, y=750,
+            curiosidade=info.get("RODOVIARIA", {}).get("texto", ""),
+            imagem_path="assets/IMAGENS_SRS/rodoviaria.png",
+            foto_popup_path="assets/IMAGENS_SRS/img_rodoviaria.jpg",
+            qr_path="assets/IMAGENS_SRS/qr_rodoviaria.png"
+    ),
+        PontoTuristico(
+            nome=info.get("CARNAVAL", {}).get("nome", "Carnaval e Tradições"),
+            x=420, y=250,
+            curiosidade=info.get("CARNAVAL", {}).get("texto", ""),
+            imagem_path="assets/IMAGENS_SRS/info.png",
+            foto_popup_path="assets/IMAGENS_SRS/carnaval.jpg",
+            qr_path="assets/IMAGENS_SRS/qr_carnaval.png"
+        )
     ]
 
     return pontos, entrada_cidade, evento_rio, interface

@@ -3,6 +3,10 @@ pergunta: ¿Por qué apodo es conocida nacionalmente Santa Rita do Sapucaí?
 opcoes: Vale do Silício; Vale da Eletrônica; Capital da Tecnologia; Cidade Digital
 correta: 1
 
+pergunta: ¿Cuáles son las dos comparsas de carnaval más tradicionales de Santa Rita?
+opcoes: Democráticos y Ride Palhaço; Mangueira y Portela; Vila Matilde y Alegria; Esquina y Uai Sô
+correta: 0
+
 pergunta: ¿Cuál es el principal bioma presente en Santa Rita do Sapucaí?
 opcoes: Cerrado; Caatinga; Mata Atlántica; Pampa
 correta: 2

@@ -12,6 +12,10 @@ Welcome to Santa Rita do Sapucaí, the famous Electronics Valley! You are at the
 Crossing the Sapucaí River
 You have just crossed the waters of the Sapucaí River, the river that gives the municipality its name and flows through Santa Rita do Sapucaí. The Sapucaí River is part of the city's geographic identity, and its watershed is directly connected to the municipality's landscape. In the historic center, the river passes through the Beira Rio area, where the Open Urban Art Gallery is also located. The meeting of the river, the city, and art transforms this area into one of the most characteristic spaces of Santa Rita do Sapucaí.
 
+[CARNAVAL]
+Heritage and Tradition: Carnival in Santa Rita
+This spot represents not a brick-and-mortar monument, but the living cultural heritage of the city! Celebrated annually between February and early March during the national holiday, Santa Rita do Sapucaí's Carnival holds nearly a century of history defined by the friendly rivalry between the municipality's two most traditional and iconic street blocks: Democráticos and Ride Palhaço. This cultural competition originated from the pride of presenting the finest banners, most elaborate costumes, and liveliest anthems downtown, dividing local families into passionate followings across generations. Blending the strength of these street associations with modern festival tourism, the town also gained national fame by hosting Bloco do Urso during the same period — an arena-style event that became one of Brazil's largest private Carnival festivals, welcoming tens of thousands of travelers each year.
+
 [SANTUARIO]
 Sanctuary of Saint Rita of Cascia
 Located in the heart of Santa Rita Square, this sanctuary preserves the faith that gives the city its name. Saint Rita of Cascia is the patron saint of Santa Rita do Sapucaí, and May 22 is celebrated as the city's Patron Saint's Day. Every year, the traditional Festa de Santa Rita brings together residents, visitors, and devotees in religious and cultural celebrations. In 2025, the official festival program took place from May 17 to May 25, including novenas, Masses, processions, and other moments of faith and fellowship. The tradition of the festival dates back to the 19th century and remains one of the city's most important religious celebrations.
@@ -63,3 +67,7 @@ The Dr. Cyro de Luna Dias Municipal Natural Park is a protected area located in 
 [REBIO]
 Prof. Dr. Mítzi Brandão Biological Reserve
 The Serra de Santa Rita Biological Reserve, Professor Dr. Mítzi Brandão, is a fully protected conservation area located in Santa Rita do Sapucaí. The reserve was created by Municipal Law No. 1,096, dated October 15, 1980, and preserves an area of more than 300 hectares within the Atlantic Forest biome. Its purpose is to fully protect the ecosystems and natural resources of the region, as well as contribute to research and educational activities. The reserve is also important for protecting the city's water sources and water resources. Because it is a fully protected area, visitation is controlled and primarily limited to activities compatible with its conservation objectives. The REBIO represents an important natural heritage site of Santa Rita do Sapucaí.
+
+[RODOVIARIA]
+Bus Station
+The city's main arrival and departure hub for intercity and interstate travelers. Route tip: when leaving the bus station, head back to the Saint Rita statue at the entrance, turn left, and walk straight ahead to reach downtown.

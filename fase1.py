@@ -243,7 +243,7 @@ class Fase1:
 
     if self.reiniciar:
       reiniciar = True
-      return "MENU", reiniciar, self.regioes_erradas, self.contagem_regioes
+      return "MENU", reiniciar, self.regioes_erradas, self.contagem_regioes, None, None
 
     if self.Acabou and tempo_restante > 182:
       self.acabou_finalizacao = True
@@ -252,12 +252,12 @@ class Fase1:
       self.tempo_esgotado = True
 
     if self.liberar:
-      config.acertos_jogador = self.contAcertos
-      config.erros_jogador = self.contErros
-      return "FASE2", reiniciar, self.regioes_erradas, self.contagem_regioes
+      acertos = self.contAcertos
+      erros = self.contErros
+      return "FASE2", reiniciar, self.regioes_erradas, self.contagem_regioes, acertos, erros #retorna acertos e erros
 
     else:
-      return "FASE1", reiniciar, self.regioes_erradas, self.contagem_regioes
+      return "FASE1", reiniciar, self.regioes_erradas, self.contagem_regioes, None, None
 
   def desenhar(self, tela):
     tela.blit(self.fundo_img, (0, 0))

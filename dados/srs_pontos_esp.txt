@@ -12,6 +12,10 @@ Estatua de Santa Rita – Entrada de la Ciudad
 Cruce del Rio Sapucaí
 Acabas de cruzar las aguas del Rio Sapucaí, el río que da nombre al municipio y atraviesa Santa Rita do Sapucaí. El Rio Sapucaí forma parte de la identidad geográfica de la ciudad y su cuenca hidrográfica está directamente relacionada con el paisaje del municipio. En el Centro histórico, el río pasa por la región de Beira Rio, donde también se encuentra la Galería Abierta de Arte Urbano. El encuentro entre el río, la ciudad y el arte transforma esta región en uno de los espacios más característicos de Santa Rita do Sapucaí.
 
+[CARNAVAL]
+Patrimonio y Tradición: El Carnaval Santa-Ritense
+¡Este punto informativo no destaca un monumento físico, sino la memoria viva y festiva de la ciudad! Celebrado cada año entre febrero y principios de marzo durante el feriado nacional, el Carnaval de Santa Rita do Sapucaí atesora casi un siglo de historia impulsado por la sana competencia entre las dos comparsas más tradicionales y emblemáticas del municipio: Democráticos y Ride Palhaço. Esta histórica rivalidad nació del orgullo por lucir los mejores estandartes, vestuarios y canciones en la avenida, dividiendo a las familias locales en apasionadas aficiones durante generaciones. Sumando la fuerza de estas agrupaciones tradicionales al turismo actual, la ciudad también se consagró al albergar en el mismo período el Bloco do Urso —un macrofestival en recinto privado que se convirtió en uno de los eventos carnavalescos más multitudinarios de Brasil, atrayendo a decenas de miles de visitantes cada año.
+
 [SANTUARIO]
 Santuario Santa Rita de Cássia
 En el corazón de la Praça Santa Rita, este santuario resguarda la fe que da nombre a la ciudad. Santa Rita de Cássia es la patrona de Santa Rita do Sapucaí, y el 22 de mayo se celebra como el Día de la Patrona del municipio. Todos los años, la tradicional Festa de Santa Rita reúne a habitantes, visitantes y devotos en celebraciones religiosas y culturales. En 2025, la programación oficial de la fiesta tuvo lugar entre los días 17 y 25 de mayo, incluyendo novenas, misas, procesiones y otros momentos de fe y convivencia. La tradición de la fiesta se remonta al siglo XIX y sigue siendo una de las manifestaciones religiosas más importantes de la ciudad.
@@ -63,3 +67,7 @@ El Parque Municipal Natural Dr. Cyro de Luna Dias es una unidad de conservación
 [REBIO]
 REBIO - Reserva Biológica Profª. Dra. Mítzi Brandão
 La Reserva Biológica da Serra de Santa Rita Professora Doutora Mítzi Brandão es una unidad de conservación de protección integral ubicada en Santa Rita do Sapucaí. La reserva fue creada por la Ley Municipal nº 1.096, del 15 de octubre de 1980, y cuenta con aproximadamente 305 hectáreas de área preservada en el bioma Mata Atlántica. Su finalidad es proteger integralmente los ecosistemas y los recursos naturales de la región, además de contribuir a investigaciones y actividades educativas. La reserva también tiene gran importancia en la protección de los manantiales y recursos hídricos utilizados por el municipio. Al ser un área de protección integral, sus visitas son controladas y orientadas principalmente a actividades compatibles con sus objetivos de conservación. La REBIO representa un importante patrimonio natural de Santa Rita do Sapucaí.
+
+[RODOVIARIA]
+Terminal de Autobuses
+La principal puerta de entrada y salida de la ciudad para viajeros en autobuses intermunicipales e interestatales. Consejo de ruta: al salir de la terminal, regrese a la estatua de Santa Rita en la entrada, gire a la izquierda y continúe recto para llegar al centro de la ciudad.

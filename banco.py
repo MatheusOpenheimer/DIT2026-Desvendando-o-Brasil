@@ -19,9 +19,10 @@ def criar_banco():
 
     cursor.execute('''CREATE TABLE IF NOT EXISTS ranking (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    nome TEXT, idade INTEGER,
-                    acertos INTEGER, erros INTEGER,
-                    tempo INTEGER)''')
+                    nome TEXT,
+                    idade INTEGER,
+                    acertos INTEGER,
+                    erros INTEGER)''')
 
     cursor.execute('''
                     CREATE TABLE IF NOT EXISTS estatisticas_erros (
@@ -36,7 +37,7 @@ def criar_banco():
     conexao.close()
 
 
-def salvar_dados(nome, idade, acertos, erros, tempo):
+def salvar_dados(nome, idade, acertos, erros):
     conexao = sqlite3.connect(banco)
     cursor = conexao.cursor()
 
@@ -44,10 +45,9 @@ def salvar_dados(nome, idade, acertos, erros, tempo):
                     nome,
                     idade,
                     acertos,
-                    erros,
-                    tempo)
-                    VALUES (?, ?, ?, ?, ?)''',
-                    (nome, int(idade), int(acertos), int(erros), int(tempo)))
+                    erros)
+                    VALUES (?, ?, ?, ?)''',
+                    (nome, int(idade), int(acertos), int(erros)))
     conexao.commit()
     conexao.close()
 
@@ -57,7 +57,7 @@ def carregar_ranking():
     cursor = conexao.cursor()
 
     cursor.execute('''SELECT 
-                        nome, idade, acertos, erros, tempo 
+                        nome, idade, acertos, erros
                         FROM ranking ORDER BY acertos DESC, erros ASC LIMIT 10''') #o SELECT busca dados e deixa na memória temporaria do cursor
 
     #o fetchall pega o que está na memória temporária do cursor e retorna. Sem select antes daria erro, pois não encontraria nada

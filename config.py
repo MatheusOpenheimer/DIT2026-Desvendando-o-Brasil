@@ -42,13 +42,6 @@ fonte_grossa = pygame.font.SysFont("Franklin Gothic Medium", 40, bold=True)
 click_sound = pygame.mixer.Sound(funcoes.resource_path("assets/AUDIOS/click.ogg"))
 click_sound.set_volume(0.9)
 
-#INFORMAÇÕES DO JOGADOR:---------------------
-nome_jogador = ""
-idade_jogador = 0
-acertos_jogador = 0
-erros_jogador = 0
-tempo_sobra = 0
-
 #------------------------------------------------------
 #config dos objetos
 config_botao = [0, 0, 250, 100]

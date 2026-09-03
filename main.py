@@ -54,7 +54,7 @@ pygame.mixer.music.set_volume(0.2)
 musica_play = True
 
 # ESTADOS DO JOGO
-FASE = "MENU"
+FASE = "FINAL"
 menu = None
 intro = None
 fase1 = None
@@ -65,6 +65,13 @@ minigame_srs = None
 jogo_srs = None
 modo = "facil"
 personagem = "boy" #menino por default
+dados_jogador = {
+    "nome": "Explorador",
+    "idade": 0,
+    "acertos": 0,
+    "erros": 0,
+    "tempo_sobra": 0
+}
 
 EVENTO_CRONOMETRO = pygame.USEREVENT + 2
 tempo_iniciado = False
@@ -108,8 +115,11 @@ while rodando:
             continue
 
         if FASE == "MENU" and menu is not None:
-            PROXIMA_FASE = menu.gerenciar_eventos(evento)
+            PROXIMA_FASE, nome, idade = menu.gerenciar_eventos(evento)
             if PROXIMA_FASE and PROXIMA_FASE != "MENU":
+                if nome and idade:
+                    dados_jogador["nome"] = nome
+                    dados_jogador["idade"] = idade
                 menu = None
                 FASE = PROXIMA_FASE
 
@@ -145,11 +155,12 @@ while rodando:
             musica_play = True
         if reiniciar:
             tempo_iniciado = False
-            config.nome_jogador = ""
-            config.erros_jogador = 0
-            config.acertos_jogador = 0
-            config.tempo_sobra = 0
-            config.idade_jogador = 0
+            dados_jogador = {
+                "nome": "Explorador",
+                "idade": 0,
+                "acertos": 0,
+                "erros": 0,
+            }
             regioes_erradas = []
             regioes_jogadas = []
             reiniciar = False
@@ -180,9 +191,12 @@ while rodando:
 
     elif FASE == "JOGO_SRS":
         if jogo_srs is None:
-            jogo_srs = JogoSantaRita(idioma)
-        PROXIMA_FASE, reiniciar, salvarBD = jogo_srs.atualizar(reiniciar, salvarBD)
+            jogo_srs = JogoSantaRita(idioma, dados_jogador["nome"])
+        PROXIMA_FASE, reiniciar, salvarBD, acertos, erros = jogo_srs.atualizar(reiniciar, salvarBD)
         if PROXIMA_FASE != "JOGO_SRS":
+            if acertos and erros: #se não retornou None grava os acertos e erros
+                dados_jogador["acertos"] = acertos
+                dados_jogador["erros"] = erros
             jogo_srs = None
             FASE = PROXIMA_FASE
 
@@ -193,26 +207,32 @@ while rodando:
             tempo_restante = 250
             pygame.time.set_timer(EVENTO_CRONOMETRO, 1000)
             tempo_iniciado = True
-        PROXIMA_FASE, reiniciar, regioes_erradas, regioes_jogadas = fase1.atualizar(tempo_restante, reiniciar)
+        PROXIMA_FASE, reiniciar, regioes_erradas, regioes_jogadas, acertos, erros = fase1.atualizar(tempo_restante, reiniciar)
         if musica_play:
             trocar_musica("assets/AUDIOS/musicaGame.mp3")
             musica_play = False
 
         if PROXIMA_FASE != "FASE1":
+            if acertos and erros: #se não retornou None grava os acertos e erros
+                dados_jogador["acertos"] = acertos 
+                dados_jogador["erros"] = erros
             fase1 = None
             FASE = PROXIMA_FASE
 
     elif FASE == "FASE2":
         if fase2 is None:
             fase2 = Fase2(regioes_erradas, regioes_jogadas)
-        PROXIMA_FASE, salvarBD, reiniciar = fase2.atualizar(tempo_restante, salvarBD, reiniciar)
-        if PROXIMA_FASE != "FASE2":
+        PROXIMA_FASE, salvarBD, reiniciar, acertos, erros = fase2.atualizar(tempo_restante, salvarBD, reiniciar, dados_jogador["nome"])
+        if PROXIMA_FASE != "FASE2": #se não retornou None implementa os acertos e erros
+            if acertos and erros:
+                dados_jogador["acertos"] += acertos
+                dados_jogador["erros"] += erros
             fase2 = None
             FASE = PROXIMA_FASE
 
     elif FASE == "FINAL":
         if final is None:
-            final = Final()
+            final = Final(dados_jogador)
         tempo_iniciado = False
         PROXIMA_FASE, reiniciar = final.atualizar(salvarBD, reiniciar)
         if PROXIMA_FASE != "FINAL":
