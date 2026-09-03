@@ -54,7 +54,7 @@ pygame.mixer.music.set_volume(0.2)
 musica_play = True
 
 # ESTADOS DO JOGO
-FASE = "FINAL"
+FASE = "MENU"
 menu = None
 intro = None
 fase1 = None
