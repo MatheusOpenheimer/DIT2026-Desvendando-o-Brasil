@@ -154,7 +154,6 @@ class MinigameSRS:
                         self.ponto_atual = None
 
     def atualizar(self, reiniciar):
-        # 1. Trata reinicialização
         if self.reiniciar:
             reiniciar = True
             return "MENU", reiniciar, self.modo

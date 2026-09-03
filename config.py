@@ -38,7 +38,8 @@ fonte_media = pygame.font.SysFont("Franklin Gothic Medium", 20)
 fonte_grossa = pygame.font.SysFont("Franklin Gothic Medium", 40, bold=True)
 
 #AUDIOS (Com suporte ao resource_path)
-click_sound = pygame.mixer.Sound(funcoes.resource_path("assets/AUDIOS/click.2.ogg"))
+#click_sound = pygame.mixer.Sound(funcoes.resource_path("assets/AUDIOS/click.2.ogg"))
+click_sound = pygame.mixer.Sound(funcoes.resource_path("assets/AUDIOS/click.ogg"))
 click_sound.set_volume(0.9)
 
 #INFORMAÇÕES DO JOGADOR:---------------------

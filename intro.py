@@ -123,7 +123,7 @@ class Intro:
                 "sobre ele",
                 "",
                 "Se não quiser ver as curiosidades ou tiver finalizado",
-                "seu aprendizado, basta andar até o botão",
+                "seu aprendizado, basta clicar ou andar até o botão",
                 "'Pular Minigame', no canto inferior direito da tela",
                 "e confirmar sua saída, clicando em 'PULAR'"
             ],

@@ -1,6 +1,6 @@
 import sys
 import pygame
-
+pygame.mixer.pre_init(frequency=44100, size=-16, channels=2, buffer=1024)
 pygame.init()
 pygame.mixer.init()
 

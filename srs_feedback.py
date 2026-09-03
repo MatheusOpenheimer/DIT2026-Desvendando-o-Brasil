@@ -90,7 +90,6 @@ class VisualizarFeedbacks:
 
         # Cliques do mouse na tela de feedback
         if evento.type == pygame.MOUSEBUTTONDOWN and evento.button == 1 and self.visivel:
-            config.click_sound.play()
 
             # Botão fechar
             if self.botao_fechar.collidepoint(pos_mouse):
