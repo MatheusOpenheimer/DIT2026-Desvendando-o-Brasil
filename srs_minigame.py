@@ -335,7 +335,7 @@ class MinigameSRS:
             instrucao = self.fonte_hud.render(texto_instrucao, True, (160, 40, 30))
             tela.blit(instrucao, (config.centroX - (instrucao.get_width() // 2), caixa.bottom - 24))
 
-        # Visualização do Mapa Real com botão fechar [X]
+        # Visualização do Mapa Real
         if self.mostrar_mapa_real:
             escurecer_mapa = pygame.Surface((config.largura, config.altura), pygame.SRCALPHA)
             escurecer_mapa.fill((0, 0, 0, 170))

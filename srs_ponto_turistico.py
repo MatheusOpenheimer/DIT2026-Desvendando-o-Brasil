@@ -1,6 +1,22 @@
 import os
 import pygame
 import funcoes
+import sys
+
+#config para executavel
+def obter_caminho_dados(nome_arquivo):
+    #Tenta achar na pasta externa do executável/projeto
+    if getattr(sys, 'frozen', False):
+        pasta_base = os.path.dirname(sys.executable)
+    else:
+        pasta_base = os.path.dirname(os.path.abspath(__file__))
+
+    caminho_externo = os.path.join(pasta_base, "dados", nome_arquivo)
+    if os.path.exists(caminho_externo):
+        return caminho_externo
+
+    #Se não existir fora, busca o arquivo interno empacotado
+    return funcoes.resource_path(os.path.join("dados", nome_arquivo))
 
 
 def carregar_informacoes_txt(modo="pt"):
@@ -13,7 +29,7 @@ def carregar_informacoes_txt(modo="pt"):
     else:
         nome_arquivo = "srs_pontos.txt"
 
-    caminho = funcoes.resource_path(os.path.join("dados", nome_arquivo))
+    caminho = obter_caminho_dados(nome_arquivo)
     dados = {"INTERFACE": {}}
     id_atual = None
     linhas_bloco = []
