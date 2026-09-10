@@ -3,7 +3,7 @@ import config
 import funcoes
 
 class Personagem(pygame.sprite.Sprite):
-    def __init__(self, selected="girl"):
+    def __init__(self, selected):
         super().__init__()
 
         self.selected = selected

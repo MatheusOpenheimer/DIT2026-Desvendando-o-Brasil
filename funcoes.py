@@ -303,10 +303,12 @@ def formatar_texto_largura(texto, fonte, largura_maxima):
 
 import re
 def carregar_questoes_txt(caminho_arquivo):
-    dados_finais = {}  # Usado se tiver a tag 'Estado:'
-    lista_simples = []  # Usado se NÃO tiver a tag 'Estado:'
+    # Dicionário retornado caso o arquivo divida o conteúdo por estado (ex: Modo Brasil)
+    dados_finais = {}
+    # Lista retornada caso o arquivo seja uma sequência contínua de questões sem a marcação 'Estado:'
+    lista_simples = []
 
-    # Trava de segurança: se o arquivo não estiver na pasta dados/, evita o erro de crash
+    # Trava de segurança: impede que o jogo trave se o arquivo não existir
     if not os.path.exists(caminho_arquivo):
         print(f"Aviso: Arquivo de questões não encontrado em: {caminho_arquivo}")
         return lista_simples
@@ -315,92 +317,97 @@ def carregar_questoes_txt(caminho_arquivo):
     questao_atual = {}
     tem_estados = False
 
+    # Abre o arquivo garantindo suporte aos acentos (UTF-8)
     with open(caminho_arquivo, "r", encoding="utf-8") as arquivo:
         for linha in arquivo:
+            # Remove espaços em branco e quebras de linha nas pontas
             linha = linha.strip()
 
+            # Ignora linhas totalmente em branco
             if not linha:
                 continue
 
-            # Se encontrar a tag "Estado:", ativa o modo de Dicionário por Estado
+            # Se encontrar a tag "Estado:", ativa o agrupamento por Unidade Federativa
             if linha.lower().startswith("estado:"):
                 tem_estados = True
 
-                # Salva questão anterior pendente antes de mudar de estado
+                # Se já havia uma questão em leitura antes desta linha, armazena no estado anterior
                 if estado_atual and questao_atual:
                     dados_finais[estado_atual].append(questao_atual)
                     questao_atual = {}
 
+                # Extrai o nome do estado após os dois pontos
                 estado_atual = linha.split(":", 1)[1].strip()
+
+                # Garante que a lista daquele estado esteja criada no dicionário
                 if estado_atual not in dados_finais:
                     dados_finais[estado_atual] = []
 
             elif linha.lower().startswith("pergunta:"):
-                # Se mudou de pergunta sem mudar de estado, salva a anterior
+                # Ao iniciar uma nova pergunta, descarrega a anterior que ainda estava aberta
                 if questao_atual:
                     if tem_estados and estado_atual:
                         dados_finais[estado_atual].append(questao_atual)
                     else:
-                        lista_simples.append(questao_atual)
+                        lista_simples.append(questao_atual) #se entrou aqui era simples não tem separação de estados
                     questao_atual = {}
 
+                # Guarda o enunciado da questão
                 questao_atual["pergunta"] = linha.split(":", 1)[1].strip()
 
-            elif linha.lower().startswith("região:") or linha.lower().startswith(
-                "regiao:"
-            ):
+            elif linha.lower().startswith("região:") or linha.lower().startswith("regiao:"):
+                # Guarda a região geográfica correspondente
                 questao_atual["regiao"] = linha.split(":", 1)[1].strip()
 
             elif linha.lower().startswith("dicas:"):
+                # Separa as dicas caso venham delimitadas por ponto e vírgula
                 texto_dicas = linha.split(":", 1)[1].strip()
-                questao_atual["dicas"] = [
-                    d.strip() for d in texto_dicas.split(";")
-                ]
+                questao_atual["dicas"] = [dica.strip() for dica in texto_dicas.split(";")] #strip remove espaços, slipt corta o testo após o ;
 
-            elif linha.lower().startswith("opções:") or linha.lower().startswith(
-                "opcoes:"
-            ):
+            elif linha.lower().startswith("opções:") or linha.lower().startswith("opcoes:"):
                 texto_opcoes = linha.split(":", 1)[1].strip()
 
-                # Prioriza o ponto e vírgula se existir no texto
+                # Prioriza a divisão direta por ponto e vírgula se existente
                 if ";" in texto_opcoes:
-                    questao_atual["opcoes"] = [
-                        opt.strip() for opt in texto_opcoes.split(";")
-                    ]
+                    questao_atual["opcoes"] = [opcao.strip() for opcao in texto_opcoes.split(";")]
                 else:
-                    # Separa utilizando as letras das opções (A), B), C), D))
-                    opcoes_div = re.split(r"(?=[A-D]\))", texto_opcoes)
+                    # Alternativa: separa usando expressões regulares identificando letras no estilo A), B), C), D)
+                    opcoes_divididas = re.split(r"(?=[A-D]\))", texto_opcoes)
                     opcoes_limpas = [
-                        opt.strip(", ").strip()
-                        for opt in opcoes_div
-                        if opt.strip()
+                        opcao.strip(", ").strip()
+                        for opcao in opcoes_divididas
+                        if opcao.strip()
                     ]
 
-                    # Se não houver letras prefixadas, divide por vírgula normal limitando a 4 itens
+                    # Se o texto não estiver formatado com letras A) a D), divide por vírgula simples
                     if len(opcoes_limpas) < 2:
                         opcoes_limpas = [
-                            opt.strip() for opt in texto_opcoes.split(",")[:4]
+                            opcao.strip()
+                            for opcao in texto_opcoes.split(",")[:4]
                         ]
 
+                    # Limita a lista às 4 opções padrão do jogo
                     questao_atual["opcoes"] = opcoes_limpas[:4]
 
             elif linha.lower().startswith("correta:"):
+                # Converte o índice da alternativa correta para número inteiro (ex: 0, 1, 2 ou 3)
                 questao_atual["correta"] = int(linha.split(":", 1)[1].strip())
 
-        # Garante o salvamento da última questão do arquivo
+        # Salva a última questão pendente ao final do arquivo
         if questao_atual:
             if tem_estados and estado_atual:
                 dados_finais[estado_atual].append(questao_atual)
             else:
                 lista_simples.append(questao_atual)
 
+    # Retorna o dicionário agrupado por estado ou a lista simples sequencial
     return dados_finais if tem_estados else lista_simples
 
 
 def carregar_curiosidades_txt(caminho_arquivo):
     curiosidades = {}
 
-    # Trava de segurança: se o arquivo não estiver na pasta dados/, evita o erro de crash
+    # Evita falhas críticas caso o arquivo de curiosidades não esteja acessível
     if not os.path.exists(caminho_arquivo):
         print(
             f"Aviso: Arquivo de curiosidades não encontrado em: {caminho_arquivo}"
@@ -415,30 +422,33 @@ def carregar_curiosidades_txt(caminho_arquivo):
             linha_limpa = linha.strip()
 
             if not linha_limpa:
-                continue  # Ignora linhas em branco no meio do texto
+                continue
 
-            # Identifica a mudança de estado
+            # Ao encontrar um novo estado, une todas as linhas do parágrafo do estado anterior e gurada no estado anterior
             if linha_limpa.lower().startswith("estado:"):
                 if estado_atual and linhas_texto:
-                    # Junta os parágrafos com espaço simples
                     curiosidades[estado_atual] = " ".join(linhas_texto).strip()
-                    linhas_texto = []
+                    linhas_texto = []# Esvazia a lista temporária para começar a guardar as frases do próximo estado
+               
+                estado_atual = linha_limpa.split(":", 1)[1].strip() # split(":", 1) divide a string apenas no primeiro dois-pontos.
+                # O [1] pega a segunda parte (o nome do estado) e o .strip() remove o espaço após os dois-pontos
 
-                estado_atual = linha_limpa.split(":", 1)[1].strip()
-
+            # Se a linha não é o cabeçalho 'Estado:', mas já temos um estado ativo, adiciona a frase à lista
             elif estado_atual:
                 linhas_texto.append(linha_limpa)
 
-        # Salva o último estado
+        # Salva o texto do último estado lido antes de encerrar o arquivo
         if estado_atual and linhas_texto:
             curiosidades[estado_atual] = " ".join(linhas_texto).strip()
 
     return curiosidades
 
 
-#FUNÇOES SANTA RITA LER TEXTO
+# FUNÇÕES SANTA RITA LER TEXTO
+
 
 def carregar_textos_srs(modo="pt"):
+    # Seleção do arquivo conforme o idioma selecionado
     if modo == "pt":
         arquivo = "srs_pontos.txt"
     elif modo == "en":
@@ -463,30 +473,39 @@ def carregar_textos_srs(modo="pt"):
             if not linha_limpa:
                 continue
 
-            # Identifica início de uma nova tag [TAG]
+            # Reconhece blocos delimitados por colchetes, como [SANTUARIO] ou [INTERFACE]
             if linha_limpa.startswith("[") and linha_limpa.endswith("]"):
-                # Salva o bloco anterior se não for da interface
-                if chave_atual and chave_atual != "INTERFACE" and len(linhas_bloco) >= 1:
+                # Se não for a tag de interface, a primeira linha é o nome e as demais formam o texto
+                if (
+                    chave_atual
+                    and chave_atual != "INTERFACE"
+                    and len(linhas_bloco) >= 1
+                ):
                     nome = linhas_bloco[0]
-                    texto = " ".join(linhas_bloco[1:]).strip() if len(linhas_bloco) > 1 else ""
+                    texto = (" ".join(linhas_bloco[1:]).strip() if len(linhas_bloco) > 1 else "")
                     dados[chave_atual] = {"nome": nome, "texto": texto}
-                
+
+                # Atualiza para o novo identificador de bloco e limpa o buffer
                 chave_atual = linha_limpa[1:-1].strip()
                 linhas_bloco = []
                 continue
 
-            # Processamento do conteúdo da tag atual
+            # Bloco [INTERFACE]: mapeia labels de botões e avisos como par chave:valor
             if chave_atual == "INTERFACE":
                 if ":" in linha_limpa:
-                    k, v = linha_limpa.split(":", 1)
-                    dados["INTERFACE"][k.strip()] = v.strip()
+                    chave_config, valor_config = linha_limpa.split(":", 1)
+                    dados["INTERFACE"][chave_config.strip()] = (
+                        valor_config.strip()
+                    )
+            # Blocos de pontos turísticos: acumula as linhas descritivas
             elif chave_atual:
                 linhas_bloco.append(linha_limpa)
 
-        # Salva o último bloco do arquivo
+        # Salva o último ponto turístico do arquivo
         if chave_atual and chave_atual != "INTERFACE" and len(linhas_bloco) >= 1:
             nome = linhas_bloco[0]
-            texto = " ".join(linhas_bloco[1:]).strip() if len(linhas_bloco) > 1 else ""
+            texto = (" ".join(linhas_bloco[1:]).strip() if len(linhas_bloco) > 1 else "")
+   #se tiver mais de 1 linha no bloco une elas e separa com espaço, se tiver só uma mostra só ela e o testo vira nada
             dados[chave_atual] = {"nome": nome, "texto": texto}
 
     return dados
