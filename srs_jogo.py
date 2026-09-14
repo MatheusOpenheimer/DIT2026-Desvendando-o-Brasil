@@ -7,6 +7,9 @@ import pygame
 import os
 from srs_ponto_turistico import criar_pontos_santa_rita
 
+def obter_nome_ponto_minusculo(ponto):
+    return ponto.nome.lower()
+
 
 class JogoSantaRita:
 
@@ -163,7 +166,7 @@ class JogoSantaRita:
                         self.finalizar = True
 
                     y_item = 80 + self.scroll_y
-                    for ponto in sorted(self.pontos, key=lambda p: p.nome.lower()):
+                    for ponto in sorted(self.pontos, key=obter_nome_ponto_minusculo):
                         item_rect = pygame.Rect(40, y_item, config.largura - 80, 56)
                         if item_rect.top >= 75 and item_rect.bottom <= config.altura - 60:
                             if item_rect.collidepoint(pos_mouse):
@@ -321,7 +324,7 @@ class JogoSantaRita:
         # LISTA DE PONTOS TURÍSTICOS ---------------------------------------
         elif self.estado in ("SELECAO_PONTO", "FEEDBACK_POPUP"):
             y_item = 80 + self.scroll_y
-            for ponto in sorted(self.pontos, key=lambda p: p.nome.lower()):
+            for ponto in sorted(self.pontos, key=obter_nome_ponto_minusculo):
                 item_rect = pygame.Rect(40, y_item, config.largura - 80, 56)
 
                 if item_rect.top >= 75 and item_rect.bottom <= config.altura - 60:

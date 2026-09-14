@@ -16,7 +16,7 @@ class Fase2:
     self.mapas_disponiveis = estados.caminhos_mapas.copy()
     #fundo-------------------------
   # Carrega e ajusta o tamanho da imagem de fundo para a resolução do jogo
-    self.fundo_img = pygame.image.load(funcoes.resource_path("assets/IMAGENS/fundo_fase2.png")).convert_alpha()
+    self.fundo_img = pygame.image.load(funcoes.resource_path("assets/IMAGENS/fundoF2.png")).convert_alpha()
     self.fundo_img = pygame.transform.scale(self.fundo_img, (config.largura, config.altura))
     # Cache para armazenar mapas de estados redimensionados
     self.mapas_estados_cache = {}

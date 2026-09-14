@@ -231,7 +231,7 @@ class Fase1:
 
           self.regiao_clicada = funcoes.obter_regiao_por_cor(rgb)
 
-          if self.regiao_clicada != None and self.ler_clique:
+          if self.regiao_clicada != None and self.ler_clique and not self.Acabou:
             self.ler_clique = False #desativa a leitura até parar de mostrar
             self.person_rect.center = pos_mouse
             self.verificar_acerto(self.regiao_clicada, modo)
@@ -360,8 +360,8 @@ class Fase1:
       transparencia_texto = int(142 + math.sin(self.contador_piscar) * 112)
 
       # Renderiza as linhas de texto
-      linha1 = config.fonte_grossa.render("Parabens! Voce ativou o modo BOOST", True, config.amarelo)
-      linha2 = config.fonte_grossa.render("Sequencia de acertos, continue assim!", True, config.bege)
+      linha1 = config.fonte_grossa.render("Parabéns! Você ativou o modo BOOST", True, config.amarelo)
+      linha2 = config.fonte_grossa.render("Sequência de acertos, continue assim!", True, config.bege)
 
       # Aplica a transparência suave diretamente nas imagens dos textos
       linha1.set_alpha(transparencia_texto)

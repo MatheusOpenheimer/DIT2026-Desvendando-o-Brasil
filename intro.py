@@ -5,7 +5,7 @@ import funcoes
 class Intro:
     def __init__(self):
         #FUNDO
-        self.fundo_img = pygame.image.load(funcoes.resource_path("assets/IMAGENS/fundo_fase2.png")).convert_alpha()
+        self.fundo_img = pygame.image.load(funcoes.resource_path("assets/IMAGENS/fundo_intro.png")).convert_alpha()
         self.fundo_img = pygame.transform.scale(self.fundo_img, (config.largura, config.altura))
         # BLOCO DE INSTRUÇÃO----------------------------------------------------------
         self.pergaminho_img = pygame.image.load(funcoes.resource_path("assets/IMAGENS/pergaminho.png"))

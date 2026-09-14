@@ -1,186 +1,196 @@
 import os
-import sqlite3
+from datetime import datetime
 
-# Garante que a pasta dados exista no diretório antes de conectar
+# Garante a existência da pasta 'dados' no projeto
 if not os.path.exists("dados"):
     os.makedirs("dados", exist_ok=True)
 
-# CAMINHOS DOS BANCOS SQLITE
-banco = os.path.join("dados", "GameData.db")
-banco_srs = os.path.join("dados", "SRSDATA.db")
+# Definição dos caminhos para cada arquivo de texto plano (.txt)
+CAMINHO_RANKING_BRASIL = os.path.join("dados", "ranking_brasil.txt")
+CAMINHO_ESTATISTICAS_BRASIL = os.path.join("dados", "estatisticas_brasil.txt")
+CAMINHO_FEEDBACKS_SRS = os.path.join("dados", "feedbacks_srs.txt")
+CAMINHO_RANKING_SRS = os.path.join("dados", "ranking_srs.txt")
+
+
+#FUNÇÕES DE CRITÉRIO DE ORDENAÇÃO
+#Recebe a tupla: (nome, idade, acertos, erros).
+    #Retorna a prioridade de ordenação:
+      #1º: -acertos -> o sinal de menos inverte para o maior número vir primeiro.
+      #2º: erros    -> menor quantidade de erros desempata primeiro.
+      #3º: idade    -> menor idade desempata primeiro. (Foco nas crianças)
+def regra_ordenacao_brasil(jogador):
+    nome, idade, acertos, erros = jogador
+    return (-acertos, erros, idade)
+
+
+def regra_ordenacao_srs(jogador):
+    nome, acertos, erros = jogador
+    return (-acertos, erros)
 
 
 
-# JOGO PRINCIPAL (BRASIL)
-
+#JOGO PRINCIPAL (MODO BRASIL)
 def criar_banco():
-    conexao = sqlite3.connect(banco) #pega a conexao com o banco
-    cursor = conexao.cursor() # cria uma variavel pra gerenciar o cursor no banco conectado
+    #Garante a existência dos arquivos de texto do jogo Brasil sem sobrescrever conteúdos existentes
+    arquivos_jogo_brasil = [CAMINHO_RANKING_BRASIL, CAMINHO_ESTATISTICAS_BRASIL]
 
-    cursor.execute('''CREATE TABLE IF NOT EXISTS ranking (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    nome TEXT,
-                    idade INTEGER,
-                    acertos INTEGER,
-                    erros INTEGER)''')
-
-    cursor.execute('''
-                    CREATE TABLE IF NOT EXISTS estatisticas_erros (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    Nome TEXT, Norte INTEGER, Nordeste INTEGER,
-                    Centro_oeste INTEGER,
-                    Sudeste INTEGER,
-                    Sul INTEGER)
-    ''')
-
-    conexao.commit()
-    conexao.close()
+    for caminho_arquivo in arquivos_jogo_brasil:
+        if not os.path.exists(caminho_arquivo):
+            with open(caminho_arquivo, "w", encoding="utf-8") as arquivo_txt:
+                pass
 
 
-def salvar_dados(nome, idade, acertos, erros):
-    conexao = sqlite3.connect(banco)
-    cursor = conexao.cursor()
-
-    cursor.execute('''INSERT INTO ranking (
-                    nome,
-                    idade,
-                    acertos,
-                    erros)
-                    VALUES (?, ?, ?, ?)''',
-                    (nome, int(idade), int(acertos), int(erros)))
-    conexao.commit()
-    conexao.close()
+def salvar_dados(nome_jogador, idade_jogador, total_acertos, total_erros):
+   #Grava o registro da partida no arquivo .txt usando ';' como delimitador.
+    with open(CAMINHO_RANKING_BRASIL, "a", encoding="utf-8") as arquivo_ranking:
+        linha_registro = f"{nome_jogador};{int(idade_jogador)};{int(total_acertos)};{int(total_erros)}\n"
+        arquivo_ranking.write(linha_registro)
 
 
 def carregar_ranking():
-    conexao = sqlite3.connect(banco)
-    cursor = conexao.cursor()
+    #Lê o arquivo de ranking, ordena usando a função 'regra_ordenacao_brasil' e retorna o Top 10.
+    if not os.path.exists(CAMINHO_RANKING_BRASIL):
+        return []
 
-    cursor.execute('''SELECT 
-                        nome, idade, acertos, erros
-                        FROM ranking ORDER BY acertos DESC, erros ASC LIMIT 10''') #o SELECT busca dados e deixa na memória temporaria do cursor
+    lista_jogadores = []
 
-    #o fetchall pega o que está na memória temporária do cursor e retorna. Sem select antes daria erro, pois não encontraria nada
-    top_jogadores = cursor.fetchall() #retorna umas lista de tuplas, cada linha dentro de uma tupla
-    conexao.close()
+    with open(CAMINHO_RANKING_BRASIL, "r", encoding="utf-8") as arquivo_ranking:
+        for linha in arquivo_ranking:
+            campos = linha.strip().split(";")
 
-    return top_jogadores
+            # Confirma se a linha tem os 4 campos esperados
+            if len(campos) == 4:
+                nome, idade, acertos, erros = campos
+                dados_jogador = (nome, int(idade), int(acertos), int(erros))
+                lista_jogadores.append(dados_jogador)
+
+    # Ordena usando a função
+    lista_jogadores.sort(key=regra_ordenacao_brasil)
+
+    return lista_jogadores[:10]
 
 
-def salvar_estatisticas(nome, norte, nordeste, centrooeste, sudeste, sul):
-    conexao = sqlite3.connect(banco)
-    cursor = conexao.cursor()
-
-    cursor.execute('''INSERT INTO estatisticas_erros (
-                        Nome,
-                        Norte,
-                        Nordeste,
-                        Centro_oeste,
-                        Sudeste,
-                        Sul)
-                        VALUES (?,?,?,?,?, ?)''',
-                        (nome, int(norte), int(nordeste), int(centrooeste), int(sudeste), int(sul)))
-    conexao.commit()
-    conexao.close()
+def salvar_estatisticas(nome_jogador,erros_norte,erros_nordeste,erros_centrooeste,erros_sudeste,erros_sul):
+    #Salva a quantidade de erros do jogador por região geográfica para fins pedagógicos
+    with open(CAMINHO_ESTATISTICAS_BRASIL, "a", encoding="utf-8") as arquivo_estatisticas:
+        linha_registro = (
+            f"{nome_jogador};{int(erros_norte)};{int(erros_nordeste)};"
+            f"{int(erros_centrooeste)};{int(erros_sudeste)};{int(erros_sul)}\n")
+        arquivo_estatisticas.write(linha_registro)
 
 
 def carregar_estatisticas():
-    conexao = sqlite3.connect(banco)
-    cursor = conexao.cursor()
-    cursor.execute('''SELECT 
-                    Nome, Norte, Nordeste, Centro_oeste, Sudeste, Sul
-                    FROM estatisticas_erros ORDER BY id DESC''')
-    estatisticas = cursor.fetchall()
-    conexao.close()
-    return estatisticas
+    #Lê o histórico de erros geográficos, retornando as jogadas mais recentes primeiro.
+    if not os.path.exists(CAMINHO_ESTATISTICAS_BRASIL):
+        return []
+
+    historico_estatisticas = []
+
+    with open(CAMINHO_ESTATISTICAS_BRASIL, "r", encoding="utf-8") as arquivo_estatisticas:
+        for linha in arquivo_estatisticas:
+            campos = linha.strip().split(";")
+
+            if len(campos) == 6:
+                nome, norte, nordeste, centro, sudeste, sul = campos
+                dados_estatistica = (
+                    nome,
+                    int(norte),
+                    int(nordeste),
+                    int(centro),
+                    int(sudeste),
+                    int(sul),
+                )
+                historico_estatisticas.append(dados_estatistica)
+
+    # Inverte a lista para que o último registro salvo apareça no topo
+    return list(reversed(historico_estatisticas))
 
 
 
-# JOGO SANTA RITA DO SAPUCAÍ (SRS)
-
+#JOGO SANTA RITA DO SAPUCAÍ (SRS)
 def criar_banco_srs():
-    conexao = sqlite3.connect(banco_srs)
-    cursor = conexao.cursor()
+    #Cria os arquivos de texto do módulo de Santa Rita caso ainda não existam.
+    arquivos_modulo_srs = [CAMINHO_FEEDBACKS_SRS, CAMINHO_RANKING_SRS]
 
-    # Tabela de Feedbacks dos Pontos Turísticos
-    cursor.execute('''
-        CREATE TABLE IF NOT EXISTS feedbacks (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            jogador TEXT,
-            ponto_turistico TEXT,
-            feedback TEXT,
-            data_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-        )
-    ''')
-
-    # Tabela de Ranking do Quiz de Santa Rita
-    cursor.execute('''
-        CREATE TABLE IF NOT EXISTS ranking_srs (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            nome TEXT,
-            acertos INTEGER,
-            erros INTEGER,
-            data_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-        )
-    ''')
-
-    conexao.commit()
-    conexao.close()
+    for caminho_arquivo in arquivos_modulo_srs:
+        if not os.path.exists(caminho_arquivo):
+            with open(caminho_arquivo, "w", encoding="utf-8") as arquivo_txt:
+                pass
 
 
-def salvar_feedback_srs(jogador, ponto_nome, texto):
-    if jogador == "":
-        jogador = "Explorador"
+def salvar_feedback_srs(nome_jogador, nome_ponto_turistico, texto_avaliacao):
+    #Salva as avaliações dos atrativos turísticos higienizando o texto contra quebras de linha.
+    jogador_identificado = nome_jogador if nome_jogador else "Explorador"
 
-    conexao = sqlite3.connect(banco_srs)
-    cursor = conexao.cursor()
-    cursor.execute('''
-        INSERT INTO feedbacks (jogador, ponto_turistico, feedback)
-        VALUES (?, ?, ?)
-    ''', (jogador, ponto_nome, texto))
-    conexao.commit()
-    conexao.close()
+    #Substitui quebras de linha e ponto e vírgula para não corromper as colunas do .txt
+    texto_sanitizado = (
+        texto_avaliacao.replace("\n", " ")
+        .replace("\r", " ")
+        .replace(";", ",")
+        .strip()
+    )
+    data_hora_registro = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+    with open(CAMINHO_FEEDBACKS_SRS, "a", encoding="utf-8") as arquivo_feedback:
+        linha_registro = f"{jogador_identificado};{nome_ponto_turistico};{texto_sanitizado};{data_hora_registro}\n"
+        arquivo_feedback.write(linha_registro)
 
 
 def carregar_feedbacks_srs():
-    conexao = sqlite3.connect(banco_srs)
-    cursor = conexao.cursor()
-    # Garante que a tabela exista antes de consultar
-    criar_banco_srs()
-    cursor.execute('''
-        SELECT jogador, ponto_turistico, feedback, data_registro 
-        FROM feedbacks ORDER BY id DESC
-    ''')
-    dados = cursor.fetchall()
-    conexao.close()
-    return dados
+    #Carrega todos os feedbacks registrados exibindo os mais recentes primeiro.
+    if not os.path.exists(CAMINHO_FEEDBACKS_SRS):
+        return []
+
+    lista_feedbacks = []
+
+    with open(CAMINHO_FEEDBACKS_SRS, "r", encoding="utf-8") as arquivo_feedback:
+        for linha in arquivo_feedback:
+            campos = linha.strip().split(";")
+
+            if len(campos) >= 4:
+                jogador, ponto_turistico, texto, data_registro = (
+                    campos[0],
+                    campos[1],
+                    campos[2],
+                    campos[3],
+                )
+                dados_feedback = (
+                    jogador,
+                    ponto_turistico,
+                    texto,
+                    data_registro,
+                )
+                lista_feedbacks.append(dados_feedback)
+
+    return list(reversed(lista_feedbacks))
 
 
-def salvar_ranking_srs(nome, acertos, erros):
-    if nome == "":
-        nome = "Explorador"
+def salvar_ranking_srs(nome_jogador, total_acertos, total_erros):
+    #Salva os pontos do jogo srs
+    jogador_identificado = nome_jogador if nome_jogador else "Explorador"
 
-    conexao = sqlite3.connect(banco_srs)
-    cursor = conexao.cursor()
-    cursor.execute('''
-        INSERT INTO ranking_srs (nome, acertos, erros)
-        VALUES (?, ?, ?)
-    ''', (nome, int(acertos), int(erros)))
-    conexao.commit()
-    conexao.close()
+    with open(CAMINHO_RANKING_SRS, "a", encoding="utf-8") as arquivo_ranking_srs:
+        linha_registro = f"{jogador_identificado};{int(total_acertos)};{int(total_erros)}\n"
+        arquivo_ranking_srs.write(linha_registro)
 
 
 def carregar_ranking_srs():
-    conexao = sqlite3.connect(banco_srs)
-    cursor = conexao.cursor()
-    # Garante que a tabela exista antes de consultar
-    criar_banco_srs()
-    cursor.execute('''
-        SELECT nome, acertos, erros 
-        FROM ranking_srs 
-        ORDER BY acertos DESC, erros ASC 
-        LIMIT 10
-    ''')
-    top_jogadores = cursor.fetchall()
-    conexao.close()
-    return top_jogadores
+    #Lê e retorna o Top 10 de srs usando a regra_ordenacao_srs.
+    if not os.path.exists(CAMINHO_RANKING_SRS):
+        return []
+
+    lista_jogadores_srs = []
+
+    with open(CAMINHO_RANKING_SRS, "r", encoding="utf-8") as arquivo_ranking_srs:
+        for linha in arquivo_ranking_srs:
+            campos = linha.strip().split(";")
+
+            if len(campos) == 3:
+                nome, acertos, erros = campos
+                dados_jogador = (nome, int(acertos), int(erros))
+                lista_jogadores_srs.append(dados_jogador)
+
+    # Ordena com a função dedicada
+    lista_jogadores_srs.sort(key=regra_ordenacao_srs)
+
+    return lista_jogadores_srs[:10]

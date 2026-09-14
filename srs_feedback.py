@@ -153,7 +153,7 @@ class VisualizarFeedbacks:
         pygame.draw.rect(tela, config.bege, self.bloco_feedbacks, border_radius=16)
         pygame.draw.rect(tela, config.amarelo, self.bloco_feedbacks, width=4, border_radius=16)
 
-        titulo = config.fonte_grossa.render("FEEDBACKS SANTA RITA", True, config.preto)
+        titulo = config.fonte_grossa.render("FEEDBACKS SANTA RITA DO SAPUCAÍ", True, config.preto)
         titulo_rect = titulo.get_rect(centerx=self.bloco_feedbacks.centerx, y=self.bloco_feedbacks.y + 35)
         tela.blit(titulo, titulo_rect)
 
