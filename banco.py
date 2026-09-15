@@ -6,6 +6,7 @@ if not os.path.exists("dados"):
     os.makedirs("dados", exist_ok=True)
 
 # Definição dos caminhos para cada arquivo de texto plano (.txt)
+#Fiz assim pra imitar a lógica de um banco de dados e não ficar baguynçado
 CAMINHO_RANKING_BRASIL = os.path.join("dados", "ranking_brasil.txt")
 CAMINHO_ESTATISTICAS_BRASIL = os.path.join("dados", "estatisticas_brasil.txt")
 CAMINHO_FEEDBACKS_SRS = os.path.join("dados", "feedbacks_srs.txt")

@@ -159,7 +159,9 @@ class Estatisticas():
             area_corte = pygame.Rect(0, self.scroll_y, self.largura_tabela, self.altura_area_linhas)
             # Desenha apenas a fatia visível dentro do card bege
             tela.blit(superficie_linhas, (self.bloco_estatisticas.x + 10, self.pos_y_tabela), area_corte)
-
+        else:
+            texto_vazio = config.fonte_dicas.render("Nenhuma estatística registrada ainda.", True, config.preto)
+            tela.blit(texto_vazio, texto_vazio.get_rect(center=self.bloco_estatisticas.center)) 
         pygame.draw.rect(tela, config.vermelho, self.botao_fechar_estatisticas, border_radius=6)
 
         fechar = config.fonte_fases.render("X", True, config.branco)
