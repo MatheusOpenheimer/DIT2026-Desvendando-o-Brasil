@@ -12,9 +12,9 @@ class Final:
     def __init__(self, dados_jogador):
 
         self.nome = dados_jogador["nome"]
-        self.idade = dados_jogador["idade"]
-        self.acertos = dados_jogador["acertos"]
-        self.erros = dados_jogador["erros"]
+        self.idade = int(dados_jogador["idade"])
+        self.acertos = int(dados_jogador["acertos"])
+        self.erros = int(dados_jogador["erros"])
 
         self.top_jogadores = []
         
@@ -82,7 +82,7 @@ class Final:
 
         if rodar_ranking and not self.salvo:
             if rodar_ranking == "SRS":
-                banco.salvar_ranking_srs(self.nome, self.acertos, self.erros)
+                banco.salvar_ranking_srs(self.nome, self.idade, self.acertos, self.erros)
                 self.top_jogadores = banco.carregar_ranking_srs()
             elif rodar_ranking == "BRASIL":
                 banco.salvar_dados(self.nome, self.idade, self.acertos, self.erros)
@@ -123,13 +123,9 @@ class Final:
         y_linha = rect_ranking.y + 65
         for pos, jogador in enumerate(self.top_jogadores):
             nome = jogador[0]
-            
-            if len(jogador) >= 4:
-                acertos = jogador[2]
-                erros = jogador[3]
-            else:
-                acertos = jogador[1]
-                erros = jogador[2]
+            idade = jogador[1]
+            acertos = jogador[2]
+            erros = jogador[3]
 
             blocos_rect = pygame.Rect(0, y_linha, largura_ranking - 15, 45)
             blocos_rect.centerx = config.centroX
@@ -143,7 +139,7 @@ class Final:
             elif pos == 2:
                 cor_fundo = config.bronze
                 cor_texto = config.branco
-            elif nome == self.nome:
+            elif nome == self.nome and idade == self.idade and acertos == self.acertos and erros == self.erros: # confere se é a mesma pessoa
                 cor_fundo = (123, 252, 3)
                 cor_texto = config.preto
             else:

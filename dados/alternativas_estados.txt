@@ -1,82 +1,82 @@
 Estado: Acre
 pergunta: Em qual região do Brasil fica o Acre?
-opcoes: A) Norte; B) Nordeste; C) Sul; D) Sudeste
-correta: 0
+opcoes: A) Nordeste; B) Sudeste; C) Norte; D) Sul
+correta: 2
 
 pergunta: O que aconteceu com o Acre após o Tratado de Petrópolis, de 1903?
-opcoes: A) Passou a fazer parte do Brasil.; B) Virou parte do Chile.; C) Foi dividido entre estados brasileiros.; D) Deixou de existir como território.
-correta: 0
+opcoes: A) Deixou de existir como território.; B) Foi dividido entre estados brasileiros.; C) Virou parte do Chile.; D) Passou a fazer parte do Brasil.
+correta: 3
 
 pergunta: Quem foi Plácido de Castro?
-opcoes: A) Um líder da Revolução Acreana.; B) Um cantor do Acre.; C) Um arquiteto de Rio Branco.; D) Um navegador português.
+opcoes: A) Um líder da Revolução Acreana.; B) Um arquiteto de Rio Branco.; C) Um cantor do Acre.; D) Um navegador português.
 correta: 0
 
 pergunta: Chico Mendes defendia principalmente os trabalhadores da floresta e:
-opcoes: A) A construção de estádios.; B) A preservação da Amazônia.; C) A criação de ferrovias.; D) A exploração de petróleo.
-correta: 1
+opcoes: A) A preservação da Amazônia.; B) A exploração de petróleo.; C) A construção de estádios.; D) A criação de ferrovias.
+correta: 0
 
 pergunta: Os Huni Kuĩ são um povo indígena presente principalmente em qual estado?
-opcoes: A) Acre; B) Paraná; C) Ceará; D) Sergipe
-correta: 0
+opcoes: A) Sergipe; B) Acre; C) Paraná; D) Ceará
+correta: 1
 
 Estado: Alagoas
 pergunta: Em qual região do Brasil fica Alagoas?
-opcoes: A) Norte; B) Nordeste; C) Centro-Oeste; D) Sul
-correta: 1
+opcoes: A) Centro-Oeste; B) Sul; C) Norte; D) Nordeste
+correta: 3
 
 pergunta: Penedo é uma cidade histórica de Alagoas localizada às margens de qual rio?
-opcoes: A) Rio Amazonas; B) Rio Paraná; C) Rio São Francisco; D) Rio Negro
-correta: 2
+opcoes: A) Rio Paraná; B) Rio São Francisco; C) Rio Negro; D) Rio Amazonas
+correta: 1
 
 pergunta: Zumbi dos Palmares foi uma importante liderança de qual comunidade de resistência à escravização?
-opcoes: A) Quilombo dos Palmares.; B) Vila Boa.; C) Bumbódromo.; D) Cidade de Goiás.
-correta: 0
+opcoes: A) Vila Boa.; B) Quilombo dos Palmares.; C) Cidade de Goiás.; D) Bumbódromo.
+correta: 1
 
 pergunta: O Guerreiro é uma manifestação cultural de Alagoas que mistura:
-opcoes: A) Música, dança, personagens e roupas coloridas.; B) Apenas esportes.; C) Somente pinturas.; D) Apenas corridas de barcos.
+opcoes: A) Música, dança, personagens e roupas coloridas.; B) Apenas corridas de barcos.; C) Somente pinturas.; D) Apenas esportes.
 correta: 0
 
 pergunta: Qual elemento natural é importante para as comunidades de Alagoas e também atravessa parte do estado?
-opcoes: A) Rio São Francisco.; B) Rio Amazonas.; C) Rio Negro.; D) Rio Madeira.
-correta: 0
+opcoes: A) Rio Amazonas.; B) Rio Negro.; C) Rio São Francisco.; D) Rio Madeira.
+correta: 2
 
 Estado: Amapá
 pergunta: Em qual região do Brasil fica o Amapá?
-opcoes: A) Norte; B) Sul; C) Sudeste; D) Centro-Oeste
-correta: 0
+opcoes: A) Centro-Oeste; B) Sudeste; C) Sul; D) Norte
+correta: 3
 
 pergunta: Qual linha imaginária passa pela cidade de Macapá?
-opcoes: A) Trópico de Capricórnio; B) Linha do Equador; C) Meridiano de Greenwich; D) Trópico de Câncer
+opcoes: A) Trópico de Câncer; B) Linha do Equador; C) Trópico de Capricórnio; D) Meridiano de Greenwich
 correta: 1
 
 pergunta: Para que servia a Fortaleza de São José de Macapá no período colonial?
-opcoes: A) Para proteger a região.; B) Para realizar festas.; C) Para plantar alimentos.; D) Para marcar a Linha do Equador.
-correta: 0
+opcoes: A) Para marcar a Linha do Equador.; B) Para proteger a região.; C) Para plantar alimentos.; D) Para realizar festas.
+correta: 1
 
 pergunta: O Parque Nacional Montanhas do Tumucumaque ajuda a proteger uma grande área de:
-opcoes: A) Floresta amazônica.; B) Campos de neve.; C) Deserto.; D) Mata de araucárias.
+opcoes: A) Floresta amazônica.; B) Mata de araucárias.; C) Campos de neve.; D) Deserto.
 correta: 0
 
 pergunta: O Marabaixo é uma tradição cultural do Amapá que envolve:
-opcoes: A) Música e dança com raízes afro-brasileiras.; B) Apenas futebol.; C) Corridas de cavalos.; D) Somente teatro.
-correta: 0
+opcoes: A) Corridas de cavalos.; B) Somente teatro.; C) Música e dança com raízes afro-brasileiras.; D) Apenas futebol.
+correta: 2
 
 Estado: Amazonas
 pergunta: Em qual região do Brasil fica o Amazonas?
-opcoes: A) Norte; B) Nordeste; C) Sul; D) Centro-Oeste
-correta: 0
+opcoes: A) Sul; B) Nordeste; C) Centro-Oeste; D) Norte
+correta: 3
 
 pergunta: O que foi o Ciclo da Borracha, importante para a história de Manaus?
-opcoes: A) Um período de riqueza ligado à extração do látex.; B) Uma época de cultivo de café.; C) Uma guerra entre estados.; D) Um período de construção de Brasília.
-correta: 0
+opcoes: A) Uma época de cultivo de café.; B) Um período de construção de Brasília.; C) Um período de riqueza ligado à extração do látex.; D) Uma guerra entre estados.
+correta: 2
 
 pergunta: No Encontro das Águas, perto de Manaus, quais rios correm lado a lado?
-opcoes: A) Negro e Solimões.; B) Paraná e Tietê.; C) São Francisco e Parnaíba.; D) Madeira e Guaporé.
+opcoes: A) Negro e Solimões.; B) Paraná e Tietê.; C) Madeira e Guaporé.; D) São Francisco e Parnaíba.
 correta: 0
 
 pergunta: Quais são os dois bois-bumbás do Festival de Parintins?
-opcoes: A) Caprichoso e Garantido.; B) Flor do Campo e Malhadinho.; C) Negro e Solimões.; D) Azul e Branco.
-correta: 0
+opcoes: A) Negro e Solimões.; B) Caprichoso e Garantido.; C) Azul e Branco.; D) Flor do Campo e Malhadinho.
+correta: 1
 
 pergunta: Por que os povos indígenas são importantes para a cultura do Amazonas?
 opcoes: A) Seus conhecimentos, línguas e tradições fazem parte da diversidade cultural.; B) Todos pertencem ao mesmo povo.; C) Criaram o Teatro Amazonas.; D) Criaram a cidade de Manaus.
@@ -84,20 +84,20 @@ correta: 0
 
 Estado: Bahia
 pergunta: Em qual região do Brasil fica a Bahia?
-opcoes: A) Nordeste; B) Norte; C) Sul; D) Centro-Oeste
-correta: 0
+opcoes: A) Centro-Oeste; B) Nordeste; C) Norte; D) Sul
+correta: 1
 
 pergunta: Qual cidade foi a primeira capital do Brasil?
-opcoes: A) Salvador.; B) Recife.; C) Fortaleza.; D) Vitória.
-correta: 0
+opcoes: A) Vitória.; B) Fortaleza.; C) Recife.; D) Salvador.
+correta: 3
 
 pergunta: Por que o dia 2 de julho é importante na Bahia?
-opcoes: A) Marca a vitória brasileira sobre as tropas portuguesas em 1823.; B) É o aniversário de Salvador.; C) Foi o dia da chegada de Pedro Álvares Cabral.; D) É o início do Carnaval.
-correta: 0
+opcoes: A) É o início do Carnaval.; B) É o aniversário de Salvador.; C) Marca a vitória brasileira sobre as tropas portuguesas em 1823.; D) Foi o dia da chegada de Pedro Álvares Cabral.
+correta: 2
 
 pergunta: A Roda de Capoeira mistura movimentos do corpo com:
-opcoes: A) Música, canto e instrumentos como o berimbau.; B) Apenas corrida.; C) Somente pintura.; D) Apenas teatro.
-correta: 0
+opcoes: A) Somente pintura.; B) Apenas teatro.; C) Apenas corrida.; D) Música, canto e instrumentos como o berimbau.
+correta: 3
 
 pergunta: O acarajé tem uma forte ligação com qual parte da cultura baiana?
 opcoes: A) Tradições afro-brasileiras.; B) Cultura japonesa.; C) Cultura gaúcha.; D) Cultura amazônica.
@@ -105,276 +105,276 @@ correta: 0
 
 Estado: Ceará
 pergunta: Em qual região do Brasil fica o Ceará?
-opcoes: A) Nordeste; B) Norte; C) Sul; D) Centro-Oeste
-correta: 0
+opcoes: A) Sul; B) Nordeste; C) Centro-Oeste; D) Norte
+correta: 1
 
 pergunta: Quem foi conhecido como Dragão do Mar?
-opcoes: A) Francisco José do Nascimento, líder de uma greve de jangadeiros.; B) Um arquiteto de Fortaleza.; C) Um escritor de cordel.; D) Um governador do Ceará.
-correta: 0
+opcoes: A) Um arquiteto de Fortaleza.; B) Um escritor de cordel.; C) Francisco José do Nascimento, líder de uma greve de jangadeiros.; D) Um governador do Ceará.
+correta: 2
 
 pergunta: O Ceará foi a primeira província brasileira a abolir a escravidão. Em que ano isso aconteceu?
-opcoes: A) 1884; B) 1822; C) 1888; D) 1903
+opcoes: A) 1884; B) 1903; C) 1822; D) 1888
 correta: 0
 
 pergunta: Rachel de Queiroz entrou para a história da literatura por ser:
-opcoes: A) A primeira mulher a entrar para a Academia Brasileira de Letras.; B) A criadora do frevo.; C) A fundadora de Fortaleza.; D) A criadora do cordel.
-correta: 0
+opcoes: A) A criadora do cordel.; B) A fundadora de Fortaleza.; C) A criadora do frevo.; D) A primeira mulher a entrar para a Academia Brasileira de Letras.
+correta: 3
 
 pergunta: A Literatura de Cordel costuma apresentar:
-opcoes: A) Poemas, histórias e ilustrações.; B) Apenas músicas.; C) Somente pinturas.; D) Apenas receitas.
-correta: 0
+opcoes: A) Somente pinturas.; B) Apenas músicas.; C) Apenas receitas.; D) Poemas, histórias e ilustrações.
+correta: 3
 
 Estado: Espírito Santo
 pergunta: Em qual região do Brasil fica o Espírito Santo?
-opcoes: A) Sudeste; B) Nordeste; C) Norte; D) Centro-Oeste
-correta: 0
+opcoes: A) Nordeste; B) Norte; C) Sudeste; D) Centro-Oeste
+correta: 2
 
 pergunta: Qual é a capital do Espírito Santo?
-opcoes: A) Vitória; B) Vila Velha; C) Guarapari; D) Anchieta
-correta: 0
+opcoes: A) Vila Velha; B) Anchieta; C) Guarapari; D) Vitória
+correta: 3
 
 pergunta: O Convento da Penha, um dos símbolos históricos do estado, fica em qual cidade?
-opcoes: A) Vila Velha; B) Vitória; C) Serra; D) Guarapari
+opcoes: A) Vila Velha; B) Serra; C) Vitória; D) Guarapari
 correta: 0
 
 pergunta: As Paneleiras de Goiabeiras mantêm uma técnica tradicional usada para fazer:
-opcoes: A) Panelas de barro.; B) Barcos de madeira.; C) Instrumentos de metal.; D) Tecidos de algodão.
+opcoes: A) Panelas de barro.; B) Instrumentos de metal.; C) Tecidos de algodão.; D) Barcos de madeira.
 correta: 0
 
 pergunta: Uma característica da moqueca capixaba é que ela:
-opcoes: A) É feita em panela de barro e não leva dendê nem leite de coco.; B) Não usa peixe.; C) É feita apenas com carne.; D) É servida somente em festas.
-correta: 0
+opcoes: A) É servida somente em festas.; B) É feita em panela de barro e não leva dendê nem leite de coco.; C) Não usa peixe.; D) É feita apenas com carne.
+correta: 1
 
 Estado: Goiás
 pergunta: Em qual região do Brasil fica Goiás?
-opcoes: A) Centro-Oeste; B) Nordeste; C) Norte; D) Sul
-correta: 0
+opcoes: A) Sul; B) Norte; C) Centro-Oeste; D) Nordeste
+correta: 2
 
 pergunta: Qual é a capital atual de Goiás?
-opcoes: A) Goiânia; B) Cidade de Goiás; C) Pirenópolis; D) Anápolis
-correta: 0
+opcoes: A) Anápolis; B) Pirenópolis; C) Cidade de Goiás; D) Goiânia
+correta: 3
 
 pergunta: Por que a Cidade de Goiás é importante para a história do estado?
-opcoes: A) Foi antiga capital e cresceu durante o ciclo do ouro.; B) Foi construída para ser a capital em 1960.; C) É a atual sede do governo.; D) Foi fundada durante a construção de Brasília.
-correta: 0
+opcoes: A) Foi construída para ser a capital em 1960.; B) Foi antiga capital e cresceu durante o ciclo do ouro.; C) Foi fundada durante a construção de Brasília.; D) É a atual sede do governo.
+correta: 1
 
 pergunta: O que acontece nas Cavalhadas de Goiás?
-opcoes: A) Há uma encenação a cavalo inspirada em batalhas entre cristãos e mouros.; B) Acontecem corridas de barcos.; C) São disputas de futebol.; D) São apresentações de cinema.
+opcoes: A) Há uma encenação a cavalo inspirada em batalhas entre cristãos e mouros.; B) Acontecem corridas de barcos.; C) São apresentações de cinema.; D) São disputas de futebol.
 correta: 0
 
 pergunta: As Ritxòkò, produzidas por mulheres Karajá, são:
-opcoes: A) Bonecas de cerâmica que representam aspectos da cultura Karajá.; B) Instrumentos de metal.; C) Máscaras de Carnaval.; D) Brinquedos eletrônicos.
-correta: 0
+opcoes: A) Instrumentos de metal.; B) Máscaras de Carnaval.; C) Bonecas de cerâmica que representam aspectos da cultura Karajá.; D) Brinquedos eletrônicos.
+correta: 2
 
 Estado: Maranhão
 pergunta: Em qual região do Brasil fica o Maranhão?
-opcoes: A) Nordeste; B) Sul; C) Sudeste; D) Centro-Oeste
-correta: 0
+opcoes: A) Sul; B) Nordeste; C) Sudeste; D) Centro-Oeste
+correta: 1
 
 pergunta: Qual é a capital do Maranhão?
-opcoes: A) São Luís; B) Imperatriz; C) Caxias; D) Alcântara
-correta: 0
+opcoes: A) Alcântara; B) Caxias; C) Imperatriz; D) São Luís
+correta: 3
 
 pergunta: Por que São Luís possui muitos casarões com azulejos?
-opcoes: A) Os azulejos ajudam a proteger as paredes do calor e da umidade.; B) Serviam para esconder as ruas.; C) Eram usados para marcar a Linha do Equador.; D) Foram colocados para representar o Pantanal.
+opcoes: A) Os azulejos ajudam a proteger as paredes do calor e da umidade.; B) Foram colocados para representar o Pantanal.; C) Eram usados para marcar a Linha do Equador.; D) Serviam para esconder as ruas.
 correta: 0
 
 pergunta: O Bumba-meu-boi do Maranhão reúne:
-opcoes: A) Música, dança, teatro, artesanato e histórias.; B) Apenas futebol.; C) Somente pintura.; D) Apenas literatura.
+opcoes: A) Música, dança, teatro, artesanato e histórias.; B) Somente pintura.; C) Apenas futebol.; D) Apenas literatura.
 correta: 0
 
 pergunta: O Tambor de Crioula é uma manifestação que reúne:
-opcoes: A) Dança, canto e percussão de tambores.; B) Apenas teatro.; C) Corridas de cavalos.; D) Somente escultura.
-correta: 0
+opcoes: A) Corridas de cavalos.; B) Apenas teatro.; C) Dança, canto e percussão de tambores.; D) Somente escultura.
+correta: 2
 
 Estado: Mato Grosso
 pergunta: Em qual região do Brasil fica Mato Grosso?
-opcoes: A) Centro-Oeste; B) Nordeste; C) Sul; D) Sudeste
-correta: 0
+opcoes: A) Sudeste; B) Sul; C) Nordeste; D) Centro-Oeste
+correta: 3
 
 pergunta: O que ajudou no crescimento de Cuiabá no século XVIII?
-opcoes: A) A descoberta de ouro.; B) A produção de café.; C) A construção de Brasília.; D) A pesca no litoral.
+opcoes: A) A descoberta de ouro.; B) A pesca no litoral.; C) A construção de Brasília.; D) A produção de café.
 correta: 0
 
 pergunta: Qual foi a primeira capital da antiga Província de Mato Grosso?
-opcoes: A) Vila Bela da Santíssima Trindade.; B) Cuiabá.; C) Rondonópolis.; D) Cáceres.
-correta: 0
+opcoes: A) Rondonópolis.; B) Vila Bela da Santíssima Trindade.; C) Cáceres.; D) Cuiabá.
+correta: 1
 
 pergunta: O Siriri é uma manifestação cultural de Mato Grosso que envolve:
-opcoes: A) Dança e música.; B) Apenas pintura.; C) Somente literatura.; D) Corridas de animais.
-correta: 0
+opcoes: A) Corridas de animais.; B) Dança e música.; C) Apenas pintura.; D) Somente literatura.
+correta: 1
 
 pergunta: A viola de cocho é:
-opcoes: A) Um instrumento tradicional feito artesanalmente.; B) Um tipo de dança.; C) Uma comida típica.; D) Uma construção histórica.
-correta: 0
+opcoes: A) Uma construção histórica.; B) Uma comida típica.; C) Um instrumento tradicional feito artesanalmente.; D) Um tipo de dança.
+correta: 2
 
 Estado: Mato Grosso do Sul
 pergunta: Em qual região do Brasil fica Mato Grosso do Sul?
-opcoes: A) Centro-Oeste; B) Norte; C) Nordeste; D) Sudeste
-correta: 0
+opcoes: A) Nordeste; B) Norte; C) Sudeste; D) Centro-Oeste
+correta: 3
 
 pergunta: Em que ano Mato Grosso do Sul começou a existir oficialmente como estado?
-opcoes: A) 1979; B) 1960; C) 1988; D) 2000
-correta: 0
+opcoes: A) 1960; B) 1988; C) 1979; D) 2000
+correta: 2
 
 pergunta: O que acontece com o Pantanal ao longo do ano?
-opcoes: A) A paisagem muda entre períodos de cheia e seca.; B) Fica coberto de neve.; C) Vira deserto.; D) Permanece alagado o ano inteiro.
+opcoes: A) A paisagem muda entre períodos de cheia e seca.; B) Vira deserto.; C) Permanece alagado o ano inteiro.; D) Fica coberto de neve.
 correta: 0
 
 pergunta: O tereré é tradicionalmente preparado com:
-opcoes: A) Erva-mate e água fria.; B) Café e leite quente.; C) Cacau e água de coco.; D) Milho e água morna.
-correta: 0
+opcoes: A) Café e leite quente.; B) Erva-mate e água fria.; C) Milho e água morna.; D) Cacau e água de coco.
+correta: 1
 
 pergunta: Quais países fazem fronteira com Mato Grosso do Sul?
-opcoes: A) Paraguai e Bolívia.; B) Chile e Peru.; C) Argentina e Uruguai.; D) Venezuela e Guiana.
-correta: 0
+opcoes: A) Chile e Peru.; B) Paraguai e Bolívia.; C) Venezuela e Guiana.; D) Argentina e Uruguai.
+correta: 1
 
 Estado: Minas Gerais
 pergunta: Em qual região do Brasil fica Minas Gerais?
-opcoes: A) Sudeste; B) Norte; C) Nordeste; D) Sul
+opcoes: A) Sudeste; B) Norte; C) Sul; D) Nordeste
 correta: 0
 
 pergunta: Por que Ouro Preto é importante para a história de Minas Gerais?
-opcoes: A) Foi um importante centro do ciclo do ouro e preserva construções coloniais.; B) Foi construída no século XX.; C) É a atual capital do estado.; D) Foi fundada junto com Brasília.
-correta: 0
+opcoes: A) É a atual capital do estado.; B) Foi um importante centro do ciclo do ouro e preserva construções coloniais.; C) Foi construída no século XX.; D) Foi fundada junto com Brasília.
+correta: 1
 
 pergunta: O que foi a Inconfidência Mineira?
-opcoes: A) Um movimento contra o domínio português e a cobrança de impostos.; B) Uma festa popular.; C) Uma competição esportiva.; D) Uma dança tradicional.
-correta: 0
+opcoes: A) Uma competição esportiva.; B) Uma dança tradicional.; C) Um movimento contra o domínio português e a cobrança de impostos.; D) Uma festa popular.
+correta: 2
 
 pergunta: Quem foi Aleijadinho?
-opcoes: A) Um importante artista do Barroco, escultor e arquiteto.; B) Um governador do século XX.; C) Um líder indígena.; D) Um navegador português.
-correta: 0
+opcoes: A) Um governador do século XX.; B) Um líder indígena.; C) Um navegador português.; D) Um importante artista do Barroco, escultor e arquiteto.
+correta: 3
 
 pergunta: Qual característica geográfica e administrativa destaca Minas Gerais?
-opcoes: A) É o estado brasileiro com o maior número de municípios, 853.; B) É o menor estado do Brasil.; C) Possui apenas cidades litorâneas.; D) Está localizado na Região Norte.
-correta: 0
+opcoes: A) Possui apenas cidades litorâneas.; B) É o estado brasileiro com o maior número de municípios, 853.; C) Está localizado na Região Norte.; D) É o menor estado do Brasil.
+correta: 1
 
 Estado: Pará
 pergunta: Em qual região do Brasil fica o Pará?
-opcoes: A) Norte; B) Nordeste; C) Sul; D) Centro-Oeste
-correta: 0
+opcoes: A) Sul; B) Nordeste; C) Norte; D) Centro-Oeste
+correta: 2
 
 pergunta: Para que servia o Mercado Ver-o-Peso no início de sua história?
-opcoes: A) Para fiscalizar mercadorias que chegavam à cidade.; B) Para funcionar como fortaleza.; C) Para receber aviões.; D) Para ser uma escola.
+opcoes: A) Para fiscalizar mercadorias que chegavam à cidade.; B) Para ser uma escola.; C) Para receber aviões.; D) Para funcionar como fortaleza.
 correta: 0
 
 pergunta: O que foi a Cabanagem?
-opcoes: A) Uma grande revolta popular que aconteceu entre 1835 e 1840.; B) Uma festa junina.; C) Uma dança tradicional.; D) Uma expedição turística.
-correta: 0
+opcoes: A) Uma expedição turística.; B) Uma festa junina.; C) Uma dança tradicional.; D) Uma grande revolta popular que aconteceu entre 1835 e 1840.
+correta: 3
 
 pergunta: O Carimbó é uma manifestação cultural paraense que envolve principalmente:
-opcoes: A) Música e dança.; B) Apenas pintura.; C) Somente teatro.; D) Competições esportivas.
-correta: 0
+opcoes: A) Competições esportivas.; B) Música e dança.; C) Somente teatro.; D) Apenas pintura.
+correta: 1
 
 pergunta: Qual grande celebração acontece em Belém e reúne milhões de pessoas?
-opcoes: A) Círio de Nossa Senhora de Nazaré.; B) Revolução Cabanagem.; C) Festa do Ver-o-Peso.; D) Festival do Açaí.
-correta: 0
+opcoes: A) Festival do Açaí.; B) Círio de Nossa Senhora de Nazaré.; C) Revolução Cabanagem.; D) Festa do Ver-o-Peso.
+correta: 1
 
 Estado: Paraíba
 pergunta: Em qual região do Brasil fica a Paraíba?
-opcoes: A) Nordeste; B) Norte; C) Centro-Oeste; D) Sul
-correta: 0
+opcoes: A) Sul; B) Nordeste; C) Norte; D) Centro-Oeste
+correta: 1
 
 pergunta: Qual é a capital da Paraíba?
-opcoes: A) João Pessoa; B) Campina Grande; C) Patos; D) Sousa
-correta: 0
+opcoes: A) Patos; B) Campina Grande; C) João Pessoa; D) Sousa
+correta: 2
 
 pergunta: O que torna a Ponta do Seixas especial?
-opcoes: A) É considerada o ponto mais oriental das Américas.; B) É o ponto mais alto do Brasil.; C) É o maior porto do Nordeste.; D) Fica na Região Norte.
-correta: 0
+opcoes: A) Fica na Região Norte.; B) É o maior porto do Nordeste.; C) É considerada o ponto mais oriental das Américas.; D) É o ponto mais alto do Brasil.
+correta: 2
 
 pergunta: Quem foi Celso Furtado?
-opcoes: A) Um economista que estudou os problemas econômicos e sociais do Nordeste.; B) Um cantor de forró.; C) Um arquiteto de Brasília.; D) Um navegador português.
+opcoes: A) Um economista que estudou os problemas econômicos e sociais do Nordeste.; B) Um arquiteto de Brasília.; C) Um navegador português.; D) Um cantor de forró.
 correta: 0
 
 pergunta: O que é xilogravura, muito usada na cultura popular nordestina?
-opcoes: A) Uma técnica que usa uma matriz de madeira para imprimir imagens.; B) Uma dança.; C) Um instrumento musical.; D) Um prato típico.
-correta: 0
+opcoes: A) Um prato típico.; B) Um instrumento musical.; C) Uma dança.; D) Uma técnica que usa uma matriz de madeira para imprimir imagens.
+correta: 3
 
 Estado: Paraná
 pergunta: Em qual região do Brasil fica o Paraná?
-opcoes: A) Sul; B) Norte; C) Nordeste; D) Centro-Oeste
-correta: 0
+opcoes: A) Centro-Oeste; B) Nordeste; C) Sul; D) Norte
+correta: 2
 
 pergunta: Por que as Cataratas do Iguaçu são famosas?
-opcoes: A) Por suas centenas de quedas d'água e sua área de preservação.; B) Porque são uma obra construída por pessoas.; C) Porque ficam no litoral.; D) Porque são montanhas congeladas.
-correta: 0
+opcoes: A) Porque são uma obra construída por pessoas.; B) Por suas centenas de quedas d'água e sua área de preservação.; C) Porque ficam no litoral.; D) Porque são montanhas congeladas.
+correta: 1
 
 pergunta: O barreado é um prato típico de qual região do Paraná?
-opcoes: A) Litoral paranaense.; B) Norte do estado.; C) Região de Curitiba.; D) Extremo oeste.
-correta: 0
+opcoes: A) Norte do estado.; B) Região de Curitiba.; C) Extremo oeste.; D) Litoral paranaense.
+correta: 3
 
 pergunta: A Estrada de Ferro Curitiba–Paranaguá liga:
-opcoes: A) O interior ao litoral, atravessando a Serra do Mar.; B) O Paraná ao Paraguai.; C) Curitiba a Foz do Iguaçu.; D) Apenas cidades do litoral.
+opcoes: A) O interior ao litoral, atravessando a Serra do Mar.; B) Curitiba a Foz do Iguaçu.; C) O Paraná ao Paraguai.; D) Apenas cidades do litoral.
 correta: 0
 
 pergunta: O Fandango Caiçara é uma tradição de comunidades:
-opcoes: A) Do litoral.; B) Das montanhas de Minas.; C) Do sertão nordestino.; D) Da Amazônia.
-correta: 0
+opcoes: A) Do sertão nordestino.; B) Das montanhas de Minas.; C) Da Amazônia.; D) Do litoral.
+correta: 3
 
 Estado: Pernambuco
 pergunta: Em qual região do Brasil fica Pernambuco?
-opcoes: A) Nordeste; B) Norte; C) Sul; D) Centro-Oeste
-correta: 0
+opcoes: A) Sul; B) Nordeste; C) Centro-Oeste; D) Norte
+correta: 1
 
 pergunta: Qual é a capital de Pernambuco?
-opcoes: A) Recife; B) Olinda; C) Caruaru; D) Garanhuns
+opcoes: A) Recife; B) Caruaru; C) Garanhuns; D) Olinda
 correta: 0
 
 pergunta: O que aconteceu na Revolução Pernambucana de 1817?
-opcoes: A) Foi criado um governo republicano que durou 74 dias.; B) Foi construída Brasília.; C) Pernambuco deixou de fazer parte do Brasil.; D) Foi criada uma ferrovia.
-correta: 0
+opcoes: A) Foi construída Brasília.; B) Pernambuco deixou de fazer parte do Brasil.; C) Foi criada uma ferrovia.; D) Foi criado um governo republicano que durou 74 dias.
+correta: 3
 
 pergunta: Por que Luiz Gonzaga ficou conhecido como Rei do Baião?
-opcoes: A) Ajudou a popularizar o baião, o xote e o xaxado.; B) Criou o frevo.; C) Foi arquiteto de Olinda.; D) Liderou a Revolução Pernambucana.
-correta: 0
+opcoes: A) Liderou a Revolução Pernambucana.; B) Criou o frevo.; C) Ajudou a popularizar o baião, o xote e o xaxado.; D) Foi arquiteto de Olinda.
+correta: 2
 
 pergunta: O frevo, uma das marcas culturais de Pernambuco, reúne:
-opcoes: A) Música e dança.; B) Apenas pintura.; C) Somente literatura.; D) Esportes e culinária.
-correta: 0
+opcoes: A) Somente literatura.; B) Apenas pintura.; C) Música e dança.; D) Esportes e culinária.
+correta: 2
 
 Estado: Piauí
 pergunta: Em qual região do Brasil fica o Piauí?
-opcoes: A) Nordeste; B) Norte; C) Sul; D) Centro-Oeste
-correta: 0
+opcoes: A) Sul; B) Centro-Oeste; C) Nordeste; D) Norte
+correta: 2
 
 pergunta: Por que o Parque Nacional da Serra da Capivara é importante?
-opcoes: A) Possui muitas pinturas e gravuras rupestres.; B) É uma grande área de neve.; C) Foi construído para ser uma cidade.; D) É uma floresta tropical.
-correta: 0
+opcoes: A) É uma grande área de neve.; B) É uma floresta tropical.; C) Foi construído para ser uma cidade.; D) Possui muitas pinturas e gravuras rupestres.
+correta: 3
 
 pergunta: Qual atividade ajudou a ocupar o interior do Piauí no passado?
-opcoes: A) Criação de gado.; B) Pesca em alto-mar.; C) Extração de borracha.; D) Produção de café.
+opcoes: A) Criação de gado.; B) Extração de borracha.; C) Produção de café.; D) Pesca em alto-mar.
 correta: 0
 
 pergunta: O que acontece no Delta do Parnaíba?
-opcoes: A) O Rio Parnaíba se divide em vários braços antes de chegar ao mar.; B) Um vulcão entra em erupção.; C) Um rio desaparece.; D) Uma cadeia de montanhas se forma.
-correta: 0
+opcoes: A) Um rio desaparece.; B) Uma cadeia de montanhas se forma.; C) Um vulcão entra em erupção.; D) O Rio Parnaíba se divide em vários braços antes de chegar ao mar.
+correta: 3
 
 pergunta: Como é o litoral do Piauí em comparação com outros estados brasileiros que têm saída para o mar?
-opcoes: A) É o menor litoral entre os estados brasileiros com saída para o mar.; B) É o maior litoral do Brasil.; C) Não possui litoral.; D) É formado apenas por falésias.
-correta: 0
+opcoes: A) Não possui litoral.; B) É o menor litoral entre os estados brasileiros com saída para o mar.; C) É o maior litoral do Brasil.; D) É formado apenas por falésias.
+correta: 1
 
 Estado: Rio de Janeiro
 pergunta: Em qual região do Brasil fica o Rio de Janeiro?
-opcoes: A) Sudeste; B) Nordeste; C) Norte; D) Centro-Oeste
-correta: 0
+opcoes: A) Nordeste; B) Centro-Oeste; C) Norte; D) Sudeste
+correta: 3
 
 pergunta: Em que ano a cidade do Rio de Janeiro foi fundada?
-opcoes: A) 1565; B) 1500; C) 1808; D) 1889
+opcoes: A) 1565; B) 1808; C) 1889; D) 1500
 correta: 0
 
 pergunta: Qual era a importância de Paraty no período colonial?
-opcoes: A) Era um porto usado para escoar o ouro vindo de Minas Gerais.; B) Era a capital do Brasil.; C) Era uma cidade planejada para substituir Brasília.; D) Era um centro de produção de borracha.
+opcoes: A) Era um porto usado para escoar o ouro vindo de Minas Gerais.; B) Era a capital do Brasil.; C) Era um centro de produção de borracha.; D) Era uma cidade planejada para substituir Brasília.
 correta: 0
 
 pergunta: O que aconteceu no Rio de Janeiro em 1808?
-opcoes: A) A Família Real portuguesa chegou e instalou a corte na cidade.; B) A cidade foi fundada.; C) A Floresta da Tijuca foi criada.; D) Foi proclamada a República.
-correta: 0
+opcoes: A) A Floresta da Tijuca foi criada.; B) A Família Real portuguesa chegou e instalou a corte na cidade.; C) A cidade foi fundada.; D) Foi proclamada a República.
+correta: 1
 
 pergunta: Os desfiles das escolas de samba do Rio de Janeiro combinam:
-opcoes: A) Música, dança, fantasias e carros alegóricos.; B) Apenas esportes.; C) Somente óperas.; D) Apenas pinturas.
-correta: 0
+opcoes: A) Somente óperas.; B) Apenas esportes.; C) Música, dança, fantasias e carros alegóricos.; D) Apenas pinturas.
+correta: 2
 
 Estado: Rio Grande do Norte
 pergunta: Em qual região do Brasil fica o Rio Grande do Norte?
@@ -382,185 +382,185 @@ opcoes: A) Nordeste; B) Norte; C) Sul; D) Centro-Oeste
 correta: 0
 
 pergunta: Por que a capital do estado se chama Natal?
-opcoes: A) Porque foi fundada em 25 de dezembro de 1599.; B) Porque havia uma festa de Natal.; C) Porque o estado foi criado em dezembro.; D) Porque era o nome de um rio.
-correta: 0
+opcoes: A) Porque havia uma festa de Natal.; B) Porque o estado foi criado em dezembro.; C) Porque era o nome de um rio.; D) Porque foi fundada em 25 de dezembro de 1599.
+correta: 3
 
 pergunta: Para que foi construído o Forte dos Reis Magos?
-opcoes: A) Para proteger e defender o território.; B) Para ser uma escola.; C) Para guardar alimentos.; D) Para realizar o Carnaval.
-correta: 0
+opcoes: A) Para guardar alimentos.; B) Para realizar o Carnaval.; C) Para ser uma escola.; D) Para proteger e defender o território.
+correta: 3
 
 pergunta: Por que Natal foi importante durante a Segunda Guerra Mundial?
-opcoes: A) Sua localização ajudou como ponto estratégico de apoio aos Aliados no Atlântico.; B) Foi palco da principal batalha terrestre.; C) Fabricava navios de guerra.; D) Era a capital dos Aliados.
-correta: 0
+opcoes: A) Foi palco da principal batalha terrestre.; B) Sua localização ajudou como ponto estratégico de apoio aos Aliados no Atlântico.; C) Era a capital dos Aliados.; D) Fabricava navios de guerra.
+correta: 1
 
 pergunta: Quem foi Luís da Câmara Cascudo?
-opcoes: A) Um importante pesquisador das festas, costumes e tradições brasileiras.; B) Um arquiteto do Forte dos Reis Magos.; C) Um governador do estado.; D) Um líder militar.
-correta: 0
+opcoes: A) Um líder militar.; B) Um arquiteto do Forte dos Reis Magos.; C) Um importante pesquisador das festas, costumes e tradições brasileiras.; D) Um governador do estado.
+correta: 2
 
 Estado: Rio Grande do Sul
 pergunta: Em qual região do Brasil fica o Rio Grande do Sul?
-opcoes: A) Sul; B) Norte; C) Nordeste; D) Centro-Oeste
+opcoes: A) Sul; B) Centro-Oeste; C) Nordeste; D) Norte
 correta: 0
 
 pergunta: O que foi a Revolução Farroupilha?
-opcoes: A) Uma revolta ocorrida entre 1835 e 1845 contra impostos e o governo imperial.; B) Uma festa tradicional.; C) Uma guerra entre Brasil e Argentina.; D) A criação de Porto Alegre.
+opcoes: A) Uma revolta ocorrida entre 1835 e 1845 contra impostos e o governo imperial.; B) Uma guerra entre Brasil e Argentina.; C) A criação de Porto Alegre.; D) Uma festa tradicional.
 correta: 0
 
 pergunta: O chimarrão tradicional é preparado com:
-opcoes: A) Erva-mate e água quente.; B) Café e leite.; C) Cacau e água fria.; D) Erva-doce e água gelada.
-correta: 0
+opcoes: A) Erva-doce e água gelada.; B) Erva-mate e água quente.; C) Café e leite.; D) Cacau e água fria.
+correta: 1
 
 pergunta: A cultura gaúcha recebeu influência de diferentes povos. Qual opção apresenta alguns deles?
-opcoes: A) Indígenas, africanos, portugueses, alemães e italianos.; B) Apenas portugueses.; C) Somente italianos.; D) Apenas povos indígenas.
-correta: 0
+opcoes: A) Somente italianos.; B) Apenas povos indígenas.; C) Indígenas, africanos, portugueses, alemães e italianos.; D) Apenas portugueses.
+correta: 2
 
 pergunta: O que são os Pampas gaúchos?
-opcoes: A) Áreas de campos com vegetação rasteira no sul do estado.; B) Florestas tropicais.; C) Dunas do litoral.; D) Montanhas cobertas de neve.
-correta: 0
+opcoes: A) Dunas do litoral.; B) Florestas tropicais.; C) Montanhas cobertas de neve.; D) Áreas de campos com vegetação rasteira no sul do estado.
+correta: 3
 
 Estado: Rondônia
 pergunta: Em qual região do Brasil fica Rondônia?
-opcoes: A) Norte; B) Sul; C) Nordeste; D) Sudeste
-correta: 0
+opcoes: A) Sul; B) Sudeste; C) Nordeste; D) Norte
+correta: 3
 
 pergunta: Para que servia principalmente a Estrada de Ferro Madeira-Mamoré?
-opcoes: A) Ajudar no transporte de produtos da região, como a borracha.; B) Transportar apenas turistas.; C) Ligar Rondônia ao Pará.; D) Servir apenas aos soldados.
-correta: 0
+opcoes: A) Ligar Rondônia ao Pará.; B) Transportar apenas turistas.; C) Servir apenas aos soldados.; D) Ajudar no transporte de produtos da região, como a borracha.
+correta: 3
 
 pergunta: Para que servia o Real Forte Príncipe da Beira no passado?
-opcoes: A) Para defender a região de fronteira.; B) Para ser uma estação de trem.; C) Para funcionar como escola.; D) Para realizar festivais.
-correta: 0
+opcoes: A) Para funcionar como escola.; B) Para defender a região de fronteira.; C) Para ser uma estação de trem.; D) Para realizar festivais.
+correta: 1
 
 pergunta: O Marechal Cândido Rondon ficou conhecido por liderar expedições que ajudaram a:
-opcoes: A) Instalar linhas telegráficas no interior do país.; B) Construir portos no litoral.; C) Criar escolas de samba.; D) Explorar minas de ouro.
-correta: 0
+opcoes: A) Criar escolas de samba.; B) Explorar minas de ouro.; C) Instalar linhas telegráficas no interior do país.; D) Construir portos no litoral.
+correta: 2
 
 pergunta: O Duelo na Fronteira, em Guajará-Mirim, é uma celebração de bois-bumbás. Quais grupos participam?
-opcoes: A) Flor do Campo e Malhadinho.; B) Caprichoso e Garantido.; C) Azul e Branco.; D) Madeira e Mamoré.
+opcoes: A) Flor do Campo e Malhadinho.; B) Azul e Branco.; C) Madeira e Mamoré.; D) Caprichoso e Garantido.
 correta: 0
 
 Estado: Roraima
 pergunta: Qual é a capital de Roraima?
-opcoes: A) Boa Vista; B) Pacaraima; C) Caracaraí; D) Rorainópolis
-correta: 0
+opcoes: A) Pacaraima; B) Boa Vista; C) Rorainópolis; D) Caracaraí
+correta: 1
 
 pergunta: O que é o Monte Roraima?
-opcoes: A) Uma formação rochosa com topo plano, chamada tepui.; B) Um vulcão em atividade.; C) Uma fortaleza colonial.; D) Uma cidade histórica.
-correta: 0
+opcoes: A) Uma fortaleza colonial.; B) Uma formação rochosa com topo plano, chamada tepui.; C) Um vulcão em atividade.; D) Uma cidade histórica.
+correta: 1
 
 pergunta: Em qual situação o Forte São Joaquim era importante?
-opcoes: A) Na proteção da região de fronteira.; B) Na realização de festas.; C) No cultivo de café.; D) No transporte ferroviário.
-correta: 0
+opcoes: A) No transporte ferroviário.; B) No cultivo de café.; C) Na proteção da região de fronteira.; D) Na realização de festas.
+correta: 2
 
 pergunta: O Parixara é uma manifestação tradicional de quais grupos de Roraima?
-opcoes: A) Povos indígenas da região.; B) Apenas imigrantes europeus.; C) Marinheiros do litoral.; D) Trabalhadores das ferrovias.
-correta: 0
+opcoes: A) Marinheiros do litoral.; B) Trabalhadores das ferrovias.; C) Apenas imigrantes europeus.; D) Povos indígenas da região.
+correta: 3
 
 pergunta: O que é o lavrado de Roraima?
-opcoes: A) Uma paisagem de campos naturais com árvores espalhadas, parecida com uma savana.; B) Uma floresta fechada.; C) Uma região de neve.; D) Um deserto de areia.
+opcoes: A) Uma paisagem de campos naturais com árvores espalhadas, parecida com uma savana.; B) Um deserto de areia.; C) Uma floresta fechada.; D) Uma região de neve.
 correta: 0
 
 Estado: Santa Catarina
 pergunta: Em qual região do Brasil fica Santa Catarina?
-opcoes: A) Sul; B) Norte; C) Nordeste; D) Centro-Oeste
-correta: 0
+opcoes: A) Nordeste; B) Norte; C) Sul; D) Centro-Oeste
+correta: 2
 
 pergunta: Quais povos indígenas têm presença histórica em Santa Catarina?
-opcoes: A) Guarani, Kaingang e Xokleng.; B) Yanomami e Tikuna.; C) Astecas, Maias e Incas.; D) Pataxó e Munduruku.
-correta: 0
+opcoes: A) Astecas, Maias e Incas.; B) Yanomami e Tikuna.; C) Pataxó e Munduruku.; D) Guarani, Kaingang e Xokleng.
+correta: 3
 
 pergunta: O que é a renda de bilro, tradicional no litoral catarinense?
-opcoes: A) Uma forma de entrelaçar fios usando pequenos bilros de madeira.; B) Uma dança de Carnaval.; C) Uma técnica de pesca.; D) Um prato típico.
-correta: 0
+opcoes: A) Uma dança de Carnaval.; B) Uma forma de entrelaçar fios usando pequenos bilros de madeira.; C) Uma técnica de pesca.; D) Um prato típico.
+correta: 1
 
 pergunta: Por que a pesca artesanal da tainha é importante para muitas comunidades catarinenses?
-opcoes: A) É uma tradição comunitária que ajuda a preservar a cultura.; B) É praticada somente em rios.; C) Foi criada para turistas.; D) É a única atividade econômica do estado.
-correta: 0
+opcoes: A) É praticada somente em rios.; B) É a única atividade econômica do estado.; C) É uma tradição comunitária que ajuda a preservar a cultura.; D) Foi criada para turistas.
+correta: 2
 
 pergunta: O que pode acontecer na Serra Catarinense durante o inverno?
-opcoes: A) Podem ocorrer temperaturas negativas, geada e neve.; B) Faz calor acima de 30 °C todos os dias.; C) Há apenas dunas de areia.; D) Não existem temperaturas baixas.
+opcoes: A) Podem ocorrer temperaturas negativas, geada e neve.; B) Faz calor acima de 30 °C todos os dias.; C) Não existem temperaturas baixas.; D) Há apenas dunas de areia.
 correta: 0
 
 Estado: São Paulo
 pergunta: Em qual região do Brasil fica São Paulo?
-opcoes: A) Sudeste; B) Norte; C) Nordeste; D) Sul
-correta: 0
+opcoes: A) Sul; B) Norte; C) Sudeste; D) Nordeste
+correta: 2
 
 pergunta: Em que ano começou a história de São Paulo com a fundação do colégio no Pátio do Colégio?
-opcoes: A) 1554; B) 1500; C) 1600; D) 1700
-correta: 0
+opcoes: A) 1600; B) 1554; C) 1700; D) 1500
+correta: 1
 
 pergunta: Qual produto ajudou a aumentar a riqueza de São Paulo nos séculos XIX e XX?
-opcoes: A) Café.; B) Cacau.; C) Borracha.; D) Algodão.
-correta: 0
+opcoes: A) Algodão.; B) Café.; C) Borracha.; D) Cacau.
+correta: 1
 
 pergunta: Qual era a importância do Porto de Santos para a economia do café?
-opcoes: A) Escoar o café do interior de São Paulo para outros países.; B) Produzir todo o café do estado.; C) Ser a capital paulista.; D) Receber apenas imigrantes.
-correta: 0
+opcoes: A) Produzir todo o café do estado.; B) Ser a capital paulista.; C) Receber apenas imigrantes.; D) Escoar o café do interior de São Paulo para outros países.
+correta: 3
 
 pergunta: O que a Semana de Arte Moderna de 1922 representou?
-opcoes: A) Um momento de renovação da arte e da literatura no Brasil.; B) Uma competição esportiva.; C) Uma feira de café.; D) A fundação da cidade de São Paulo.
+opcoes: A) Um momento de renovação da arte e da literatura no Brasil.; B) Uma feira de café.; C) Uma competição esportiva.; D) A fundação da cidade de São Paulo.
 correta: 0
 
 Estado: Sergipe
 pergunta: Qual é a capital de Sergipe?
-opcoes: A) Aracaju; B) São Cristóvão; C) Laranjeiras; D) Estância
-correta: 0
+opcoes: A) Estância; B) Aracaju; C) Laranjeiras; D) São Cristóvão
+correta: 1
 
 pergunta: O que torna Sergipe especial em relação ao tamanho de seu território?
-opcoes: A) É o menor estado brasileiro em território.; B) É o maior estado brasileiro.; C) É o único estado sem litoral.; D) É o maior estado da Região Nordeste.
-correta: 0
+opcoes: A) É o maior estado da Região Nordeste.; B) É o menor estado brasileiro em território.; C) É o maior estado brasileiro.; D) É o único estado sem litoral.
+correta: 1
 
 pergunta: Qual cidade foi a primeira capital de Sergipe?
-opcoes: A) São Cristóvão.; B) Aracaju.; C) Laranjeiras.; D) Estância.
+opcoes: A) São Cristóvão.; B) Estância.; C) Laranjeiras.; D) Aracaju.
 correta: 0
 
 pergunta: O Lambe-Sujo e Caboclinhos é uma manifestação cultural que envolve:
-opcoes: A) Personagens, música, dança e encenações pelas ruas.; B) Apenas esportes.; C) Somente culinária.; D) Corridas de barcos.
-correta: 0
+opcoes: A) Somente culinária.; B) Apenas esportes.; C) Corridas de barcos.; D) Personagens, música, dança e encenações pelas ruas.
+correta: 3
 
 pergunta: O que são os barcos de fogo de Estância?
-opcoes: A) Alegorias que se movimentam com fogos de artifício durante festas juninas.; B) Barcos usados para pesca.; C) Navios antigos.; D) Embarcações de corrida.
-correta: 0
+opcoes: A) Barcos usados para pesca.; B) Navios antigos.; C) Alegorias que se movimentam com fogos de artifício durante festas juninas.; D) Embarcações de corrida.
+correta: 2
 
 Estado: Tocantins
 pergunta: Em que ano o Tocantins foi criado como estado brasileiro?
-opcoes: A) 1988; B) 1964; C) 1975; D) 2000
-correta: 0
+opcoes: A) 2000; B) 1975; C) 1964; D) 1988
+correta: 3
 
 pergunta: O que Natividade preserva da história de Tocantins?
-opcoes: A) Construções ligadas ao período de exploração do ouro.; B) Prédios construídos para Brasília.; C) Antigas fábricas de automóveis.; D) Fortes construídos no litoral.
+opcoes: A) Construções ligadas ao período de exploração do ouro.; B) Prédios construídos para Brasília.; C) Fortes construídos no litoral.; D) Antigas fábricas de automóveis.
 correta: 0
 
 pergunta: O capim-dourado é usado principalmente para produzir:
-opcoes: A) Artesanatos como cestos, bolsas e brincos.; B) Instrumentos de metal.; C) Barcos.; D) Telhados.
-correta: 0
+opcoes: A) Telhados.; B) Artesanatos como cestos, bolsas e brincos.; C) Barcos.; D) Instrumentos de metal.
+correta: 1
 
 pergunta: Por que os fervedouros do Jalapão são curiosos?
-opcoes: A) A pressão da água dificulta que uma pessoa afunde.; B) A água fica sempre fervendo.; C) Só aparecem à noite.; D) São formados por neve.
-correta: 0
+opcoes: A) Só aparecem à noite.; B) São formados por neve.; C) A pressão da água dificulta que uma pessoa afunde.; D) A água fica sempre fervendo.
+correta: 2
 
 pergunta: O Tocantins é um estado relativamente novo. O que aconteceu em 1988?
-opcoes: A) Sua criação foi garantida pela Constituição Federal.; B) Tornou-se a primeira capital do Brasil.; C) Foi separado de Minas Gerais.; D) Deixou de pertencer ao Brasil.
-correta: 0
+opcoes: A) Tornou-se a primeira capital do Brasil.; B) Foi separado de Minas Gerais.; C) Deixou de pertencer ao Brasil.; D) Sua criação foi garantida pela Constituição Federal.
+correta: 3
 
 Estado: Distrito Federal
 pergunta: O que existe no Distrito Federal que não existe como capital estadual?
-opcoes: A) Brasília, capital do Brasil.; B) Uma capital estadual chamada Brasília.; C) A antiga capital do estado.; D) Uma cidade litorânea.
-correta: 0
+opcoes: A) Uma capital estadual chamada Brasília.; B) Uma cidade litorânea.; C) Brasília, capital do Brasil.; D) A antiga capital do estado.
+correta: 2
 
 pergunta: Em que ano Brasília foi inaugurada?
-opcoes: A) 1960; B) 1945; C) 1950; D) 1970
-correta: 0
+opcoes: A) 1970; B) 1945; C) 1950; D) 1960
+correta: 3
 
 pergunta: Quem fez o projeto urbanístico do Plano Piloto de Brasília?
 opcoes: A) Lúcio Costa.; B) Oscar Niemeyer.; C) Juscelino Kubitschek.; D) Burle Marx.
 correta: 0
 
 pergunta: Quem eram os candangos?
-opcoes: A) Trabalhadores que vieram de diferentes partes do Brasil para construir Brasília.; B) Os arquitetos da cidade.; C) Os presidentes do Brasil.; D) Os povos indígenas da região.
-correta: 0
+opcoes: A) Os arquitetos da cidade.; B) Os presidentes do Brasil.; C) Trabalhadores que vieram de diferentes partes do Brasil para construir Brasília.; D) Os povos indígenas da região.
+correta: 2
 
 pergunta: Por que Brasília é reconhecida pela UNESCO?
-opcoes: A) Por sua arquitetura e urbanismo.; B) Por possuir praias.; C) Por ser uma cidade colonial.; D) Por ser a cidade mais antiga do Brasil.
-correta: 0
+opcoes: A) Por ser a cidade mais antiga do Brasil.; B) Por sua arquitetura e urbanismo.; C) Por ser uma cidade colonial.; D) Por possuir praias.
+correta: 1

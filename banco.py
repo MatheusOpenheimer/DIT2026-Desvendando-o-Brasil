@@ -1,16 +1,16 @@
 import os
 from datetime import datetime
 
-# Garante a existência da pasta 'dados' no projeto
-if not os.path.exists("dados"):
-    os.makedirs("dados", exist_ok=True)
+# Garante a existência da pasta 'jogador' no projeto
+if not os.path.exists("jogador"):
+    os.makedirs("jogador", exist_ok=True)
 
 # Definição dos caminhos para cada arquivo de texto plano (.txt)
 #Fiz assim pra imitar a lógica de um banco de dados e não ficar baguynçado
-CAMINHO_RANKING_BRASIL = os.path.join("dados", "ranking_brasil.txt")
-CAMINHO_ESTATISTICAS_BRASIL = os.path.join("dados", "estatisticas_brasil.txt")
-CAMINHO_FEEDBACKS_SRS = os.path.join("dados", "feedbacks_srs.txt")
-CAMINHO_RANKING_SRS = os.path.join("dados", "ranking_srs.txt")
+CAMINHO_RANKING_BRASIL = os.path.join("jogador", "ranking_brasil.txt")
+CAMINHO_ESTATISTICAS_BRASIL = os.path.join("jogador", "estatisticas_brasil.txt")
+CAMINHO_FEEDBACKS_SRS = os.path.join("jogador", "feedbacks_srs.txt")
+CAMINHO_RANKING_SRS = os.path.join("jogador", "ranking_srs.txt")
 
 
 #FUNÇÕES DE CRITÉRIO DE ORDENAÇÃO
@@ -25,8 +25,8 @@ def regra_ordenacao_brasil(jogador):
 
 
 def regra_ordenacao_srs(jogador):
-    nome, acertos, erros = jogador
-    return (-acertos, erros)
+    nome, idade, acertos, erros = jogador
+    return (-acertos, erros, idade)
 
 
 
@@ -166,12 +166,12 @@ def carregar_feedbacks_srs():
     return list(reversed(lista_feedbacks))
 
 
-def salvar_ranking_srs(nome_jogador, total_acertos, total_erros):
+def salvar_ranking_srs(nome_jogador, idade_jogador, total_acertos, total_erros):
     #Salva os pontos do jogo srs
     jogador_identificado = nome_jogador if nome_jogador else "Explorador"
 
     with open(CAMINHO_RANKING_SRS, "a", encoding="utf-8") as arquivo_ranking_srs:
-        linha_registro = f"{jogador_identificado};{int(total_acertos)};{int(total_erros)}\n"
+        linha_registro = f"{jogador_identificado};{int(idade_jogador)};{int(total_acertos)};{int(total_erros)}\n"
         arquivo_ranking_srs.write(linha_registro)
 
 
@@ -186,9 +186,9 @@ def carregar_ranking_srs():
         for linha in arquivo_ranking_srs:
             campos = linha.strip().split(";")
 
-            if len(campos) == 3:
-                nome, acertos, erros = campos
-                dados_jogador = (nome, int(acertos), int(erros))
+            if len(campos) == 4:
+                nome, idade, acertos, erros = campos
+                dados_jogador = (nome, int(idade), int(acertos), int(erros))
                 lista_jogadores_srs.append(dados_jogador)
 
     # Ordena com a função dedicada

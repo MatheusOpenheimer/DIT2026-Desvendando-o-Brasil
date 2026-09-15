@@ -153,6 +153,14 @@ class MinigameSRS:
                         self.ponto_atual = None
 
     def atualizar(self, reiniciar):
+        #conta os estados visitados
+        contador = 0
+        for ponto in self.pontos:
+            if ponto.visitado:
+                contador += 1
+        self.total_visitados = contador
+
+
         if self.reiniciar:
             reiniciar = True
             return "MENU", reiniciar, self.modo
@@ -245,11 +253,10 @@ class MinigameSRS:
         tela.blit(self.rosa_ventos_img, self.rosa_ventos_rect)
 
         # Pontos Turísticos no mapa
-        visitados = sum(1 for p in self.pontos if p.visitado)
         for p in self.pontos:
             if p.imagem:
                 tela.blit(p.imagem, p.imagem_rect)
-            cor_tag = (46, 204, 113) if p.visitado else (30, 30, 35)
+            cor_tag = (46, 204, 113) if p.visitado else (30, 30, 35) #cor sem visitar, cor depois de visitado
             texto_ponto = self.fonte_hud.render(p.nome, True, (255, 255, 255))
             rect_bg = pygame.Rect(p.x - (texto_ponto.get_width() // 2) - 6, p.y + 45, texto_ponto.get_width() + 12, 22)
             pygame.draw.rect(tela, cor_tag, rect_bg, border_radius=4)
@@ -257,15 +264,15 @@ class MinigameSRS:
 
         tela.blit(self.personagem.image, self.personagem.rect)
 
-        # HUD Contador
-        rotulo_hud = self.interface.get("contador", "Pontos Visitados:")
-        texto_hud = self.fonte_hud.render(f"{rotulo_hud} {visitados}/{self.total_pontos}", True, (25, 25, 25))
+        # HUD Contador de pontos visitados
+        rotulo_hud = self.interface.get("contador", "Pontos Visitados:") #pega do txt, ou deixa O OUTRO COMO DEFAULT    
+        texto_hud = self.fonte_hud.render(f"{rotulo_hud} {self.total_visitados}/{self.total_pontos}", True, (25, 25, 25))
         hud_box = pygame.Rect(175, 5, texto_hud.get_width() + 20, 32)
         pygame.draw.rect(tela, (250, 248, 240), hud_box, border_radius=6)
         pygame.draw.rect(tela, (50, 30, 15), hud_box, 2, border_radius=6)
         tela.blit(texto_hud, texto_hud.get_rect(center=hud_box.center))
 
-        # Pop-up de informações
+        # Pop-up de informações se ativo
         if self.mostrar_popup:
             escurecer = pygame.Surface((config.largura, config.altura), pygame.SRCALPHA)
             escurecer.fill((0, 0, 0, 160))
