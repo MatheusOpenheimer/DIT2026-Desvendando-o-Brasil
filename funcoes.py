@@ -294,9 +294,6 @@ def formatar_texto_largura(texto, fonte, largura_maxima):
 
   return linhas
 
-
-
-import re
 def carregar_questoes_txt(caminho_arquivo):
     # Dicionário retornado caso o arquivo divida o conteúdo por estado (ex: Modo Brasil)
     dados_finais = {}
@@ -362,27 +359,8 @@ def carregar_questoes_txt(caminho_arquivo):
             elif linha.lower().startswith("opções:") or linha.lower().startswith("opcoes:"):
                 texto_opcoes = linha.split(":", 1)[1].strip()
 
-                # Prioriza a divisão direta por ponto e vírgula se existente
-                if ";" in texto_opcoes:
-                    questao_atual["opcoes"] = [opcao.strip() for opcao in texto_opcoes.split(";")]
-                else:
-                    # Alternativa: separa usando expressões regulares identificando letras no estilo A), B), C), D)
-                    opcoes_divididas = re.split(r"(?=[A-D]\))", texto_opcoes)
-                    opcoes_limpas = [
-                        opcao.strip(", ").strip()
-                        for opcao in opcoes_divididas
-                        if opcao.strip()
-                    ]
-
-                    # Se o texto não estiver formatado com letras A) a D), divide por vírgula simples
-                    if len(opcoes_limpas) < 2:
-                        opcoes_limpas = [
-                            opcao.strip()
-                            for opcao in texto_opcoes.split(",")[:4]
-                        ]
-
-                    # Limita a lista às 4 opções padrão do jogo
-                    questao_atual["opcoes"] = opcoes_limpas[:4]
+                # Divide as alternativas pelo ponto e vírgula e remove espaços extras
+                questao_atual["opcoes"] = [opcao.strip() for opcao in texto_opcoes.split(";")]
 
             elif linha.lower().startswith("correta:"):
                 # Converte o índice da alternativa correta para número inteiro (ex: 0, 1, 2 ou 3)

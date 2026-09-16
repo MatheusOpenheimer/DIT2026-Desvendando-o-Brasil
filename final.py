@@ -121,7 +121,10 @@ class Final:
         tela.blit(ranking_texto, ranking_renderizado)
 
         y_linha = rect_ranking.y + 65
-        for pos, jogador in enumerate(self.top_jogadores):
+
+        
+        pos = 0
+        for jogador in self.top_jogadores:
             nome = jogador[0]
             idade = jogador[1]
             acertos = jogador[2]
@@ -150,11 +153,12 @@ class Final:
 
             texto_linha = f"{pos + 1}º  {nome}  -  {acertos} Acertos | {erros} Erros"
             texto_linha_renderizado = config.fonte_fases.render(texto_linha, True, cor_texto)
-            texto_linha_renderizado_rect = texto_linha_renderizado.get_rect(centerx = config.centroX, centery = y_linha)
+            texto_linha_renderizado_rect = texto_linha_renderizado.get_rect(centerx=config.centroX, centery=y_linha)
 
             tela.blit(texto_linha_renderizado, texto_linha_renderizado_rect)
     
             y_linha += 50
+            pos += 1
 
         if self.status_qr:
             tela.blit(self.bloco_qr, self.bloco_qr_rect)
