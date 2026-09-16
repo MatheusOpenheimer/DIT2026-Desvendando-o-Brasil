@@ -82,10 +82,6 @@ class Fase1:
     # MODO POWER
     self.contador_piscar = 0
 
-    # REINICIAR BOTAO ------------------------------------------------------
-    self.botao_reiniciar = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/botao_reiniciar.png")), (50, 50))
-    self.botao_reiniciar_rect = self.botao_reiniciar.get_rect(x=114, y=2)
-
     # SPAM DE ERRO E ACERTO
     self.Errou_img = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/Errou.png")), (200, 200))
     self.Errou_rect = self.Errou_img.get_rect(centerx=config.centroX, centery=config.altura / 2)
@@ -138,7 +134,6 @@ class Fase1:
 
     self.ler_clique = True
 
-    self.reiniciar = False
     self.modo_power = False
 
   def verificar_acerto(self, regiao_clicada, modo):
@@ -206,7 +201,7 @@ class Fase1:
   def gerenciar_eventos(self, evento, modo):
     mouse_seta = pygame.mouse.get_pos()
 
-    if self.mapa_rect.collidepoint(mouse_seta) or self.botao_reiniciar_rect.collidepoint(mouse_seta):
+    if self.mapa_rect.collidepoint(mouse_seta):
       pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
     else:
       pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
@@ -236,14 +231,7 @@ class Fase1:
             self.person_rect.center = pos_mouse
             self.verificar_acerto(self.regiao_clicada, modo)
 
-        if self.botao_reiniciar_rect.collidepoint(pos_mouse):
-          self.reiniciar = True
-
-  def atualizar(self, tempo_restante, reiniciar):
-
-    if self.reiniciar:
-      reiniciar = True
-      return "MENU", reiniciar, self.regioes_erradas, self.contagem_regioes, None, None
+  def atualizar(self, tempo_restante):
 
     if self.Acabou and tempo_restante > 182:
       self.acabou_finalizacao = True
@@ -254,17 +242,16 @@ class Fase1:
     if self.liberar:
       acertos = self.contAcertos
       erros = self.contErros
-      return "FASE2", reiniciar, self.regioes_erradas, self.contagem_regioes, acertos, erros #retorna acertos e erros
+      return "FASE2", self.regioes_erradas, self.contagem_regioes, acertos, erros #retorna acertos e erros
 
     else:
-      return "FASE1", reiniciar, self.regioes_erradas, self.contagem_regioes, None, None
+      return "FASE1", self.regioes_erradas, self.contagem_regioes, None, None
 
   def desenhar(self, tela):
     tela.blit(self.fundo_img, (0, 0))
     pygame.draw.rect(tela, config.bege, self.bloco_perguntas)
     tela.blit(self.mapaTela, self.mapaTela_rect)
     tela.blit(self.person_img, self.person_rect)
-    tela.blit(self.botao_reiniciar, self.botao_reiniciar_rect)
 
     largura_maxima = self.bloco_perguntas.width - 40
 

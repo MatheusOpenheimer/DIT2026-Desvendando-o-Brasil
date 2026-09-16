@@ -75,10 +75,10 @@ class Final:
                 elif self.botao_replay_rect.collidepoint(pos_mouse):
                     self.jogarNov = True
 
-    def atualizar(self, rodar_ranking, reiniciar):
+    def atualizar(self, rodar_ranking):
+        
         if self.jogarNov:
-            reiniciar = True
-            return "MENU", reiniciar
+            return "MENU", True #Replay
 
         if rodar_ranking and not self.salvo:
             if rodar_ranking == "SRS":
@@ -90,7 +90,7 @@ class Final:
 
             self.salvo = True
 
-        return "FINAL", reiniciar
+        return "FINAL", False #Replay
     
     def desenhar(self, tela):
         tela.fill((16, 71, 15))

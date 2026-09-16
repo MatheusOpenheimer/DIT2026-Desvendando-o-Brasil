@@ -138,142 +138,133 @@ def obter_estado_por_cor(rgb):
     
     return None
 
-def animacao(objeto_estado, objeto_rect, alvo_y, duracao_espera, tempo_inicio_espera ): 
-      
-   if objeto_estado == "ENTRANDO": #vira tipo um while
+import pygame
+import config
 
-      distancia = alvo_y - objeto_rect.centery
+
+def animacao(objeto_estado, objeto_rect, alvo_y, duracao_espera, tempo_inicio_espera): 
+    if objeto_estado == "ENTRANDO":
+        distancia = alvo_y - objeto_rect.centery
             
-      # Calcula a velocidade pra andar no mínimo 1 pixel por frame
-      velocidade = int(distancia * 0.1)
-      if velocidade == 0 and distancia > 0:
-         velocidade = 1
+        velocidade = int(distancia * 0.1)
+        if velocidade == 0 and distancia > 0:
+            velocidade = 1
          
-      if abs(distancia) > 2:
-         objeto_rect.centery += velocidade
-            
-      else: #significa que a distancia é pouca e ta chegando onde eu quero
-         objeto_rect.centery = alvo_y
-         objeto_estado = "ESPERANDO"
-         tempo_inicio_espera = pygame.time.get_ticks()   
-                            # Marca o momento exato em milissegundos do início da pausa
-         
-   elif objeto_estado == "ESPERANDO":
+        # Como está descendo rumo ao alvo, a distância é positiva
+        if distancia > 2:
+            objeto_rect.centery += velocidade
+        else:
+            objeto_rect.centery = alvo_y
+            objeto_estado = "ESPERANDO"
+            tempo_inicio_espera = pygame.time.get_ticks()
 
-      tempo_real = pygame.time.get_ticks() #fica mudando o tempo para o atual
-      if tempo_real - tempo_inicio_espera >= duracao_espera: #ve se deu o tempo que que quero que fique na tela
-         objeto_estado = "SAINDO"
+    elif objeto_estado == "ESPERANDO":
+        tempo_real = pygame.time.get_ticks()
+        if tempo_real - tempo_inicio_espera >= duracao_espera:
+            objeto_estado = "SAINDO"
 
-   elif objeto_estado == "SAINDO":
-      alvo_saida = config.altura + 300
-      distancia = alvo_saida - objeto_rect.centery
+    elif objeto_estado == "SAINDO":
+        alvo_saida = config.altura + 300
+        distancia = alvo_saida - objeto_rect.centery
 
-      velocidade = int(distancia * 0.12)
-      if velocidade == 0 and distancia > 0:
-         velocidade = 1
+        velocidade = int(distancia * 0.12)
+        if velocidade == 0 and distancia > 0:
+            velocidade = 1
 
-      if abs(distancia) > 10:
-         objeto_rect.centery += velocidade
-      else:  
-         objeto_estado = "FIM"   
+        # Alvo de saída fica lá embaixo, distância sempre positiva
+        if distancia > 10:
+            objeto_rect.centery += velocidade
+        else:  
+            objeto_estado = "FIM"   
    
-   return objeto_estado, tempo_inicio_espera
+    return objeto_estado, tempo_inicio_espera
+
 
 def movimento1(objeto_estado, objeto_rect, alvo_y): 
-      
-   if objeto_estado == "DESCENDO":
-
-      distancia = alvo_y - objeto_rect.centery
+    if objeto_estado == "DESCENDO":
+        distancia = alvo_y - objeto_rect.centery
             
-      velocidade = int(distancia * 0.03)
-      if velocidade == 0 and distancia > 0:
-         velocidade = 1
+        velocidade = int(distancia * 0.03)
+        if velocidade == 0 and distancia > 0:
+            velocidade = 1
          
-      if abs(distancia) > 2:
-         objeto_rect.centery += velocidade
-            
-      else:
-         objeto_rect.centery = alvo_y
-         objeto_estado = "SUBINDO"   
+        if distancia > 2:
+            objeto_rect.centery += velocidade
+        else:
+            objeto_rect.centery = alvo_y
+            objeto_estado = "SUBINDO"   
 
-   elif objeto_estado == "SUBINDO":
-      alvo_subida = 160
-      distancia = alvo_subida - objeto_rect.centery
+    elif objeto_estado == "SUBINDO":
+        alvo_subida = 160
+        distancia = alvo_subida - objeto_rect.centery
 
-      velocidade = int(distancia * 0.03)
-      if velocidade == 0 and distancia < 0:
-         velocidade = -1
+        velocidade = int(distancia * 0.03)
+        if velocidade == 0 and distancia < 0:
+            velocidade = -1
 
-      if abs(distancia) > 10:
-         objeto_rect.centery += velocidade
-      else:  
-         objeto_estado = "DESCENDO"
+        if distancia < -10:
+            objeto_rect.centery += velocidade
+        else:  
+            objeto_estado = "DESCENDO"
    
-   return objeto_estado
+    return objeto_estado
 
 
-
-def animacao2(objeto_estado, objeto_rect, alvo_y, duracao_espera, tempo_inicio_espera, variavelcontrole, liberar ): 
- 
-   if objeto_estado == "ENTRANDO":
-
-      distancia = alvo_y - objeto_rect.centery
+def animacao2(objeto_estado, objeto_rect, alvo_y, duracao_espera, tempo_inicio_espera, variavelcontrole, liberar): 
+    if objeto_estado == "ENTRANDO":
+        distancia = alvo_y - objeto_rect.centery
             
-      velocidade = int(distancia * 0.1)
-      if velocidade == 0 and distancia > 0:
-         velocidade = 1
+        velocidade = int(distancia * 0.1)
+        if velocidade == 0 and distancia > 0:
+            velocidade = 1
          
-      if abs(distancia) > 2:
-         objeto_rect.centery += velocidade
+        if distancia > 2:
+            objeto_rect.centery += velocidade
+        else:
+            objeto_rect.centery = alvo_y
+            objeto_estado = "ESPERANDO"
+            tempo_inicio_espera = pygame.time.get_ticks()   
+         
+    elif objeto_estado == "ESPERANDO":
+        tempo_real = pygame.time.get_ticks()
+        if tempo_real - tempo_inicio_espera >= duracao_espera:
+            objeto_estado = "SAINDO"
+
+    elif objeto_estado == "SAINDO":
+        alvo_saida = config.altura + 300
+        distancia = alvo_saida - objeto_rect.centery
+
+        velocidade = int(distancia * 0.12)
+        if velocidade == 0 and distancia > 0:
+            velocidade = 1
+
+        if distancia > 10:
+            objeto_rect.centery += velocidade
+        else:  
+            objeto_estado = "FIM"
+            variavelcontrole = False
+            liberar = True 
             
-      else:
-         objeto_rect.centery = alvo_y
-         objeto_estado = "ESPERANDO"
-         tempo_inicio_espera = pygame.time.get_ticks()   
-         
-   elif objeto_estado == "ESPERANDO":
-
-      tempo_real = pygame.time.get_ticks()
-      if tempo_real - tempo_inicio_espera >= duracao_espera:
-         objeto_estado = "SAINDO"
-
-   elif objeto_estado == "SAINDO":
-      alvo_saida = config.altura + 300
-      distancia = alvo_saida - objeto_rect.centery
-
-      velocidade = int(distancia * 0.12)
-      if velocidade == 0 and distancia > 0:
-         velocidade = 1
-
-      if abs(distancia) > 10:
-         objeto_rect.centery += velocidade
-      else:  
-         objeto_estado = "FIM"
-         variavelcontrole = False
-         liberar = True 
-           
-   
-   return objeto_estado, tempo_inicio_espera, variavelcontrole, liberar
+    return objeto_estado, tempo_inicio_espera, variavelcontrole, liberar
 
 
 def animacao_entrar(objeto_estado, objeto_rect, alvo_y): 
-      
-   if objeto_estado == "SUBINDO":
-
-      distancia = alvo_y - objeto_rect.centery
+    if objeto_estado == "SUBINDO":
+        distancia = alvo_y - objeto_rect.centery
             
-      velocidade = int(distancia * 0.1)
-      if velocidade == 0 and distancia > 0:
-         velocidade = 1
+        velocidade = int(distancia * 0.1)
+        if velocidade == 0 and distancia > 0:
+            velocidade = 1
          
-      if abs(distancia) > 5:
-         objeto_rect.centery += velocidade
-            
-      else:
-         objeto_rect.centery = alvo_y
-         objeto_estado = "PARAR"   
+        # Se estiver subindo e alvo_y for menor, a distância é negativa
+        # Caso o alvo esteja acima, usa < -5. Se o alvo for abaixo, usa > 5.
+        if distancia < -5 or distancia > 5:
+            objeto_rect.centery += velocidade
+        else:
+            objeto_rect.centery = alvo_y
+            objeto_estado = "PARAR"   
    
-   return objeto_estado
+    return objeto_estado
 
 def formatar_texto_largura(texto, fonte, largura_maxima):
   palavras = texto.split(' ')

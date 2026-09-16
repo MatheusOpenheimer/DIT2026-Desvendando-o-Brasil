@@ -2,7 +2,7 @@ import os
 import pygame
 import config
 import funcoes
-from srs_ponto_turistico import PontoTuristico, criar_pontos_santa_rita
+from srs_ponto_turistico import criar_pontos_santa_rita
 from sprite import Personagem
 
 
@@ -12,9 +12,7 @@ class MinigameSRS:
         self.estado = "ESCOLHA_IDIOMA"
         self.modo = "pt"
 
-        # VARIÁVEIS DE CONTROLE DE FLUXO / TRANSIÇÃO
-        self.proxima_fase = "GAME_SRS"
-        self.reiniciar = False
+        # VARIÁVEIS DE CONTROLE
         self.solicitou_pular = False
         self.idioma_selecionado = None
 
@@ -40,11 +38,6 @@ class MinigameSRS:
         self.fonte_hud = pygame.font.SysFont("Arial", 14, True)
 
         self.linha_rio_y = 480
-
-        # Botão Reiniciar
-        caminho_btn = funcoes.resource_path("assets/IMAGENS/botao_reiniciar.png")
-        self.botao_reiniciar = pygame.transform.scale(pygame.image.load(caminho_btn).convert_alpha(), (50, 50))
-        self.botao_reiniciar_rect = self.botao_reiniciar.get_rect(x=114, y=2)
 
         # Botão Pular Minigame
         self.botao_pular_rect = pygame.Rect(config.largura - 140, 10, 120, 36)
@@ -72,8 +65,7 @@ class MinigameSRS:
         self.rio_apresentado = False
         self.mostrar_popup = True
         self.ponto_atual = None
-        self.finalizado = False
-
+        
         self.pontos = []
         self.total_pontos = 0
         self.entrada_cidade = {}
@@ -136,9 +128,7 @@ class MinigameSRS:
 
         # Cliques em tela normal de jogo
         if evento.type == pygame.MOUSEBUTTONDOWN and evento.button == 1:
-            if self.botao_reiniciar_rect.collidepoint(pos_mouse):
-                self.reiniciar = True
-            elif self.botao_pular_rect.collidepoint(pos_mouse):
+            if self.botao_pular_rect.collidepoint(pos_mouse):
                 self.solicitou_pular = True
             elif self.rosa_ventos_rect.collidepoint(pos_mouse):
                 self.mostrar_mapa_real = True
@@ -152,34 +142,29 @@ class MinigameSRS:
                         self.ponto_atual.marcar_visitado()
                         self.ponto_atual = None
 
-    def atualizar(self, reiniciar):
+    def atualizar(self):
         #conta os estados visitados
         contador = 0
         for ponto in self.pontos:
             if ponto.visitado:
                 contador += 1
         self.total_visitados = contador
-
-
-        if self.reiniciar:
-            reiniciar = True
-            return "MENU", reiniciar, self.modo
-        
+ 
         if self.solicitou_pular:
-            return "JOGO_SRS", reiniciar, self.modo
+            return "JOGO_SRS", self.modo
 
         if self.estado == "ESCOLHA_IDIOMA":
             if self.idioma_selecionado:
                 self.iniciar_cenario(self.idioma_selecionado)
                 self.idioma_selecionado = None
-            return "GAME_SRS", reiniciar, self.modo
+            return "GAME_SRS", self.modo
         
         if not self.mostrar_popup and not self.mostrar_mapa_real:
             if self.pontos and all(p.visitado for p in self.pontos):
-                return "JOGO_SRS", reiniciar, self.modo
+                return "JOGO_SRS", self.modo
 
         if self.mostrar_popup or self.mostrar_mapa_real:
-            return "GAME_SRS", reiniciar, self.modo
+            return "GAME_SRS", self.modo
 
         teclas = pygame.key.get_pressed()
         self.personagem.mover(teclas)
@@ -204,7 +189,7 @@ class MinigameSRS:
         for p in self.pontos:
             centro_x = self.personagem.rect.centerx
             centro_y = self.personagem.rect.centery
-            if not p.visitado and p.dentro_do_raio(centro_x, centro_y, 32):
+            if not p.visitado and p.dentro_do_raio(centro_x, centro_y, 20): #20 é o tamanho do jogador
                 self.ponto_atual = p
                 self.popup_nome = p.nome
                 self.popup_texto = p.curiosidade
@@ -213,7 +198,7 @@ class MinigameSRS:
                 self.mostrar_popup = True
                 break
 
-        return "GAME_SRS", reiniciar, self.modo
+        return "GAME_SRS", self.modo
 
     def desenhar(self, tela):
         tela.blit(self.mapa_img, (0, 0))
@@ -237,7 +222,6 @@ class MinigameSRS:
             return
 
         tela.blit(self.estatua_img, self.estatua_rect)
-        tela.blit(self.botao_reiniciar, self.botao_reiniciar_rect)
 
         pos_mouse = pygame.mouse.get_pos()
 

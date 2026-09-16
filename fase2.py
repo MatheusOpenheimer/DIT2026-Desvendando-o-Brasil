@@ -69,10 +69,6 @@ class Fase2:
     self.person_img = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/person1.png")),(30, 50))
     self.person_rect = self.person_img.get_rect()
 
-    # reiniciar botao----------------------------------------------------
-    self.botao_reiniciar = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/botao_reiniciar.png")),(50, 50))
-    self.botao_reiniciar_rect = self.botao_reiniciar.get_rect(x=114, y=2)
-
     # SPAM DE FIM-----------------------------------------------------
     self.esgotado_img = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/gameover.png")),(500, 500),)
     self.esgotado_rect = self.esgotado_img.get_rect(centerx=config.centroX, centery=-300)
@@ -103,7 +99,6 @@ class Fase2:
     self.acabou_finalizacao = False
     self.tempo_esgotado = False
     self.liberar = False
-    self.reiniciar = False
 
     self.SUMIR_STATUS_EVENTO = pygame.USEREVENT + 3
     self.Errou_status = False
@@ -176,8 +171,6 @@ class Fase2:
 
     if self.escolha and self.mapa_rect.collidepoint(mouse_seta):
       pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
-    elif self.botao_reiniciar_rect.collidepoint(mouse_seta):
-      pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
     # Se estiver no modo de pergunta e o mouse estiver sobre algum botão
     elif not self.escolha and self.alt_A.collidepoint(mouse_seta) or self.alt_B.collidepoint(mouse_seta) or self.alt_C.collidepoint(mouse_seta) or self.alt_D.collidepoint(mouse_seta):
       pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
@@ -224,9 +217,6 @@ class Fase2:
 
         pos_mouse = evento.pos
         mouse_x, mouse_y = evento.pos
-
-        if self.botao_reiniciar_rect.collidepoint(pos_mouse):
-          self.reiniciar = True
 
         if self.escolha:
           if self.mapa_rect.collidepoint(mouse_x, mouse_y):
@@ -340,13 +330,8 @@ class Fase2:
     else:
       return 0.0
   
-  def atualizar(self, tempo_restante, salvarBD, reiniciar, nome):  # gerencia eventos a todo momento, sem esperar cliques etc
+  def atualizar(self, tempo_restante, salvarBD, nome):  # gerencia eventos a todo momento, sem esperar cliques etc
     # Roda a CADA FRAME no loop principal para checar tempo e troca de fase.
-
-    if self.reiniciar:
-      reiniciar = True
-      return "MENU", salvarBD, reiniciar, None, None
-
     if len(self.Jogados) == len(self.mapas_disponiveis):
       self.acabou_finalizacao = True
 
@@ -372,14 +357,13 @@ class Fase2:
       acertos = self.contAcertos# soma erros e acertos aos da fase 1
       erros = self.contErros
       salvarBD = "BRASIL" #True
-      return "FINAL", salvarBD, reiniciar, acertos, erros
+      return "FINAL", salvarBD, acertos, erros
 
     else:
-      return "FASE2", salvarBD, reiniciar, None, None
+      return "FASE2", salvarBD, None, None
 
   def desenhar(self, tela):
     tela.blit(self.fundo_img, (0, 0))
-    tela.blit(self.botao_reiniciar, self.botao_reiniciar_rect)
 
     if self.escolha:
       tela.blit(self.mapa, self.mapa_rect)

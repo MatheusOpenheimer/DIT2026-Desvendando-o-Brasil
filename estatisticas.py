@@ -36,7 +36,6 @@ class Estatisticas():
         self.pos_y_tabela = self.bloco_estatisticas.y + 180  # Começa logo abaixo do cabeçalho
 
     def abrir(self):
-        #self.estatisticas = banco.carregar_estatisticas()
         self.visivel = True
         self.modo_senha = True
         self.scroll_y = 0 #inicia no primeiro
@@ -52,7 +51,7 @@ class Estatisticas():
             self.scroll_y -= evento.y * self.velocidade_scroll
             self.scroll_y = max(0, min(self.scroll_y, limite_maximo))
 
-        if evento.type == pygame.MOUSEBUTTONDOWN and evento.button == 1:
+        if self.visivel and evento.type == pygame.MOUSEBUTTONDOWN and evento.button == 1:
             config.click_sound.play()
             if self.botao_fechar_estatisticas.collidepoint(pos_mouse):
                 self.visivel = False

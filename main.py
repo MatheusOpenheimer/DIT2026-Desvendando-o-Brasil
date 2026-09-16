@@ -1,5 +1,6 @@
 import sys
 import pygame
+
 pygame.mixer.pre_init(frequency=44100, size=-16, channels=2, buffer=1024)
 pygame.init()
 pygame.mixer.init()
@@ -21,6 +22,7 @@ banco.criar_banco_srs()
 tela = pygame.display.set_mode((config.largura, config.altura), pygame.FULLSCREEN)
 pygame.display.set_caption("Desvendando o Brasil")
 
+#IMAGENS DO JOGO GERAL----------------------------------------------------------------------------
 # JANELA DE SAÍDA
 janela_sair = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/janela_sair.png")), (400, 400))
 janela_sair_rect = janela_sair.get_rect(centerx=config.centroX, centery=config.altura // 2)
@@ -33,11 +35,49 @@ botao_continuar_rect = botao_continuar.get_rect(centerx=config.centroX + 85, y=b
 botao_fechar_img = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/fechar.png")), (50, 50))
 botao_fechar_rect = botao_fechar_img.get_rect(x=2, y=2)
 
+# Reiniciar botao----------------------------------------------------
+botao_reiniciar = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/botao_reiniciar.png")), (50, 50))
+botao_reiniciar_rect = botao_reiniciar.get_rect(x=114, y=2)
+
 # BOTÃO DE ÁUDIO
 botao_som = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/botao_som.png")), (50, 50))
 botao_som_rect = botao_som.get_rect(x=58, y=2)
 botao_mutado = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/botao_mutado.png")), (50, 50))
 mutado = False
+#----------------------------------------------------------------------------------------------------------------
+def reiniciar():
+    FASE = "MENU"
+    menu = None
+    intro = None
+    fase1 = None
+    fase2 = None
+    final = None
+    minigame = None
+    minigame_srs = None
+    jogo_srs = None
+    modo = "facil"
+    personagem = "boy" #menino por default
+    tempo_iniciado = False
+    salvarBD = False
+    show_janela_sair = False
+    tempo_restante = 250
+    regioes_erradas = []
+    regioes_jogadas = []
+    replay = False
+    EVENTO_CRONOMETRO = pygame.USEREVENT + 2
+    dados_jogador = {
+    "nome": "Explorador",
+    "idade": 0,
+    "acertos": 0,
+    "erros": 0,
+    "tempo_sobra": 0
+    } 
+
+    pygame.time.set_timer(EVENTO_CRONOMETRO, 0)
+
+    return (FASE, menu, intro, fase1, fase2, final, minigame,minigame_srs,jogo_srs, modo,
+            personagem, tempo_iniciado, salvarBD, show_janela_sair, tempo_restante, regioes_erradas,
+            regioes_jogadas, replay, EVENTO_CRONOMETRO, dados_jogador)
 
 
 def trocar_musica(caminho):
@@ -48,48 +88,24 @@ def trocar_musica(caminho):
     if mutado:
         pygame.mixer.music.pause()
 
-
 trocar_musica("assets/AUDIOS/musicaMenu.mp3")
 pygame.mixer.music.set_volume(0.2)
 musica_play = True
 
-# ESTADOS DO JOGO
-FASE = "MENU"
-menu = None
-intro = None
-fase1 = None
-fase2 = None
-final = None
-minigame = None
-minigame_srs = None
-jogo_srs = None
-modo = "facil"
-personagem = "boy" #menino por default
-dados_jogador = {
-    "nome": "Explorador",
-    "idade": 0,
-    "acertos": 0,
-    "erros": 0,
-    "tempo_sobra": 0
-}
 
-EVENTO_CRONOMETRO = pygame.USEREVENT + 2
-tempo_iniciado = False
-reiniciar = False
-salvarBD = False
-show_janela_sair = False
-tempo_restante = 250
-regioes_erradas = []
-regioes_jogadas = []
+#Ja chama o reiniciar uma vez no começo pra começar reiniciado do zero
+(FASE, menu, intro, fase1, fase2, final, minigame,minigame_srs,jogo_srs, modo,personagem,
+tempo_iniciado, salvarBD, show_janela_sair, tempo_restante, regioes_erradas,
+regioes_jogadas, replay, EVENTO_CRONOMETRO, dados_jogador) = reiniciar()
+
 
 relogio = pygame.time.Clock()
 rodando = True
-
 # LOOP PRINCIPAL
 while rodando:
 
     # EVENTOS
-    for evento in pygame.event.get():
+    for evento in pygame.event.get(): #dentro do FOR: olha a cada evento, fora do for, olha a cada frame atualizado
         if evento.type == pygame.QUIT:
             rodando = False
 
@@ -103,6 +119,11 @@ while rodando:
                     pygame.mixer.unpause()
                     pygame.mixer.music.unpause()
 
+            elif FASE != "MENU" and FASE != "FINAL" and botao_reiniciar_rect.collidepoint(evento.pos):
+                (FASE, menu, intro, fase1, fase2, final, minigame,minigame_srs,jogo_srs, modo,personagem, tempo_iniciado,
+                salvarBD, show_janela_sair, tempo_restante, regioes_erradas, regioes_jogadas, replay,
+                EVENTO_CRONOMETRO, dados_jogador) = reiniciar()
+
             elif botao_fechar_rect.collidepoint(evento.pos):
                 show_janela_sair = True
 
@@ -115,19 +136,11 @@ while rodando:
             continue
 
         if FASE == "MENU" and menu is not None:
-            PROXIMA_FASE, nome, idade = menu.gerenciar_eventos(evento)
-            if PROXIMA_FASE and PROXIMA_FASE != "MENU":
-                if nome and idade:
-                    dados_jogador["nome"] = nome
-                    dados_jogador["idade"] = idade
-                menu = None
-                FASE = PROXIMA_FASE
-
+            menu.gerenciar_eventos(evento)
         elif FASE == "INTRO" and intro is not None:
             intro.gerenciar_eventos(evento)
         elif FASE == "GAME" and minigame is not None:
             minigame.gerenciar_eventos(evento)
-
         elif FASE == "GAME_SRS" and minigame_srs is not None:
             minigame_srs.gerenciar_eventos(evento)
         elif FASE == "JOGO_SRS" and jogo_srs is not None:
@@ -143,9 +156,13 @@ while rodando:
             if tempo_restante > 0:
                 tempo_restante -= 1
 
+    #POR FRAME ATUALIZA SEMPRE
     pos_mouse = pygame.mouse.get_pos()
-    if botao_som_rect.collidepoint(pos_mouse) or botao_fechar_rect.collidepoint(pos_mouse) and not show_janela_sair:
+    if (botao_som_rect.collidepoint(pos_mouse) or botao_fechar_rect.collidepoint(pos_mouse)
+        or botao_reiniciar_rect.collidepoint(pos_mouse) and not show_janela_sair):
         pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+    else:
+        pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
 
     if FASE == "MENU":
         if menu is None:
@@ -153,22 +170,18 @@ while rodando:
         if not musica_play:
             trocar_musica("assets/AUDIOS/musicaMenu.mp3")
             musica_play = True
-        if reiniciar:
-            tempo_iniciado = False
-            dados_jogador = {
-                "nome": "Explorador",
-                "idade": 0,
-                "acertos": 0,
-                "erros": 0,
-            }
-            regioes_erradas = []
-            regioes_jogadas = []
-            reiniciar = False
+        PROXIMA_FASE, nome, idade = menu.atualizar()
+        if PROXIMA_FASE != "MENU":
+            if nome and idade:
+                dados_jogador["nome"] = nome
+                dados_jogador["idade"] = idade
+            menu = None
+            FASE = PROXIMA_FASE
 
     elif FASE == "INTRO":
         if intro is None:
             intro = Intro()
-        PROXIMA_FASE, reiniciar, modo, personagem = intro.atualizar(reiniciar)
+        PROXIMA_FASE, modo, personagem = intro.atualizar()
         if PROXIMA_FASE != "INTRO":
             intro = None
             FASE = PROXIMA_FASE
@@ -176,7 +189,7 @@ while rodando:
     elif FASE == "GAME":
         if minigame is None:
             minigame = Minigame(personagem)
-        PROXIMA_FASE, reiniciar = minigame.atualizar(reiniciar)
+        PROXIMA_FASE = minigame.atualizar()
         if PROXIMA_FASE != "GAME":
             minigame = None
             FASE = PROXIMA_FASE
@@ -184,7 +197,7 @@ while rodando:
     elif FASE == "GAME_SRS":
         if minigame_srs is None:
             minigame_srs = MinigameSRS(personagem)
-        PROXIMA_FASE, reiniciar, idioma = minigame_srs.atualizar(reiniciar)
+        PROXIMA_FASE, idioma = minigame_srs.atualizar()
         if PROXIMA_FASE != "GAME_SRS":
             minigame_srs = None
             FASE = PROXIMA_FASE
@@ -192,7 +205,7 @@ while rodando:
     elif FASE == "JOGO_SRS":
         if jogo_srs is None:
             jogo_srs = JogoSantaRita(idioma, dados_jogador["nome"])
-        PROXIMA_FASE, reiniciar, salvarBD, acertos, erros = jogo_srs.atualizar(reiniciar, salvarBD)
+        PROXIMA_FASE, salvarBD, acertos, erros = jogo_srs.atualizar(salvarBD)
         if PROXIMA_FASE != "JOGO_SRS":
             if acertos and erros: #se não retornou None grava os acertos e erros
                 dados_jogador["acertos"] = acertos
@@ -207,7 +220,7 @@ while rodando:
             tempo_restante = 250
             pygame.time.set_timer(EVENTO_CRONOMETRO, 1000)
             tempo_iniciado = True
-        PROXIMA_FASE, reiniciar, regioes_erradas, regioes_jogadas, acertos, erros = fase1.atualizar(tempo_restante, reiniciar)
+        PROXIMA_FASE, regioes_erradas, regioes_jogadas, acertos, erros = fase1.atualizar(tempo_restante)
         if musica_play:
             trocar_musica("assets/AUDIOS/musicaGame.mp3")
             musica_play = False
@@ -222,7 +235,7 @@ while rodando:
     elif FASE == "FASE2":
         if fase2 is None:
             fase2 = Fase2(regioes_erradas, regioes_jogadas)
-        PROXIMA_FASE, salvarBD, reiniciar, acertos, erros = fase2.atualizar(tempo_restante, salvarBD, reiniciar, dados_jogador["nome"])
+        PROXIMA_FASE, salvarBD, acertos, erros = fase2.atualizar(tempo_restante, salvarBD, dados_jogador["nome"])
         if PROXIMA_FASE != "FASE2": #se não retornou None implementa os acertos e erros
             if acertos and erros:
                 dados_jogador["acertos"] += acertos
@@ -234,10 +247,12 @@ while rodando:
         if final is None:
             final = Final(dados_jogador)
         tempo_iniciado = False
-        PROXIMA_FASE, reiniciar = final.atualizar(salvarBD, reiniciar)
-        if PROXIMA_FASE != "FINAL":
+        PROXIMA_FASE, replay = final.atualizar(salvarBD)
+        if PROXIMA_FASE != "FINAL" or replay:
             final = None
-            FASE = PROXIMA_FASE
+            (FASE, menu, intro, fase1, fase2, final, minigame,minigame_srs,jogo_srs, modo,personagem, tempo_iniciado,
+            salvarBD, show_janela_sair, tempo_restante, regioes_erradas, regioes_jogadas, replay,
+            EVENTO_CRONOMETRO, dados_jogador) = reiniciar()
 
     #DESENHAR NA TELA
     if FASE == "MENU" and menu is not None:
@@ -262,6 +277,9 @@ while rodando:
         tela.blit(botao_mutado, botao_som_rect)
     else:
         tela.blit(botao_som, botao_som_rect)
+
+    if FASE != "MENU" and FASE != "FINAL":
+        tela.blit(botao_reiniciar, botao_reiniciar_rect)
 
     # POP-UP DE CONFIRMAÇÃO DE SAÍDA
     if show_janela_sair:

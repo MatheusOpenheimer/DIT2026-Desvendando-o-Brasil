@@ -30,10 +30,6 @@ class Minigame:
         caminho_mapa_colisao = funcoes.resource_path("assets/IMAGENS/mapaEstado.png")
         self.mapa_colisao = pygame.transform.scale(pygame.image.load(caminho_mapa_colisao), (900, 900))
 
-        # ----------------------------------------------------------------------
-        self.botao_reiniciar = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/botao_reiniciar.png")), (50, 50))
-        self.botao_reiniciar_rect = self.botao_reiniciar.get_rect(x=114, y=2)
-
         self.fonte_siglas = pygame.font.SysFont("Franklin Gothic Medium", 13, bold=True)
         self.fonte_oceanos = pygame.font.SysFont("Franklin Gothic Medium", 16, bold=True)
 
@@ -65,7 +61,7 @@ class Minigame:
         self.confirmacao_fase1 = False
         self.mudar_fase = False
         self.clicou_ficar = False
-        self.reiniciar = False
+        self.confirmacao_fase1_por_clique = False
 
     def criar_marcadores_siglas(self):
         siglas = {
@@ -139,22 +135,13 @@ class Minigame:
                 self.clicou_ficar = True
                 self.confirmacao_fase1 = False
                 self.confirmacao_fase1_por_clique = False
-            elif self.botao_reiniciar_rect.collidepoint(pos_mouse):
-                self.reiniciar = True
 
         if evento.type == pygame.KEYDOWN:
             if evento.key == pygame.K_SPACE:
                 if self.estado_atual_colisao is not None:
                     self.popup_fechado_espaco = True
 
-    def atualizar(self, reiniciar):
-        if not hasattr(self, 'confirmacao_fase1_por_clique'):
-            self.confirmacao_fase1_por_clique = False
-
-        if self.reiniciar:
-            reiniciar = True
-            return "MENU", reiniciar
-
+    def atualizar(self):
         teclas = pygame.key.get_pressed()
         self.personagem.mover(teclas)
         self.todas_sprites.update()
@@ -180,14 +167,13 @@ class Minigame:
         self.estado_atual_colisao = estado_encontrado
 
         if self.mudar_fase:
-            return "FASE1", reiniciar
+            return "FASE1"
 
-        return "GAME", reiniciar
+        return "GAME"
 
     def desenhar(self, tela):
         tela.blit(self.fundo_img, (0, 0))
         tela.blit(self.mapa, self.mapa_rect)
-        tela.blit(self.botao_reiniciar, self.botao_reiniciar_rect)
 
         #TEXTOS DOS OCEANOS ---------------------------------------------------
         centery_tela = config.altura // 2

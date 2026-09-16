@@ -42,10 +42,6 @@ class Intro:
         self.botao_especial_rect = self.botao_especial_img.get_rect(centerx=config.centroX, centery=self.botao_dificil_rect.centery + 90)
         self.botao_especial_clicado_img = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/especial_clicado.png")), (230, 80))
 
-        # Reiniciar botao----------------------------------------------------
-        self.botao_reiniciar = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/botao_reiniciar.png")), (50, 50))
-        self.botao_reiniciar_rect = self.botao_reiniciar.get_rect(x=114, y=2)
-
         self.person_girl = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/spritesGirl/reddown.png")), (100, 200))
         self.person_girl_rect = self.person_girl.get_rect(centerx=config.centroX - 80, centery = self.pergaminho_rect.centery)
         self.person_boy = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/spritesBoy/reddown.png")), (100, 200))
@@ -56,7 +52,6 @@ class Intro:
 
         self.tela_final = False
         self.iniciarJogo = False
-        self.reiniciar = False
 
         self.segurando_mouse_dificil = False
         self.segurando_mouse_facil = False
@@ -157,14 +152,11 @@ class Intro:
         pos_mouse = pygame.mouse.get_pos()
         
         # Gerenciamento de cursor
-        if (self.btn_back_rect.collidepoint(pos_mouse) or 
-            self.btn_next_rect.collidepoint(pos_mouse) or 
-            self.botao_facil_rect.collidepoint(pos_mouse) or 
-            self.botao_dificil_rect.collidepoint(pos_mouse) or 
-            self.botao_especial_rect.collidepoint(pos_mouse) or 
-            self.placa_iniciar_rect.collidepoint(pos_mouse) or 
-            self.botao_reiniciar_rect.collidepoint(pos_mouse)):
+        if (self.btn_back_rect.collidepoint(pos_mouse) or self.btn_next_rect.collidepoint(pos_mouse) or 
+            self.botao_facil_rect.collidepoint(pos_mouse) or self.botao_dificil_rect.collidepoint(pos_mouse) or 
+            self.botao_especial_rect.collidepoint(pos_mouse) or self.placa_iniciar_rect.collidepoint(pos_mouse)):
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+            
         elif self.person_girl_rect.collidepoint(pos_mouse) or self.person_boy_rect.collidepoint(pos_mouse):
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
         else:
@@ -202,9 +194,6 @@ class Intro:
                     self.questao += 1
                     self.mudar = True  #ja salva e muda de tela
 
-                elif self.botao_reiniciar_rect.collidepoint(pos_mouse):
-                    self.reiniciar = True
-
                 elif self.btn_back_rect.collidepoint(pos_mouse):
                     self.questao -= 1
                     self.mudar = True
@@ -241,22 +230,19 @@ class Intro:
 
             self.mudar = False
 
-    def atualizar(self, reiniciar):
-        if self.reiniciar:
-            reiniciar = True
-            return "MENU", reiniciar, self.modo, self.selected_person
-        elif self.iniciarJogo:
+    def atualizar(self):
+    
+        if self.iniciarJogo:
             if self.modo == "especial":
-                return "GAME_SRS", reiniciar, self.modo, self.selected_person
+                return "GAME_SRS", self.modo, self.selected_person
             else:
-                return "GAME", reiniciar, self.modo, self.selected_person
+                return "GAME", self.modo, self.selected_person
         else:
-            return "INTRO", reiniciar, self.modo, self.selected_person
+            return "INTRO", self.modo, self.selected_person
 
     def desenhar(self, tela):
         tela.blit(self.fundo_img, (0,0))
         tela.blit(self.pergaminho_img, self.pergaminho_rect)
-        tela.blit(self.botao_reiniciar, self.botao_reiniciar_rect)
 
         if self.questao == 3:
             pos_y = self.pergaminho_rect.y + 85

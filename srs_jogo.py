@@ -10,9 +10,7 @@ from srs_ponto_turistico import criar_pontos_santa_rita
 def obter_nome_ponto_minusculo(ponto):
     return ponto.nome.lower()
 
-
 class JogoSantaRita:
-
     def __init__(self, modo, nome_jogador):
         self.nome_jogador = nome_jogador
 
@@ -65,11 +63,6 @@ class JogoSantaRita:
             rect_opcao = pygame.Rect(self.bloco_perguntas.x + 30, self.bloco_perguntas.y + 195 + (i * 72), 700, 58)
             self.botoes_alternativas.append(rect_opcao)
 
-        # BOTÃO REINICIAR -------------------------------------------------
-        caminho_btn = funcoes.resource_path("assets/IMAGENS/botao_reiniciar.png")
-        self.botao_reiniciar = pygame.transform.scale(pygame.image.load(caminho_btn), (50, 50))
-        self.botao_reiniciar_rect = self.botao_reiniciar.get_rect(x=114, y=2)
-
         # FEEDBACK VISUAL DE ACERTO / ERRO --------------------------------
         self.Errou_img = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/Errou.png")), (200, 200))
         self.Errou_rect = self.Errou_img.get_rect(centerx=config.centroX, centery=config.altura / 2)
@@ -90,7 +83,6 @@ class JogoSantaRita:
         self.opcao_selecionada = None
         self.SUMIR_STATUS_EVENTO = pygame.USEREVENT + 4
         self.ler_clique = True
-        self.reiniciar = False
         self.finalizar = False
 
         self.contAcertos = 0
@@ -129,11 +121,6 @@ class JogoSantaRita:
     def gerenciar_eventos(self, evento):
         pos_mouse = pygame.mouse.get_pos()
 
-        if self.botao_reiniciar_rect.collidepoint(pos_mouse):
-            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
-        else:
-            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
-
         if evento.type == self.SUMIR_STATUS_EVENTO:
             self.Errou_status = False
             self.Acerto_status = False
@@ -151,9 +138,6 @@ class JogoSantaRita:
 
         if evento.type == pygame.MOUSEBUTTONDOWN:
             if evento.button == 1:
-                if self.botao_reiniciar_rect.collidepoint(pos_mouse):
-                    self.reiniciar = True
-
                 if self.estado == "QUIZ" and self.ler_clique:
                     for i in range(len(self.botoes_alternativas)):
                         if self.botoes_alternativas[i].collidepoint(pos_mouse):
@@ -205,18 +189,15 @@ class JogoSantaRita:
                 if len(self.texto_feedback) < 250 and evento.unicode.isprintable():
                     self.texto_feedback += evento.unicode
 
-    def atualizar(self, reiniciar, salvarBD, dados_jogador=None):
-        if self.reiniciar:
-            reiniciar = True
-            return "MENU", reiniciar, salvarBD, None, None
+    def atualizar(self, salvarBD):
         
-        elif self.finalizar:
+        if self.finalizar:
             acertos = self.contAcertos
             erros = self.contErros
             salvarBD = "SRS"
-            return "FINAL", reiniciar, salvarBD, acertos, erros
+            return "FINAL", salvarBD, acertos, erros
         
-        return "JOGO_SRS", reiniciar, salvarBD, None, None
+        return "JOGO_SRS", salvarBD, None, None
 
     def desenhar(self, tela):
         tela.blit(self.fundo_img, (0, 0))
@@ -265,8 +246,6 @@ class JogoSantaRita:
 
         # QUIZ -------------------------------------------------------------
         if self.estado == "QUIZ":
-            tela.blit(self.botao_reiniciar, self.botao_reiniciar_rect)
-
             pygame.draw.rect(tela, config.bege, self.bloco_perguntas, border_radius=12)
             pygame.draw.rect(tela, (50, 30, 15), self.bloco_perguntas, 3, border_radius=12)
 
@@ -351,8 +330,6 @@ class JogoSantaRita:
 
             cabecalho_rect = pygame.Rect(0, 0, config.largura, 76)
             pygame.draw.rect(tela, (79, 148, 77), cabecalho_rect)
-
-            tela.blit(self.botao_reiniciar, self.botao_reiniciar_rect)
 
             txt_titulo = config.fonte_fases.render(ui["titulo_pontos"], False, (50, 30, 15))
             txt_titulo_rect = txt_titulo.get_rect(centerx=config.centroX, y=14)
