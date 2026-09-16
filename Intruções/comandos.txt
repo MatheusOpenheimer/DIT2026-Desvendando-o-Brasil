@@ -1,5 +1,4 @@
 pip install pygame
-pip install sqlite3
 pip install pyinstaller
 
-instalar extensão SQLite Viewer
+pyinstaller --clean --noconsole --onefile --name "Desvendando_o_Brasil" --icon="icone.ico" --add-data "assets;assets" main.py
