@@ -22,7 +22,7 @@ class Estatisticas():
         self.botao_fechar_estatisticas = pygame.Rect(0, 0, 35, 35)
         self.botao_fechar_estatisticas.topright = (self.bloco_estatisticas.right - 15, self.bloco_estatisticas.top + 15)
 
-        self.input_senha = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/senha.png")), (250, 125))
+        self.input_senha = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/senha.png")), (250, 125))
         self.input_senha_rect = self.input_senha.get_rect(centerx = config.centroX, centery = self.bloco_estatisticas.centery)
         self.senha = "faitec"
         self.modo_senha = False

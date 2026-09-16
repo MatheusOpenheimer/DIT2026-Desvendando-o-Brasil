@@ -36,6 +36,6 @@ mapas_carregados = {}
 def obter_mapa(nome_estado):
     if nome_estado not in mapas_carregados:
         caminho = caminhos_mapas[nome_estado]
-        mapas_carregados[nome_estado] = pygame.image.load(funcoes.resource_path(caminho)).convert_alpha()
+        mapas_carregados[nome_estado] = pygame.image.load(funcoes.obter_caminho_arquivo(caminho)).convert_alpha()
 
     return mapas_carregados[nome_estado]

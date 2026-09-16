@@ -16,7 +16,7 @@ class Fase2:
     self.mapas_disponiveis = estados.caminhos_mapas.copy()
     #fundo-------------------------
   # Carrega e ajusta o tamanho da imagem de fundo para a resolução do jogo
-    self.fundo_img = pygame.image.load(funcoes.resource_path("assets/IMAGENS/fundoF2.png")).convert_alpha()
+    self.fundo_img = pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/fundoF2.png")).convert_alpha()
     self.fundo_img = pygame.transform.scale(self.fundo_img, (config.largura, config.altura))
     # Cache para armazenar mapas de estados redimensionados
     self.mapas_estados_cache = {}
@@ -24,11 +24,11 @@ class Fase2:
     # PAGINA INICIAL--------------------------------------------------
     self.texto_inicial = "Selecione um Estado:"
 
-    self.mapa = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/mapaEstado.png")),(800, 800),)
+    self.mapa = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/mapaEstado.png")),(800, 800),)
     self.mapa_rect = self.mapa.get_rect(centerx=config.centroX, centery=(config.altura // 2) + 20)
 
     # INTRO----------------------------------------------------------------
-    self.intro_img = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/fase2.png")),(600, 400),)
+    self.intro_img = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/fase2.png")),(600, 400),)
     self.intro_rect = self.intro_img.get_rect(centerx=config.centroX, centery=-300)
 
     self.intro_estado = "ENTRANDO"
@@ -52,25 +52,25 @@ class Fase2:
     self.corD = config.bege
 
     # SPAM DE ERRO E ACERTO
-    self.visitado = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/visitado.png")),(500, 250),)
+    self.visitado = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/visitado.png")),(500, 250),)
     self.visitado_rect = self.visitado.get_rect(centerx=config.centroX, centery=config.altura / 2)
 
-    self.Errou_img = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/Errou.png")),(200, 200),)
+    self.Errou_img = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/Errou.png")),(200, 200),)
     self.Errou_rect = self.Errou_img.get_rect(centerx=config.centroX, centery=config.altura / 2)
-    self.Acerto_img = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/Acertou.png")),(200, 200),)
+    self.Acerto_img = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/Acertou.png")),(200, 200),)
     self.Acerto_rect = self.Acerto_img.get_rect( centerx=config.centroX, centery=config.altura / 2)
 
-    self.erro_sound = pygame.mixer.Sound(funcoes.resource_path("assets/AUDIOS/error_som.mp3"))
+    self.erro_sound = pygame.mixer.Sound(funcoes.obter_caminho_arquivo("assets/AUDIOS/error_som.mp3"))
     self.erro_sound.set_volume(2.0)
 
-    self.acerto_sound = pygame.mixer.Sound(funcoes.resource_path("assets/AUDIOS/acerto.mp3"))
+    self.acerto_sound = pygame.mixer.Sound(funcoes.obter_caminho_arquivo("assets/AUDIOS/acerto.mp3"))
     self.acerto_sound.set_volume(2.0)
     # PERSONAGEM MARCADOR DO MAPA---------------------------
-    self.person_img = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/person1.png")),(30, 50))
+    self.person_img = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/person1.png")),(30, 50))
     self.person_rect = self.person_img.get_rect()
 
     # SPAM DE FIM-----------------------------------------------------
-    self.esgotado_img = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/gameover.png")),(500, 500),)
+    self.esgotado_img = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/gameover.png")),(500, 500),)
     self.esgotado_rect = self.esgotado_img.get_rect(centerx=config.centroX, centery=-300)
 
     self.esgotado_estado = "ENTRANDO"
@@ -78,7 +78,7 @@ class Fase2:
     self.tempo_inicio_espera_esgotado = 0
     self.duracao_espera_esgotado = 1000
 
-    self.acabou_img = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/final.png")),(500, 500),)
+    self.acabou_img = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/final.png")),(500, 500),)
     self.acabou_rect = self.acabou_img.get_rect(centerx = config.centroX, centery = -300)
 
     self.acabou_estado = "ENTRANDO"

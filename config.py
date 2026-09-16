@@ -26,8 +26,8 @@ padrao = (240, 223, 168)  # para do 4º lugar em diante
 verde_pastel = (157, 242, 157)
 amarelo_pastel = (250, 226, 105)
 
-#FONTES (Com suporte ao resource_path)
-fonte_input = pygame.font.Font(funcoes.resource_path("assets/FONTES/Afonte.ttf"), 16)
+#FONTES
+fonte_input = pygame.font.Font(funcoes.obter_caminho_arquivo("assets/FONTES/Afonte.ttf"), 16)
 
 fonte_fases_bold = pygame.font.SysFont("Franklin Gothic Medium", 24, bold=True)
 fonte_fases = pygame.font.SysFont("Franklin Gothic Medium", 24)
@@ -37,9 +37,9 @@ fonte_media = pygame.font.SysFont("Franklin Gothic Medium", 20)
 
 fonte_grossa = pygame.font.SysFont("Franklin Gothic Medium", 40, bold=True)
 
-#AUDIOS (Com suporte ao resource_path)
-#click_sound = pygame.mixer.Sound(funcoes.resource_path("assets/AUDIOS/click.2.ogg"))
-click_sound = pygame.mixer.Sound(funcoes.resource_path("assets/AUDIOS/click.ogg"))
+#AUDIOS
+#click_sound = pygame.mixer.Sound(funcoes.obter_caminho_arquivo("assets/AUDIOS/click.2.ogg"))
+click_sound = pygame.mixer.Sound(funcoes.obter_caminho_arquivo("assets/AUDIOS/click.ogg"))
 click_sound.set_volume(0.9)
 
 #------------------------------------------------------

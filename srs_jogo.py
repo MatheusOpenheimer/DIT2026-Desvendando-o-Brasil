@@ -14,7 +14,7 @@ class JogoSantaRita:
     def __init__(self, modo, nome_jogador):
         self.nome_jogador = nome_jogador
 
-        self.fundo_img = pygame.image.load(funcoes.resource_path("assets/IMAGENS_SRS/img_morro.png")).convert_alpha()
+        self.fundo_img = pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS_SRS/img_morro.png")).convert_alpha()
         self.fundo_img = pygame.transform.scale(self.fundo_img, (config.largura, config.altura))
         
         self.modo = modo
@@ -64,16 +64,16 @@ class JogoSantaRita:
             self.botoes_alternativas.append(rect_opcao)
 
         # FEEDBACK VISUAL DE ACERTO / ERRO --------------------------------
-        self.Errou_img = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/Errou.png")), (200, 200))
+        self.Errou_img = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/Errou.png")), (200, 200))
         self.Errou_rect = self.Errou_img.get_rect(centerx=config.centroX, centery=config.altura / 2)
         
-        self.Acerto_img = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/Acertou.png")), (200, 200))
+        self.Acerto_img = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/Acertou.png")), (200, 200))
         self.Acerto_rect = self.Acerto_img.get_rect(centerx=config.centroX, centery=config.altura / 2)
 
-        self.erro_sound = pygame.mixer.Sound(funcoes.resource_path("assets/AUDIOS/error_som.mp3"))
+        self.erro_sound = pygame.mixer.Sound(funcoes.obter_caminho_arquivo("assets/AUDIOS/error_som.mp3"))
         self.erro_sound.set_volume(1.0)
 
-        self.acerto_sound = pygame.mixer.Sound(funcoes.resource_path("assets/AUDIOS/acerto.mp3"))
+        self.acerto_sound = pygame.mixer.Sound(funcoes.obter_caminho_arquivo("assets/AUDIOS/acerto.mp3"))
         self.acerto_sound.set_volume(1.0)
 
         # CONTROLE DE ESTADOS ---------------------------------------------

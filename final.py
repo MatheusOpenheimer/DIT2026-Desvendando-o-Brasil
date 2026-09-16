@@ -18,22 +18,22 @@ class Final:
 
         self.top_jogadores = []
         
-        self.botao_qr = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/botao_qr.png")), (50, 50))
+        self.botao_qr = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/botao_qr.png")), (50, 50))
         self.botao_qr_rect = self.botao_qr.get_rect(x=114, y=2)
 
-        self.botao_estatisticas = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/botao_estatisticas.png")), (50, 50))
+        self.botao_estatisticas = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/botao_estatisticas.png")), (50, 50))
         self.botao_estatisticas_rect = self.botao_estatisticas.get_rect(x=168, y=2)
 
-        self.botao_feedback = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS_SRS/feedback.png")), (50, 50))
+        self.botao_feedback = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS_SRS/feedback.png")), (50, 50))
         self.botao_feedback_rect = self.botao_feedback.get_rect(x=222, y=2)
 
-        self.bloco_qr = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/bloco_qr.png")), (400, 600))
+        self.bloco_qr = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/bloco_qr.png")), (400, 600))
         self.bloco_qr_rect = self.bloco_qr.get_rect(centerx = config.centroX, centery = config.altura // 2)
 
-        self.botao_replay = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/botao_jogar.png")), (160, 40))
+        self.botao_replay = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/botao_jogar.png")), (160, 40))
         self.botao_replay_rect = self.botao_replay.get_rect(x= config.largura - 170, y=7)
 
-        self.qr = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/QR.png")), (200, 200))
+        self.qr = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/QR.png")), (200, 200))
         self.qr_rect = self.qr.get_rect(centerx = config.centroX, centery = config.altura // 3)
 
         self.botao_fechar = pygame.Rect(0, 0, 35, 35)

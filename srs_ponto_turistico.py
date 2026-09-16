@@ -12,7 +12,7 @@ def obter_caminho_dados(nome_arquivo):
         return caminho_local
 
     # Se não encontrar localmente, usa a função para buscar no executável
-    return funcoes.resource_path(caminho_local)
+    return funcoes.obter_caminho_arquivo(caminho_local)
 
 
 def carregar_informacoes_txt(modo="pt"):
@@ -82,7 +82,7 @@ def carregar_informacoes_txt(modo="pt"):
             nome_ponto = linhas_do_ponto[0]
             
             if len(linhas_do_ponto) > 1:
-                descricao_ponto = " ".join(linhas_do_ponto[1:]).strip()
+                descricao_ponto = " ".join(linhas_do_ponto[1:]).strip() #junta as linhas usando " " pra separar
             else:
                 descricao_ponto = ""
 
@@ -105,7 +105,7 @@ class PontoTuristico:
         self.qr_path = qr_path
         self.visitado = False
 
-        caminho_img = funcoes.resource_path(self.imagem_path)
+        caminho_img = funcoes.obter_caminho_arquivo(self.imagem_path)
         if os.path.exists(caminho_img): #desenha a imagem
             img_carregada = pygame.image.load(caminho_img).convert_alpha()
             self.imagem = pygame.transform.scale(img_carregada, (90, 90))
@@ -115,13 +115,13 @@ class PontoTuristico:
             pygame.draw.circle(self.imagem, (220, 80, 50), (45, 45), 35)
             self.imagem_rect = self.imagem.get_rect(center=(self.x, self.y))
 
-        caminho_foto = funcoes.resource_path(self.foto_popup_path)
+        caminho_foto = funcoes.obter_caminho_arquivo(self.foto_popup_path)
         if os.path.exists(caminho_foto): #mesma lógica pro pop-up
             self.foto_popup = pygame.image.load(caminho_foto).convert_alpha()
         else:
             self.foto_popup = None
 
-        caminho_qr = funcoes.resource_path(self.qr_path)
+        caminho_qr = funcoes.obter_caminho_arquivo(self.qr_path)
         if os.path.exists(caminho_qr): #mesma lógica pro qr code
             self.qr_img = pygame.image.load(caminho_qr).convert_alpha()
         else:

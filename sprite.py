@@ -25,7 +25,7 @@ class Personagem(pygame.sprite.Sprite):
         
         self.sprites = []
         for caminho in caminhos_sprites:
-            img = pygame.image.load(funcoes.resource_path(caminho)).convert_alpha()
+            img = pygame.image.load(funcoes.obter_caminho_arquivo(caminho)).convert_alpha()
             img_escalada = pygame.transform.scale(img, (19 * 3, 32 * 3))
             self.sprites.append(img_escalada)
 

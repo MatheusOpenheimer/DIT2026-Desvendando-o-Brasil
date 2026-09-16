@@ -5,14 +5,18 @@ import os
 import sys
 
 
-def resource_path(relative_path):
-  try:
-    # O PyInstaller cria uma pasta temporária e armazena o caminho em _MEIPASS
-    base_path = sys._MEIPASS
-  except Exception:
-    base_path = os.path.abspath(".")
+def obter_caminho_arquivo(caminho_relativo):
+    try:
+        # Quando o jogo roda como executável (.exe), o PyInstaller cria
+        # uma pasta temporária secreta e guarda o endereço dela em _MEIPASS
+        pasta_raiz = sys._MEIPASS
+    except Exception:
+        # Quando roda direto pelo VS Code, usa a pasta onde o projeto está aberto
+        pasta_raiz = os.path.abspath(".")
 
-  return os.path.join(base_path, relative_path)
+    # Junta a pasta raiz com o arquivo que eu quero abrir (ex: "assets/IMAGENS/mapa.png")
+    caminho_completo = os.path.join(pasta_raiz, caminho_relativo)
+    return caminho_completo
 
 #REGIÕES-------------------------
 norte = (0, 128, 1)
@@ -449,7 +453,7 @@ def carregar_textos_srs(modo="pt"):
     else:
         arquivo = "srs_pontos.txt"
 
-    caminho = resource_path(os.path.join("dados", arquivo))
+    caminho = obter_caminho_arquivo(os.path.join("dados", arquivo))
     dados = {"INTERFACE": {}}
     chave_atual = None
     linhas_bloco = []

@@ -5,23 +5,23 @@ import funcoes
 class Intro:
     def __init__(self):
         #FUNDO
-        self.fundo_img = pygame.image.load(funcoes.resource_path("assets/IMAGENS/fundo_intro.png")).convert_alpha()
+        self.fundo_img = pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/fundo_intro.png")).convert_alpha()
         self.fundo_img = pygame.transform.scale(self.fundo_img, (config.largura, config.altura))
         # BLOCO DE INSTRUÇÃO----------------------------------------------------------
-        self.pergaminho_img = pygame.image.load(funcoes.resource_path("assets/IMAGENS/pergaminho.png"))
+        self.pergaminho_img = pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/pergaminho.png"))
         self.pergaminho_img = pygame.transform.scale(self.pergaminho_img, (1000, 550))
         self.pergaminho_rect = self.pergaminho_img.get_rect(centerx=config.centroX, centery=config.altura // 2 - 100)
 
-        self.fonte_titulo = pygame.font.Font(funcoes.resource_path("assets/FONTES/Afonte.ttf"), 22)
+        self.fonte_titulo = pygame.font.Font(funcoes.obter_caminho_arquivo("assets/FONTES/Afonte.ttf"), 22)
 
-        self.btn_back_img = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/botao_back.png")), (120, 45))
+        self.btn_back_img = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/botao_back.png")), (120, 45))
         self.btn_back_rect = self.btn_back_img.get_rect(centery=self.pergaminho_rect.bottom + 30)
-        self.btn_next_img = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/botao_next.png")), (120, 45))
+        self.btn_next_img = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/botao_next.png")), (120, 45))
         self.btn_next_rect = self.btn_next_img.get_rect(centery=self.pergaminho_rect.bottom + 30)
         self.btn_next_rect.centerx = config.centroX
         # -------------------------------------------------------------------------------------
         # Botao iniciar-------------------------------------------------------------------------
-        self.placa_iniciar = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/placa_iniciar.png")), (170, 270))
+        self.placa_iniciar = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/placa_iniciar.png")), (170, 270))
         self.placa_iniciar_rect = self.placa_iniciar.get_rect(x=config.largura - 170, y=config.altura - 270)
         self.placa_iniciar_rect.centery = config.altura + 300  # Onde começa a img
 
@@ -29,22 +29,22 @@ class Intro:
         self.alvo_y = config.altura - 140  # Até onde sobe
 
         # BOTÕES DE MODO-------------------------------------------------
-        self.botao_facil_img = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/facil.png")), (230, 80))
+        self.botao_facil_img = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/facil.png")), (230, 80))
         self.botao_facil_rect = self.botao_facil_img.get_rect(centerx=config.centroX, centery=self.pergaminho_rect.centery - 80)
-        self.facil_clicado_img = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/facil_clicado.png")), (230, 80))
+        self.facil_clicado_img = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/facil_clicado.png")), (230, 80))
 
-        self.botao_dificil_img = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/dificil.png")), (230, 80))
+        self.botao_dificil_img = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/dificil.png")), (230, 80))
         self.botao_dificil_rect = self.botao_dificil_img.get_rect(centerx=config.centroX, centery=self.pergaminho_rect.centery + 10)
-        self.dificil_clicado_img = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/dificil_clicado.png")), (230, 80))
+        self.dificil_clicado_img = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/dificil_clicado.png")), (230, 80))
 
         # BOTÃO ESPECIAL----------------------
-        self.botao_especial_img = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/especial.png")), (230, 80))
+        self.botao_especial_img = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/especial.png")), (230, 80))
         self.botao_especial_rect = self.botao_especial_img.get_rect(centerx=config.centroX, centery=self.botao_dificil_rect.centery + 90)
-        self.botao_especial_clicado_img = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/especial_clicado.png")), (230, 80))
+        self.botao_especial_clicado_img = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/especial_clicado.png")), (230, 80))
 
-        self.person_girl = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/spritesGirl/reddown.png")), (100, 200))
+        self.person_girl = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/spritesGirl/reddown.png")), (100, 200))
         self.person_girl_rect = self.person_girl.get_rect(centerx=config.centroX - 80, centery = self.pergaminho_rect.centery)
-        self.person_boy = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/spritesBoy/reddown.png")), (100, 200))
+        self.person_boy = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/spritesBoy/reddown.png")), (100, 200))
         self.person_boy_rect = self.person_boy.get_rect(centerx=config.centroX + 80, centery = self.pergaminho_rect.centery)
         
         self.mudar = False

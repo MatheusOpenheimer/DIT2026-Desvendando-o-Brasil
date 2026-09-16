@@ -16,11 +16,11 @@ class Fase1:
 
     #FUNDO------------------------------------
   # Carrega e ajusta o tamanho da imagem de fundo para a resolução do jogo
-    self.fundo_img = pygame.image.load(funcoes.resource_path("assets/IMAGENS/fundo_fase1.png")).convert_alpha()
+    self.fundo_img = pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/fundo_fase1.png")).convert_alpha()
     self.fundo_img = pygame.transform.scale(self.fundo_img, (config.largura, config.altura))
 
     # INTRO ----------------------------------------------------------------
-    self.intro_img = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/fase1.png")), (600, 400))
+    self.intro_img = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/fase1.png")), (600, 400))
     self.intro_rect = self.intro_img.get_rect(centerx=config.centroX, centery=-300)
 
     self.intro_estado = "ENTRANDO"
@@ -30,7 +30,7 @@ class Fase1:
     # ----------------------------------------------------------------------
 
     # SPAM DE FIM ----------------------------------------------------------
-    self.esgotado_img = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/esgotadoTempo.png")), (500, 500))
+    self.esgotado_img = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/esgotadoTempo.png")), (500, 500))
     self.esgotado_rect = self.esgotado_img.get_rect(centerx=config.centroX, centery=-300)
 
     self.esgotado_estado = "ENTRANDO"
@@ -38,7 +38,7 @@ class Fase1:
     self.tempo_inicio_espera_esgotado = 0
     self.duracao_espera_esgotado = 650
 
-    self.acabou_img = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/acabouFase1.png")), (500, 500))
+    self.acabou_img = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/acabouFase1.png")), (500, 500))
     self.acabou_rect = self.acabou_img.get_rect(centerx=config.centroX, centery=-300)
 
     self.acabou_estado = "ENTRANDO"
@@ -47,12 +47,12 @@ class Fase1:
     self.duracao_espera_acabou = 650
 
     # MAPA -----------------------------------------------------------------
-    self.mapa = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/mapaRegião.png")), (800, 800))
+    self.mapa = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/mapaRegião.png")), (800, 800))
     self.mapa_rect = self.mapa.get_rect()
     self.mapa_rect.centerx = 920
     self.mapa_rect.centery = config.altura / 2
 
-    self.mapaTela = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/mapaTelaRegiao.png")), (800, 800))
+    self.mapaTela = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/mapaTelaRegiao.png")), (800, 800))
     self.mapaTela_rect = self.mapa.get_rect()
     self.mapaTela_rect.centerx = 920
     self.mapaTela_rect.centery = config.altura / 2
@@ -76,22 +76,22 @@ class Fase1:
       self.dica_sorteada = ["", "", ""]
 
     # PERSONAGEM MARCADOR DO MAPA ------------------------------------------
-    self.person_img = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/person1.png")), (30, 50))
+    self.person_img = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/person1.png")), (30, 50))
     self.person_rect = self.person_img.get_rect()
 
     # MODO POWER
     self.contador_piscar = 0
 
     # SPAM DE ERRO E ACERTO
-    self.Errou_img = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/Errou.png")), (200, 200))
+    self.Errou_img = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/Errou.png")), (200, 200))
     self.Errou_rect = self.Errou_img.get_rect(centerx=config.centroX, centery=config.altura / 2)
-    self.Acerto_img = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/Acertou.png")), (200, 200))
+    self.Acerto_img = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/Acertou.png")), (200, 200))
     self.Acerto_rect = self.Acerto_img.get_rect(centerx=config.centroX, centery=config.altura / 2)
 
-    self.erro_sound = pygame.mixer.Sound(funcoes.resource_path("assets/AUDIOS/error_som.mp3"))
+    self.erro_sound = pygame.mixer.Sound(funcoes.obter_caminho_arquivo("assets/AUDIOS/error_som.mp3"))
     self.erro_sound.set_volume(1.0)
 
-    self.acerto_sound = pygame.mixer.Sound(funcoes.resource_path("assets/AUDIOS/acerto.mp3"))
+    self.acerto_sound = pygame.mixer.Sound(funcoes.obter_caminho_arquivo("assets/AUDIOS/acerto.mp3"))
     self.acerto_sound.set_volume(1.0)
     # GERENCIADOR DE ESTADOS ------------------------------------------------
 

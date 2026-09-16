@@ -10,11 +10,11 @@ class Minigame:
         self.curiosidades_estados = funcoes.carregar_curiosidades_txt(os.path.join("dados", "curiosidades.txt"))
 
         # Carrega e ajusta o tamanho da imagem de fundo
-        self.fundo_img = pygame.image.load(funcoes.resource_path("assets/IMAGENS/fundo_game.png")).convert_alpha()
+        self.fundo_img = pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/fundo_game.png")).convert_alpha()
         self.fundo_img = pygame.transform.scale(self.fundo_img, (config.largura, config.altura))
 
         # INTRO ----------------------------------------------------------------
-        self.intro_img = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/minigame.png")), (600, 400))
+        self.intro_img = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/minigame.png")), (600, 400))
         self.intro_rect = self.intro_img.get_rect(centerx=config.centroX, centery=-300)
 
         self.intro_estado = "ENTRANDO"
@@ -23,11 +23,11 @@ class Minigame:
         self.duracao_espera = 1000
 
         # MAPA VISÍVEL (TELA) --------------------------------------------------
-        self.mapa = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/mapaTelaRegiao.png")), (900, 900))
+        self.mapa = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/mapaTelaRegiao.png")), (900, 900))
         self.mapa_rect = self.mapa.get_rect(centerx=config.centroX, centery=(config.altura // 2) + 20)
 
         # MAPA DE COLISÃO INVISÍVEL --------------------------------------------
-        caminho_mapa_colisao = funcoes.resource_path("assets/IMAGENS/mapaEstado.png")
+        caminho_mapa_colisao = funcoes.obter_caminho_arquivo("assets/IMAGENS/mapaEstado.png")
         self.mapa_colisao = pygame.transform.scale(pygame.image.load(caminho_mapa_colisao), (900, 900))
 
         self.fonte_siglas = pygame.font.SysFont("Franklin Gothic Medium", 13, bold=True)
@@ -45,14 +45,14 @@ class Minigame:
         self.todas_sprites.add(self.personagem)
 
         # BOTÃO PULAR (Canto Superior Direito) ---------------------------------
-        self.botao_skip = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/skip.png")), (150, 54))
+        self.botao_skip = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/skip.png")), (150, 54))
         self.botao_skip_rect = self.botao_skip.get_rect(topright=(config.largura - 15, 10))
 
-        self.janela_skip = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/skip_pop.png")), (400, 400))
+        self.janela_skip = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/skip_pop.png")), (400, 400))
         self.janela_skip_rect = self.janela_skip.get_rect(centerx=config.centroX, centery=config.altura // 2)
-        self.botao_sair = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/pular.png")), (155, 80))
+        self.botao_sair = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/pular.png")), (155, 80))
         self.botao_sair_rect = self.botao_sair.get_rect(centerx=config.centroX - 85, y=self.janela_skip_rect.y + 250)
-        self.botao_continuar = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/botao_continuar.png")), (155, 80))
+        self.botao_continuar = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/botao_continuar.png")), (155, 80))
         self.botao_continuar_rect = self.botao_continuar.get_rect(centerx=config.centroX + 85, y=self.botao_sair_rect.y)
 
         # CONTROLE DE ESTADOS

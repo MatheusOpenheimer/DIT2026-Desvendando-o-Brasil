@@ -9,17 +9,17 @@ visualizar_feedbacks = VisualizarFeedbacks()
 
 class Menu:
     def __init__(self):
-        self.fundo = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/fundomapa.png")), (config.largura, config.altura))
+        self.fundo = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/fundomapa.png")), (config.largura, config.altura))
         self.fundo_rect = self.fundo.get_rect(centerx = config.centroX, centery = config.altura // 2)
 
         # LOGO
-        self.desvendando_img = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/desvendando.png")), (500, 140))
+        self.desvendando_img = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/desvendando.png")), (500, 140))
         self.desvendando_rect = self.desvendando_img.get_rect(centerx = config.centroX, centery = 30)
 
-        self.oBrasil_img = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/oBrasil.png")), (500, 140))
+        self.oBrasil_img = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/oBrasil.png")), (500, 140))
         self.oBrasil_rect = self.desvendando_img.get_rect(centerx = config.centroX, centery = 70)
 
-        self.bandeira_img = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/bandeira.png")), (250, 150))
+        self.bandeira_img = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/bandeira.png")), (250, 150))
         self.bandeira_rect = self.bandeira_img.get_rect()
         self.bandeira_rect.centerx = config.largura / 2
         self.bandeira_rect.centery = 160
@@ -28,25 +28,25 @@ class Menu:
         self.alvo_y = 190
 
         # BOTÕES
-        self.input_name_img = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/input_name.png")), (config.tamanho_botao))
+        self.input_name_img = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/input_name.png")), (config.tamanho_botao))
         self.input_name_rect = self.input_name_img.get_rect(centerx = config.centroX, y = config.posicoes_botao_y[0])
 
-        self.input_idade_img = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/input_idade.png")), (config.tamanho_botao))
+        self.input_idade_img = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/input_idade.png")), (config.tamanho_botao))
         self.input_idade_rect = self.input_idade_img.get_rect(centerx = config.centroX, y = config.posicoes_botao_y[1])
 
-        self.botao_iniciar_img = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/botao_iniciar.png")), (230, 100))
+        self.botao_iniciar_img = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/botao_iniciar.png")), (230, 100))
         self.botao_iniciar_rect = self.botao_iniciar_img.get_rect(centerx = config.centroX, y = config.posicoes_botao_y[2])
-        self.iniciar_clicado_img = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/iniciar_clicado.png")), (230, 100))
+        self.iniciar_clicado_img = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/iniciar_clicado.png")), (230, 100))
 
-        self.alerta_menu_img = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/alerta_menu.png")), (500, 250))
+        self.alerta_menu_img = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/alerta_menu.png")), (500, 250))
         self.alerta_menu_rect = self.alerta_menu_img.get_rect(centerx = config.centroX, centery = config.altura / 2)
 
         # Botão Estatísticas (x=58)
-        self.botao_estatisticas = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/botao_estatisticas.png")), (50, 50))
+        self.botao_estatisticas = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/botao_estatisticas.png")), (50, 50))
         self.botao_estatisticas_rect = self.botao_estatisticas.get_rect(x =114, y = 2)
 
         # Botão Feedbacks (x=114) com a imagem feedback.png
-        self.botao_feedback = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS_SRS/feedback.png")), (50, 50))
+        self.botao_feedback = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS_SRS/feedback.png")), (50, 50))
         self.botao_feedback_rect = self.botao_feedback.get_rect(x = 174, y = 2)
 
         # GERENCIAMENTO DE ESTADOS

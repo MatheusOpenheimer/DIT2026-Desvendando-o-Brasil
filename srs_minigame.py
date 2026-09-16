@@ -19,17 +19,17 @@ class MinigameSRS:
         # BOTÕES DE LINGUAGEM
         y_botoes = config.altura // 2
         
-        self.modo_pt_img = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS_SRS/pt.png")), (200, 40))
+        self.modo_pt_img = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS_SRS/pt.png")), (200, 40))
         self.modo_pt_rect = self.modo_pt_img.get_rect(centerx=config.centroX - 220, centery=y_botoes)
 
-        self.modo_en_img = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS_SRS/en.png")), (200, 40))
+        self.modo_en_img = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS_SRS/en.png")), (200, 40))
         self.modo_en_rect = self.modo_en_img.get_rect(centerx=config.centroX, centery=y_botoes)
 
-        self.modo_esp_img = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS_SRS/esp.png")), (200, 40))
+        self.modo_esp_img = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS_SRS/esp.png")), (200, 40))
         self.modo_esp_rect = self.modo_esp_img.get_rect(centerx=config.centroX + 220, centery=y_botoes)
 
         # Recursos visuais e fontes
-        caminho_mapa = funcoes.resource_path("assets/IMAGENS_SRS/mapa_srs.png")
+        caminho_mapa = funcoes.obter_caminho_arquivo("assets/IMAGENS_SRS/mapa_srs.png")
         self.mapa_img = pygame.image.load(caminho_mapa).convert()
         self.mapa_img = pygame.transform.scale(self.mapa_img, (config.largura, config.altura))
 
@@ -43,14 +43,14 @@ class MinigameSRS:
         self.botao_pular_rect = pygame.Rect(config.largura - 140, 10, 120, 36)
 
         # Rosa dos Ventos
-        caminho_rosa_ventos = funcoes.resource_path("assets/IMAGENS_SRS/rosaVentos.png")
+        caminho_rosa_ventos = funcoes.obter_caminho_arquivo("assets/IMAGENS_SRS/rosaVentos.png")
         self.rosa_ventos_img = pygame.image.load(caminho_rosa_ventos).convert_alpha()
         self.rosa_ventos_img = pygame.transform.scale(self.rosa_ventos_img, (110, 110))
         self.rosa_ventos_rect = self.rosa_ventos_img.get_rect()
         self.rosa_ventos_rect.topright = (config.largura - 20, self.botao_pular_rect.bottom + 10)
 
         # MAPA REAL ------------------------
-        self.mapa_real = pygame.image.load(funcoes.resource_path("assets/IMAGENS_SRS/mapa_real.png")).convert_alpha()
+        self.mapa_real = pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS_SRS/mapa_real.png")).convert_alpha()
         self.mapa_real = pygame.transform.scale(self.mapa_real, (800, 500))
         self.mapa_real_rect = self.mapa_real.get_rect(centerx=config.centroX, centery=config.altura // 2)
         
@@ -82,7 +82,7 @@ class MinigameSRS:
         self.total_pontos = len(self.pontos)
 
         # Inicializa o sprite da estátua de entrada
-        caminho_estatua = funcoes.resource_path(self.entrada_cidade["imagem_path"])
+        caminho_estatua = funcoes.obter_caminho_arquivo(self.entrada_cidade["imagem_path"])
         self.estatua_img = pygame.image.load(caminho_estatua).convert_alpha()
         self.estatua_img = pygame.transform.scale(self.estatua_img, (90, 90))
         self.estatua_rect = self.estatua_img.get_rect(center=(self.entrada_cidade["x"], self.entrada_cidade["y"]))
@@ -95,10 +95,10 @@ class MinigameSRS:
         self.popup_nome = self.entrada_cidade["nome"]
         self.popup_texto = self.entrada_cidade["mensagem"]
 
-        caminho_foto_entrada = funcoes.resource_path(self.entrada_cidade["foto_popup_path"])
+        caminho_foto_entrada = funcoes.obter_caminho_arquivo(self.entrada_cidade["foto_popup_path"])
         self.popup_img = pygame.image.load(caminho_foto_entrada).convert_alpha() if os.path.exists(caminho_foto_entrada) else None
 
-        caminho_qr_entrada = funcoes.resource_path(self.entrada_cidade["qr_path"])
+        caminho_qr_entrada = funcoes.obter_caminho_arquivo(self.entrada_cidade["qr_path"])
         self.popup_qr = pygame.image.load(caminho_qr_entrada).convert_alpha() if os.path.exists(caminho_qr_entrada) else None
 
         self.estado = "JOGO"
@@ -177,9 +177,9 @@ class MinigameSRS:
                 self.rio_apresentado = True
                 self.popup_nome = self.evento_rio["nome"]
                 self.popup_texto = self.evento_rio["mensagem"]
-                caminho_foto_rio = funcoes.resource_path(self.evento_rio["foto_popup_path"])
+                caminho_foto_rio = funcoes.obter_caminho_arquivo(self.evento_rio["foto_popup_path"])
                 self.popup_img = pygame.image.load(caminho_foto_rio).convert_alpha() if os.path.exists(caminho_foto_rio) else None
-                caminho_qr_rio = funcoes.resource_path(self.evento_rio["qr_path"])
+                caminho_qr_rio = funcoes.obter_caminho_arquivo(self.evento_rio["qr_path"])
                 self.popup_qr = pygame.image.load(caminho_qr_rio).convert_alpha() if os.path.exists(caminho_qr_rio) else None
                 self.mostrar_popup = True
 

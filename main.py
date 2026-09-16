@@ -24,25 +24,25 @@ pygame.display.set_caption("Desvendando o Brasil")
 
 #IMAGENS DO JOGO GERAL----------------------------------------------------------------------------
 # JANELA DE SAÍDA
-janela_sair = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/janela_sair.png")), (400, 400))
+janela_sair = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/janela_sair.png")), (400, 400))
 janela_sair_rect = janela_sair.get_rect(centerx=config.centroX, centery=config.altura // 2)
-botao_sair = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/botao_sair.png")), (155, 80))
+botao_sair = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/botao_sair.png")), (155, 80))
 botao_sair_rect = botao_sair.get_rect(centerx=config.centroX - 85, y=janela_sair_rect.y + 250)
-botao_continuar = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/botao_continuar.png")), (155, 80))
+botao_continuar = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/botao_continuar.png")), (155, 80))
 botao_continuar_rect = botao_continuar.get_rect(centerx=config.centroX + 85, y=botao_sair_rect.y)
 
 # BOTÃO DE FECHAR (SAIR)
-botao_fechar_img = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/fechar.png")), (50, 50))
+botao_fechar_img = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/fechar.png")), (50, 50))
 botao_fechar_rect = botao_fechar_img.get_rect(x=2, y=2)
 
 # Reiniciar botao----------------------------------------------------
-botao_reiniciar = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/botao_reiniciar.png")), (50, 50))
+botao_reiniciar = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/botao_reiniciar.png")), (50, 50))
 botao_reiniciar_rect = botao_reiniciar.get_rect(x=114, y=2)
 
 # BOTÃO DE ÁUDIO
-botao_som = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/botao_som.png")), (50, 50))
+botao_som = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/botao_som.png")), (50, 50))
 botao_som_rect = botao_som.get_rect(x=58, y=2)
-botao_mutado = pygame.transform.scale(pygame.image.load(funcoes.resource_path("assets/IMAGENS/botao_mutado.png")), (50, 50))
+botao_mutado = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/botao_mutado.png")), (50, 50))
 mutado = False
 #----------------------------------------------------------------------------------------------------------------
 def reiniciar():
@@ -82,7 +82,7 @@ def reiniciar():
 
 def trocar_musica(caminho):
     pygame.mixer.music.stop()
-    pygame.mixer.music.load(funcoes.resource_path(caminho))
+    pygame.mixer.music.load(funcoes.obter_caminho_arquivo(caminho))
     pygame.mixer.music.play(-1)
     pygame.mixer.music.set_volume(0.3)
     if mutado:

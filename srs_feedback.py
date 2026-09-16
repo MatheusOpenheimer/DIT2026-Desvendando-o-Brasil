@@ -24,7 +24,7 @@ class VisualizarFeedbacks:
         self.botao_fechar.topright = (self.bloco_feedbacks.right - 15, self.bloco_feedbacks.top + 15)
 
         self.input_senha = pygame.transform.scale(
-            pygame.image.load(funcoes.resource_path("assets/IMAGENS/senha.png")), (250, 125)
+            pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS/senha.png")), (250, 125)
         )
         self.input_senha_rect = self.input_senha.get_rect(
             centerx=config.centroX, centery=self.bloco_feedbacks.centery
