@@ -100,15 +100,15 @@ class Minigame:
             origem_y = self.mapa_rect.y + int(y_mapa * escala)
             deslocamento = deslocamentos_x.get(nome_estado, 0)
             
-            x = origem_x + deslocamento
-            y = origem_y
+            pos_x = origem_x + deslocamento
+            pos_y = origem_y
 
             ponto_origem = (origem_x - 10, origem_y) if deslocamento != 0 else None
 
             self.marcadores_siglas.append({
                 "nome": nome_estado,
                 "sigla": siglas.get(nome_estado, ""),
-                "pos": (x, y),
+                "pos": (pos_x, pos_y),
                 "ponto_origem": ponto_origem
             })
 
@@ -175,30 +175,30 @@ class Minigame:
         tela.blit(self.fundo_img, (0, 0))
         tela.blit(self.mapa, self.mapa_rect)
 
-        #TEXTOS DOS OCEANOS ---------------------------------------------------
+        # TEXTOS DOS OCEANOS ---------------------------------------------------
         centery_tela = config.altura // 2
 
-        #Oceano Atlântico
-        txt_atl_sul = self.fonte_oceanos.render("Oceano Atlântico Sul", True, config.preto)
-        rect_atl_sul = txt_atl_sul.get_rect(left=self.mapa_rect.right + 20, centery=centery_tela)
-        tela.blit(txt_atl_sul, rect_atl_sul)
+        # Oceano Atlântico
+        texto_atlantico = self.fonte_oceanos.render("Oceano Atlântico", True, config.preto)
+        rect_atlantico = texto_atlantico.get_rect(left=self.mapa_rect.right + 20, centery=centery_tela)
+        tela.blit(texto_atlantico, rect_atlantico)
 
         # Oceano Pacífico
-        txt_pacifico = self.fonte_oceanos.render("Oceano Pacífico", True, config.preto)
-        rect_pacifico = txt_pacifico.get_rect(right=self.mapa_rect.left - 100, centery=centery_tela)
-        tela.blit(txt_pacifico, rect_pacifico)
+        texto_pacifico = self.fonte_oceanos.render("Oceano Pacífico", True, config.preto)
+        rect_pacifico = texto_pacifico.get_rect(right=self.mapa_rect.left - 100, centery=centery_tela)
+        tela.blit(texto_pacifico, rect_pacifico)
 
         # Linhas guia para estados menores
-        for m in self.marcadores_siglas:
-            if m["ponto_origem"]:
-                pygame.draw.line(tela, (255, 255, 255), m["ponto_origem"], m["pos"], 2)
-                pygame.draw.circle(tela, (255, 255, 255), m["ponto_origem"], 3)
+        for marcador in self.marcadores_siglas:
+            if marcador["ponto_origem"]:
+                pygame.draw.line(tela, (255, 255, 255), marcador["ponto_origem"], marcador["pos"], 2)
+                pygame.draw.circle(tela, (255, 255, 255), marcador["ponto_origem"], 3)
 
         # Desenha as siglas no mapa
-        for m in self.marcadores_siglas:
-            x, y = m["pos"]
+        for marcador in self.marcadores_siglas:
+            pos_x, pos_y = marcador["pos"]
             
-            if self.estado_atual_colisao == m["nome"]:
+            if self.estado_atual_colisao == marcador["nome"]:
                 cor_fundo = config.amarelo
                 cor_borda = (50, 30, 15)
                 cor_texto = config.preto
@@ -208,12 +208,12 @@ class Minigame:
                 cor_texto = config.branco
 
             tag_rect = pygame.Rect(0, 0, 26, 18)
-            tag_rect.center = (x, y)
+            tag_rect.center = (pos_x, pos_y)
 
             pygame.draw.rect(tela, cor_fundo, tag_rect, border_radius=4)
             pygame.draw.rect(tela, cor_borda, tag_rect, width=1, border_radius=4)
 
-            texto_sigla = self.fonte_siglas.render(m["sigla"], True, cor_texto)
+            texto_sigla = self.fonte_siglas.render(marcador["sigla"], True, cor_texto)
             tela.blit(texto_sigla, texto_sigla.get_rect(center=tag_rect.center))
 
         # Botão Pular Minigame

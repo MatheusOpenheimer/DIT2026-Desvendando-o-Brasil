@@ -242,7 +242,7 @@ class JogoSantaRita:
                 "cancelar": "Cancelar"
             }
         }
-        ui = textos_interface.get(self.modo, textos_interface["pt"])
+        ui = textos_interface.get(self.modo, textos_interface["pt"]) #UI -- Interface atual
 
         # QUIZ -------------------------------------------------------------
         if self.estado == "QUIZ":
