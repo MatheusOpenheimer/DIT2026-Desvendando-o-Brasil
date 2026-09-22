@@ -271,13 +271,13 @@ def animacao_entrar(objeto_estado, objeto_rect, alvo_y):
     return objeto_estado
 
 def formatar_texto_largura(texto, fonte, largura_maxima):
-  palavras = texto.split(' ')
+  palavras = texto.split(' ') #pega cada palavra separada por espaço
   linhas = []
   linha_atual = ''
 
   for palavra in palavras:
     # Testa como ficaria a linha com a nova palavra adicionada
-    test_linha = f'{linha_atual} {palavra}'.strip()
+    test_linha = f'{linha_atual} {palavra}'.strip() #O strip remove esse espaço extra nas pontas se linha atual for vazia ainda por exemplo
 
     # Mede a largura em pixels da linha testada
     if fonte.size(test_linha)[0] <= largura_maxima:
@@ -288,7 +288,7 @@ def formatar_texto_largura(texto, fonte, largura_maxima):
         linhas.append(linha_atual)
       linha_atual = palavra
 
-  # Adiciona a última linha restante
+  # Adiciona a última linha restante fora do for
   if linha_atual:
     linhas.append(linha_atual)
 

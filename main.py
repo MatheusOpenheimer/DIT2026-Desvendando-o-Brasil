@@ -109,6 +109,12 @@ while rodando:
         if evento.type == pygame.QUIT:
             rodando = False
 
+        if evento.type == pygame.KEYDOWN:
+            # Ao apertar F12 tira o print
+            if evento.key == pygame.K_F12:
+                pygame.image.save(tela, "captura_jogo.png")
+                print("Captura salva como captura_jogo.png!")
+
         if evento.type == pygame.MOUSEBUTTONDOWN and evento.button == 1:
             if botao_som_rect.collidepoint(evento.pos):
                 mutado = not mutado
@@ -158,8 +164,9 @@ while rodando:
 
     #POR FRAME ATUALIZA SEMPRE
     pos_mouse = pygame.mouse.get_pos()
-    if (botao_som_rect.collidepoint(pos_mouse) or botao_fechar_rect.collidepoint(pos_mouse)
-        or botao_reiniciar_rect.collidepoint(pos_mouse) and not show_janela_sair):
+    if not show_janela_sair and (
+        botao_som_rect.collidepoint(pos_mouse) or botao_fechar_rect.collidepoint(pos_mouse)
+        or botao_reiniciar_rect.collidepoint(pos_mouse)):
         pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
     else:
         pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
@@ -207,7 +214,7 @@ while rodando:
             jogo_srs = JogoSantaRita(idioma, dados_jogador["nome"])
         PROXIMA_FASE, salvarBD, acertos, erros = jogo_srs.atualizar(salvarBD)
         if PROXIMA_FASE != "JOGO_SRS":
-            if acertos and erros: #se não retornou None grava os acertos e erros
+            if acertos is not None and erros is not None: #se não retornou None grava os acertos e erros
                 dados_jogador["acertos"] = acertos
                 dados_jogador["erros"] = erros
             jogo_srs = None
@@ -226,7 +233,7 @@ while rodando:
             musica_play = False
 
         if PROXIMA_FASE != "FASE1":
-            if acertos and erros: #se não retornou None grava os acertos e erros
+            if acertos is not None and erros is not None: #se não retornou None grava os acertos e erros
                 dados_jogador["acertos"] = acertos 
                 dados_jogador["erros"] = erros
             fase1 = None
@@ -237,7 +244,7 @@ while rodando:
             fase2 = Fase2(regioes_erradas, regioes_jogadas)
         PROXIMA_FASE, salvarBD, acertos, erros = fase2.atualizar(tempo_restante, salvarBD, dados_jogador["nome"])
         if PROXIMA_FASE != "FASE2": #se não retornou None implementa os acertos e erros
-            if acertos and erros:
+            if acertos is not None and erros is not None:
                 dados_jogador["acertos"] += acertos
                 dados_jogador["erros"] += erros
             fase2 = None
