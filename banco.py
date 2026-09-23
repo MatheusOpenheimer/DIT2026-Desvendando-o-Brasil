@@ -8,7 +8,7 @@ if not os.path.exists("jogador"):
 # Definição dos caminhos para cada arquivo de texto plano (.txt)
 #Fiz assim pra imitar a lógica de um banco de dados e não ficar baguynçado
 CAMINHO_RANKING_BRASIL = os.path.join("jogador", "ranking_brasil.txt")
-CAMINHO_ESTATISTICAS_BRASIL = os.path.join("jogador", "estatisticas_brasil.txt")
+CAMINHO_ESTATISTICAS = os.path.join("jogador", "estatisticas_brasil.txt")
 CAMINHO_FEEDBACKS_SRS = os.path.join("jogador", "feedbacks_srs.txt")
 CAMINHO_RANKING_SRS = os.path.join("jogador", "ranking_srs.txt")
 
@@ -33,7 +33,7 @@ def regra_ordenacao_srs(jogador):
 #JOGO PRINCIPAL (MODO BRASIL)
 def criar_banco():
     #Garante a existência dos arquivos de texto do jogo Brasil sem sobrescrever conteúdos existentes
-    arquivos_jogo_brasil = [CAMINHO_RANKING_BRASIL, CAMINHO_ESTATISTICAS_BRASIL]
+    arquivos_jogo_brasil = [CAMINHO_RANKING_BRASIL, CAMINHO_ESTATISTICAS]
 
     for caminho_arquivo in arquivos_jogo_brasil:
         if not os.path.exists(caminho_arquivo):
@@ -71,42 +71,30 @@ def carregar_ranking():
     return lista_jogadores[:10]
 
 
-def salvar_estatisticas(nome_jogador,erros_norte,erros_nordeste,erros_centrooeste,erros_sudeste,erros_sul):
-    #Salva a quantidade de erros do jogador por região geográfica para fins pedagógicos
-    with open(CAMINHO_ESTATISTICAS_BRASIL, "a", encoding="utf-8") as arquivo_estatisticas:
-        linha_registro = (
-            f"{nome_jogador};{int(erros_norte)};{int(erros_nordeste)};"
-            f"{int(erros_centrooeste)};{int(erros_sudeste)};{int(erros_sul)}\n")
-        arquivo_estatisticas.write(linha_registro)
+def salvar_estatisticas(nome, estatisticas_regioes):
+   
+    #sala: Matheus;80% de 5;100% de 2;0% de 0;50% de 4;100% de 1
+    os.makedirs("jogador", exist_ok=True)
+    dados_formatados = ";".join(estatisticas_regioes)
+    linha = f"{nome};{dados_formatados}\n"
+    
+    with open(CAMINHO_ESTATISTICAS, "a", encoding="utf-8") as arquivo:
+        arquivo.write(linha)
 
 
 def carregar_estatisticas():
     #Lê o histórico de erros geográficos, retornando as jogadas mais recentes primeiro.
-    if not os.path.exists(CAMINHO_ESTATISTICAS_BRASIL):
+    if not os.path.exists(CAMINHO_ESTATISTICAS):
         return []
-
-    historico_estatisticas = []
-
-    with open(CAMINHO_ESTATISTICAS_BRASIL, "r", encoding="utf-8") as arquivo_estatisticas:
-        for linha in arquivo_estatisticas:
-            campos = linha.strip().split(";")
-
-            if len(campos) == 6:
-                nome, norte, nordeste, centro, sudeste, sul = campos
-                dados_estatistica = (
-                    nome,
-                    int(norte),
-                    int(nordeste),
-                    int(centro),
-                    int(sudeste),
-                    int(sul),
-                )
-                historico_estatisticas.append(dados_estatistica)
-
-    # Inverte a lista para que o último registro salvo apareça no topo
-    return list(reversed(historico_estatisticas))
-
-
+    
+    dados = []
+    with open(CAMINHO_ESTATISTICAS, "r", encoding="utf-8") as arquivo:
+        for linha in arquivo:
+            partes = linha.strip().split(";")
+            if len(partes) >= 6:
+                # guarda [Nome, Norte, Nordeste, Centro-Oeste, Sudeste, Sul]
+                dados.append(partes[:6]) 
+    return dados
 
 #JOGO SANTA RITA DO SAPUCAÍ (SRS)
 def criar_banco_srs():

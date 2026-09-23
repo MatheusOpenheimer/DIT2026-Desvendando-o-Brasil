@@ -113,7 +113,6 @@ while rodando:
             # Ao apertar F12 tira o print
             if evento.key == pygame.K_F12:
                 pygame.image.save(tela, "captura_jogo.png")
-                print("Captura salva como captura_jogo.png!")
 
         if evento.type == pygame.MOUSEBUTTONDOWN and evento.button == 1:
             if botao_som_rect.collidepoint(evento.pos):

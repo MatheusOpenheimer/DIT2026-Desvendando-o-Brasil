@@ -321,14 +321,15 @@ class Fase2:
             pygame.time.set_timer(self.SUMIR_STATUS_EVENTO, 400, loops=1)
             pygame.time.set_timer(self.TEMPO_RESPOSTA_EVENTO, 900, loops=1)
 
-
-  def calcular_porcentagem(self, regiao):
-    jogadas = self.contagem_jogadas_regiao.get(regiao, 0) #pega o valor que ficou na região, se não tiver atribui 0
+  def formatar_desempenho(self, regiao):
+    jogadas = self.contagem_jogadas_regiao.get(regiao, 0)
     erros = self.regioes_erradas2.get(regiao, 0)
+    
     if jogadas > 0:
-      return round((erros / jogadas) * 100, 1)
+        porcentagem_erros = round((erros / jogadas) * 100)
+        return f"{porcentagem_erros}% ({erros}/{jogadas})"
     else:
-      return 0.0
+        return "0% (0/0)"
   
   def atualizar(self, tempo_restante, salvarBD, nome):  # gerencia eventos a todo momento, sem esperar cliques etc
     # Roda a CADA FRAME no loop principal para checar tempo e troca de fase.
@@ -341,18 +342,16 @@ class Fase2:
     if self.liberar:
       import banco
       #porcentagem de erros
-      norte_erros = self.calcular_porcentagem("Norte")
-      nordeste_erros = self.calcular_porcentagem("Nordeste")
-      centroOeste_erros = self.calcular_porcentagem("Centro-Oeste")
-      sudeste_erros = self.calcular_porcentagem("Sudeste")
-      sul_erros = self.calcular_porcentagem("Sul")
+      desempenho_regioes = [
+          self.formatar_desempenho("Norte"),
+          self.formatar_desempenho("Nordeste"),
+          self.formatar_desempenho("Centro-Oeste"),
+          self.formatar_desempenho("Sudeste"),
+          self.formatar_desempenho("Sul")
+      ]
       banco.salvar_estatisticas(
           nome,
-          norte_erros,
-          nordeste_erros,
-          centroOeste_erros,
-          sudeste_erros,
-          sul_erros,
+          desempenho_regioes
       )
       acertos = self.contAcertos# soma erros e acertos aos da fase 1
       erros = self.contErros
