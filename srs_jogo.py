@@ -51,7 +51,7 @@ class JogoSantaRita:
             self.perg_sorteada = ""
             self.alternativas_sorteadas = []
 
-        # Armazena os feedbacks dados APENAS na partida atual
+        # Armazena os feedbacks temporários da sessão -> {ponto_nome: {"texto": ..., "estrelas": ...}}
         self.feedbacks_sessao = {}
 
         # BLOCO DE PERGUNTAS ----------------------------------------------
@@ -76,6 +76,14 @@ class JogoSantaRita:
         self.acerto_sound = pygame.mixer.Sound(funcoes.obter_caminho_arquivo("assets/AUDIOS/acerto.mp3"))
         self.acerto_sound.set_volume(1.0)
 
+        # IMAGENS DE ESTRELAS ---------------------------------------------
+        self.estrela_vazia_img = pygame.transform.scale(
+            pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS_SRS/estrela_vazia.png")).convert_alpha(), (32, 32)
+        )
+        self.estrela_amarela_img = pygame.transform.scale(
+            pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS_SRS/estrela_amarela.png")).convert_alpha(), (32, 32)
+        )
+
         # CONTROLE DE ESTADOS ---------------------------------------------
         self.Errou_status = False
         self.Acerto_status = False
@@ -92,16 +100,28 @@ class JogoSantaRita:
         # FEEDBACK / BANCO ------------------------------------------------
         self.ponto_selecionado = None
         self.texto_feedback = ""
+        self.estrelas_selecionadas = 0  # 0 indica que ainda não alterou as estrelas
+        self.alterou_estrelas = False   # Flag de controle de clique nas estrelas
         self.scroll_y = 0
 
         self.botao_finalizar_rect = pygame.Rect(config.largura - 180, config.altura - 55, 150, 45)
-        self.botao_salvar_fb_rect = pygame.Rect(config.centroX + 20, config.altura // 2 + 130, 140, 40)
-        self.botao_cancelar_fb_rect = pygame.Rect(config.centroX - 160, config.altura // 2 + 130, 140, 40)
+        self.botao_salvar_fb_rect = pygame.Rect(config.centroX + 20, config.altura // 2 + 150, 140, 40)
+        self.botao_cancelar_fb_rect = pygame.Rect(config.centroX - 160, config.altura // 2 + 150, 140, 40)
 
-    def salvar_feedback_banco(self, ponto_nome, texto):
-        self.feedbacks_sessao[ponto_nome] = texto
-        # Salva utilizando a variável do jogador local da instância
-        banco.salvar_feedback_srs(self.nome_jogador, ponto_nome, texto)
+        # Rects dos botões das 5 estrelas no Pop-up
+        self.botoes_estrelas = []
+        pop_x = config.centroX - 320
+        pop_y = config.altura // 2 - 210
+        for i in range(5):
+            rect_est = pygame.Rect(pop_x + 200 + (i * 42), pop_y + 50, 32, 32)
+            self.botoes_estrelas.append(rect_est)
+
+    def salvar_todos_feedbacks_no_banco(self):
+        """Persiste permanentemente todos os feedbacks da sessão no arquivo .txt ao finalizar."""
+        for ponto_nome, dados in self.feedbacks_sessao.items():
+            texto = dados.get("texto", "")
+            estrelas = dados.get("estrelas", 5)
+            banco.salvar_feedback_srs(self.nome_jogador, ponto_nome, texto, estrelas)
 
     def verificar_resposta(self, indice_clicado):
         self.opcao_selecionada = indice_clicado
@@ -147,6 +167,7 @@ class JogoSantaRita:
 
                 elif self.estado == "SELECAO_PONTO":
                     if self.botao_finalizar_rect.collidepoint(pos_mouse):
+                        self.salvar_todos_feedbacks_no_banco()
                         self.finalizar = True
 
                     y_item = 80 + self.scroll_y
@@ -155,21 +176,45 @@ class JogoSantaRita:
                         if item_rect.top >= 75 and item_rect.bottom <= config.altura - 60:
                             if item_rect.collidepoint(pos_mouse):
                                 self.ponto_selecionado = ponto
-                                self.texto_feedback = self.feedbacks_sessao.get(ponto.nome, "")
+                                fb_dados = self.feedbacks_sessao.get(ponto.nome, None)
+                                
+                                if fb_dados:
+                                    self.texto_feedback = fb_dados.get("texto", "")
+                                    self.estrelas_selecionadas = fb_dados.get("estrelas", 5)
+                                    self.alterou_estrelas = True
+                                else:
+                                    self.texto_feedback = ""
+                                    self.estrelas_selecionadas = 0
+                                    self.alterou_estrelas = False
+
                                 self.estado = "FEEDBACK_POPUP"
                                 break
                         y_item += 66
 
                 elif self.estado == "FEEDBACK_POPUP":
+                    # Clique explícito para alterar estrelas
+                    for idx, rect_est in enumerate(self.botoes_estrelas):
+                        if rect_est.collidepoint(pos_mouse):
+                            self.estrelas_selecionadas = idx + 1
+                            self.alterou_estrelas = True
+                            break
+
+                    # Salvar na sessão temporária
                     if self.botao_salvar_fb_rect.collidepoint(pos_mouse):
-                        if self.texto_feedback.strip() != "":
-                            self.salvar_feedback_banco(self.ponto_selecionado.nome, self.texto_feedback.strip())
+                        txt_limpo = self.texto_feedback.strip()
+                        # Salva se digitou algo OU se clicou para definir estrelas
+                        if txt_limpo != "" or self.alterou_estrelas:
+                            qtd_estrelas = self.estrelas_selecionadas if self.alterou_estrelas else 5
+                            self.feedbacks_sessao[self.ponto_selecionado.nome] = {
+                                "texto": txt_limpo,
+                                "estrelas": qtd_estrelas
+                            }
                         self.estado = "SELECAO_PONTO"
 
                     if self.botao_cancelar_fb_rect.collidepoint(pos_mouse):
                         self.estado = "SELECAO_PONTO"
 
-            # Rolagem da lista de pontos turísticos
+            # Rolagem da lista
             elif evento.button == 4 and self.estado == "SELECAO_PONTO":
                 if self.scroll_y < 0:
                     self.scroll_y = min(0, self.scroll_y + 35)
@@ -190,7 +235,6 @@ class JogoSantaRita:
                     self.texto_feedback += evento.unicode
 
     def atualizar(self, salvarBD):
-        
         if self.finalizar:
             acertos = self.contAcertos
             erros = self.contErros
@@ -203,7 +247,7 @@ class JogoSantaRita:
         tela.blit(self.fundo_img, (0, 0))
         pos_mouse = pygame.mouse.get_pos()
 
-        # DICIONÁRIO DE IDIOMA (utiliza self.nome_jogador local)
+        # DICIONÁRIO DE IDIOMA
         textos_interface = {
             "pt": {
                 "questao": f"Questão {self.num_questao} de {self.total_questoes}",
@@ -214,6 +258,7 @@ class JogoSantaRita:
                 "fb_feito": "Feedback registrado",
                 "fb_pendente": "Clique para avaliar este local",
                 "avaliacao_de": f"Avaliação de {self.nome_jogador}:",
+                "nota": "Sua Nota:",
                 "salvar": "Salvar",
                 "cancelar": "Cancelar"
             },
@@ -226,6 +271,7 @@ class JogoSantaRita:
                 "fb_feito": "Feedback registered",
                 "fb_pendente": "Click to review this place",
                 "avaliacao_de": f"Review by {self.nome_jogador}:",
+                "nota": "Your Rating:",
                 "salvar": "Save",
                 "cancelar": "Cancel"
             },
@@ -238,11 +284,12 @@ class JogoSantaRita:
                 "fb_feito": "Comentario registrado",
                 "fb_pendente": "Haga clic para evaluar este lugar",
                 "avaliacao_de": f"Evaluación de {self.nome_jogador}:",
+                "nota": "Tu Nota:",
                 "salvar": "Guardar",
                 "cancelar": "Cancelar"
             }
         }
-        ui = textos_interface.get(self.modo, textos_interface["pt"]) #UI -- Interface atual
+        ui = textos_interface.get(self.modo, textos_interface["pt"])
 
         # QUIZ -------------------------------------------------------------
         if self.estado == "QUIZ":
@@ -269,7 +316,6 @@ class JogoSantaRita:
             for i in range(len(self.alternativas_sorteadas)):
                 btn_rect = self.botoes_alternativas[i]
                 
-                # Feedback de cores ao responder
                 if self.mostrar_feedback_cores:
                     if i == self.questao_atual["correta"]:
                         cor_fundo = (46, 204, 113)
@@ -307,7 +353,8 @@ class JogoSantaRita:
                 item_rect = pygame.Rect(40, y_item, config.largura - 80, 56)
 
                 if item_rect.top >= 75 and item_rect.bottom <= config.altura - 60:
-                    fb_existe = self.feedbacks_sessao.get(ponto.nome, "") != ""
+                    fb_dados = self.feedbacks_sessao.get(ponto.nome, None)
+                    fb_existe = fb_dados is not None
                     
                     cor_fundo_item = config.bege
                     if fb_existe:
@@ -325,6 +372,13 @@ class JogoSantaRita:
                     cor_status = (40, 140, 40) if fb_existe else (110, 110, 110)
                     txt_st = config.fonte_dicas.render(msg_status, False, cor_status)
                     tela.blit(txt_st, (item_rect.x + 20, item_rect.y + 30))
+
+                    # Se já registrou algo na sessão, exibe as estrelas
+                    if fb_existe:
+                        qtd_est = fb_dados["estrelas"]
+                        for e in range(5):
+                            img_e = self.estrela_amarela_img if e < qtd_est else self.estrela_vazia_img
+                            tela.blit(img_e, (item_rect.right - 180 + (e * 32), item_rect.y + 12))
 
                 y_item += 66
 
@@ -353,23 +407,31 @@ class JogoSantaRita:
             escurecer.fill((0, 0, 0, 160))
             tela.blit(escurecer, (0, 0))
 
-            pop_rect = pygame.Rect(config.centroX - 320, config.altura // 2 - 200, 640, 400)
+            pop_rect = pygame.Rect(config.centroX - 320, config.altura // 2 - 210, 640, 420)
             pygame.draw.rect(tela, config.bege, pop_rect, border_radius=12)
             pygame.draw.rect(tela, (50, 30, 15), pop_rect, 3, border_radius=12)
 
             tit_ponto = config.fonte_fases.render(self.ponto_selecionado.nome, False, (50, 30, 15))
-            tela.blit(tit_ponto, (pop_rect.x + 25, pop_rect.y + 20))
+            tela.blit(tit_ponto, (pop_rect.x + 25, pop_rect.y + 15))
+
+            sub_nota = config.fonte_dicas.render(ui["nota"], False, (50, 30, 15))
+            tela.blit(sub_nota, (pop_rect.x + 25, pop_rect.y + 55))
+
+            # Desenha as 5 estrelas (amarelas se selecionadas)
+            for idx, rect_est in enumerate(self.botoes_estrelas):
+                img_est = self.estrela_amarela_img if idx < self.estrelas_selecionadas else self.estrela_vazia_img
+                tela.blit(img_est, rect_est.topleft)
 
             sub_inst = config.fonte_dicas.render(ui["avaliacao_de"], False, (80, 80, 80))
-            tela.blit(sub_inst, (pop_rect.x + 25, pop_rect.y + 55))
+            tela.blit(sub_inst, (pop_rect.x + 25, pop_rect.y + 90))
 
-            campo_rect = pygame.Rect(pop_rect.x + 25, pop_rect.y + 85, 590, 200)
+            campo_rect = pygame.Rect(pop_rect.x + 25, pop_rect.y + 115, 590, 180)
             pygame.draw.rect(tela, (255, 255, 255), campo_rect, border_radius=8)
             pygame.draw.rect(tela, (140, 140, 140), campo_rect, 2, border_radius=8)
 
             linhas_fb = funcoes.formatar_texto_largura(self.texto_feedback + "|", config.fonte_dicas, 560)
             y_fb = campo_rect.y + 12
-            for l in linhas_fb[:7]:
+            for l in linhas_fb[:6]:
                 txt_render = config.fonte_dicas.render(l, False, (30, 30, 30))
                 tela.blit(txt_render, (campo_rect.x + 12, y_fb))
                 y_fb += 24

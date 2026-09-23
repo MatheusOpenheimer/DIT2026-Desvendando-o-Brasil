@@ -6,19 +6,13 @@ if not os.path.exists("jogador"):
     os.makedirs("jogador", exist_ok=True)
 
 # Definição dos caminhos para cada arquivo de texto plano (.txt)
-#Fiz assim pra imitar a lógica de um banco de dados e não ficar baguynçado
 CAMINHO_RANKING_BRASIL = os.path.join("jogador", "ranking_brasil.txt")
 CAMINHO_ESTATISTICAS = os.path.join("jogador", "estatisticas_brasil.txt")
 CAMINHO_FEEDBACKS_SRS = os.path.join("jogador", "feedbacks_srs.txt")
 CAMINHO_RANKING_SRS = os.path.join("jogador", "ranking_srs.txt")
 
 
-#FUNÇÕES DE CRITÉRIO DE ORDENAÇÃO
-#Recebe a tupla: (nome, idade, acertos, erros).
-    #Retorna a prioridade de ordenação:
-      #1º: -acertos -> o sinal de menos inverte para o maior número vir primeiro.
-      #2º: erros    -> menor quantidade de erros desempata primeiro.
-      #3º: idade    -> menor idade desempata primeiro. (Foco nas crianças)
+# FUNÇÕES DE CRITÉRIO DE ORDENAÇÃO
 def regra_ordenacao_brasil(jogador):
     nome, idade, acertos, erros = jogador
     return (-acertos, erros, idade)
@@ -29,10 +23,8 @@ def regra_ordenacao_srs(jogador):
     return (-acertos, erros, idade)
 
 
-
-#JOGO PRINCIPAL (MODO BRASIL)
+# JOGO PRINCIPAL (MODO BRASIL)
 def criar_banco():
-    #Garante a existência dos arquivos de texto do jogo Brasil sem sobrescrever conteúdos existentes
     arquivos_jogo_brasil = [CAMINHO_RANKING_BRASIL, CAMINHO_ESTATISTICAS]
 
     for caminho_arquivo in arquivos_jogo_brasil:
@@ -42,14 +34,12 @@ def criar_banco():
 
 
 def salvar_dados(nome_jogador, idade_jogador, total_acertos, total_erros):
-   #Grava o registro da partida no arquivo .txt usando ';' como delimitador.
     with open(CAMINHO_RANKING_BRASIL, "a", encoding="utf-8") as arquivo_ranking:
         linha_registro = f"{nome_jogador};{int(idade_jogador)};{int(total_acertos)};{int(total_erros)}\n"
         arquivo_ranking.write(linha_registro)
 
 
 def carregar_ranking():
-    #Lê o arquivo de ranking, ordena usando a função 'regra_ordenacao_brasil' e retorna o Top 10.
     if not os.path.exists(CAMINHO_RANKING_BRASIL):
         return []
 
@@ -59,21 +49,17 @@ def carregar_ranking():
         for linha in arquivo_ranking:
             campos = linha.strip().split(";")
 
-            # Confirma se a linha tem os 4 campos esperados
             if len(campos) == 4:
                 nome, idade, acertos, erros = campos
                 dados_jogador = (nome, int(idade), int(acertos), int(erros))
                 lista_jogadores.append(dados_jogador)
 
-    # Ordena usando a função
     lista_jogadores.sort(key=regra_ordenacao_brasil)
 
     return lista_jogadores[:10]
 
 
 def salvar_estatisticas(nome, estatisticas_regioes):
-   
-    #sala: Matheus;80% de 5;100% de 2;0% de 0;50% de 4;100% de 1
     os.makedirs("jogador", exist_ok=True)
     dados_formatados = ";".join(estatisticas_regioes)
     linha = f"{nome};{dados_formatados}\n"
@@ -83,7 +69,6 @@ def salvar_estatisticas(nome, estatisticas_regioes):
 
 
 def carregar_estatisticas():
-    #Lê o histórico de erros geográficos, retornando as jogadas mais recentes primeiro.
     if not os.path.exists(CAMINHO_ESTATISTICAS):
         return []
     
@@ -92,13 +77,12 @@ def carregar_estatisticas():
         for linha in arquivo:
             partes = linha.strip().split(";")
             if len(partes) >= 6:
-                # guarda [Nome, Norte, Nordeste, Centro-Oeste, Sudeste, Sul]
                 dados.append(partes[:6]) 
     return dados
 
-#JOGO SANTA RITA DO SAPUCAÍ (SRS)
+
+# JOGO SANTA RITA DO SAPUCAÍ (SRS)
 def criar_banco_srs():
-    #Cria os arquivos de texto do módulo de Santa Rita caso ainda não existam.
     arquivos_modulo_srs = [CAMINHO_FEEDBACKS_SRS, CAMINHO_RANKING_SRS]
 
     for caminho_arquivo in arquivos_modulo_srs:
@@ -107,11 +91,10 @@ def criar_banco_srs():
                 pass
 
 
-def salvar_feedback_srs(nome_jogador, nome_ponto_turistico, texto_avaliacao):
-    #Salva as avaliações dos atrativos turísticos higienizando o texto contra quebras de linha.
+def salvar_feedback_srs(nome_jogador, nome_ponto_turistico, texto_avaliacao, estrelas=5):
+    """Salva a avaliação e a quantidade de estrelas (1-5) no arquivo .txt."""
     jogador_identificado = nome_jogador if nome_jogador else "Explorador"
 
-    #Substitui quebras de linha e ponto e vírgula para não corromper as colunas do .txt
     texto_sanitizado = (
         texto_avaliacao.replace("\n", " ")
         .replace("\r", " ")
@@ -121,12 +104,13 @@ def salvar_feedback_srs(nome_jogador, nome_ponto_turistico, texto_avaliacao):
     data_hora_registro = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
     with open(CAMINHO_FEEDBACKS_SRS, "a", encoding="utf-8") as arquivo_feedback:
-        linha_registro = f"{jogador_identificado};{nome_ponto_turistico};{texto_sanitizado};{data_hora_registro}\n"
+        # Formato gravado: Nome;Ponto;Texto;Data;Estrelas
+        linha_registro = f"{jogador_identificado};{nome_ponto_turistico};{texto_sanitizado};{data_hora_registro};{int(estrelas)}\n"
         arquivo_feedback.write(linha_registro)
 
 
 def carregar_feedbacks_srs():
-    #Carrega todos os feedbacks registrados exibindo os mais recentes primeiro.
+    """Carrega os feedbacks garantindo compatibilidade com registros antigos e novos."""
     if not os.path.exists(CAMINHO_FEEDBACKS_SRS):
         return []
 
@@ -137,17 +121,20 @@ def carregar_feedbacks_srs():
             campos = linha.strip().split(";")
 
             if len(campos) >= 4:
-                jogador, ponto_turistico, texto, data_registro = (
-                    campos[0],
-                    campos[1],
-                    campos[2],
-                    campos[3],
-                )
+                jogador = campos[0]
+                ponto_turistico = campos[1]
+                texto = campos[2]
+                data_registro = campos[3]
+                
+                # Se tiver a 5ª coluna de estrelas, lê ela; caso contrário, assume o valor padrão 5
+                estrelas = int(campos[4]) if len(campos) >= 5 and campos[4].isdigit() else 5
+
                 dados_feedback = (
                     jogador,
                     ponto_turistico,
                     texto,
                     data_registro,
+                    estrelas,
                 )
                 lista_feedbacks.append(dados_feedback)
 
@@ -155,7 +142,6 @@ def carregar_feedbacks_srs():
 
 
 def salvar_ranking_srs(nome_jogador, idade_jogador, total_acertos, total_erros):
-    #Salva os pontos do jogo srs
     jogador_identificado = nome_jogador if nome_jogador else "Explorador"
 
     with open(CAMINHO_RANKING_SRS, "a", encoding="utf-8") as arquivo_ranking_srs:
@@ -164,7 +150,6 @@ def salvar_ranking_srs(nome_jogador, idade_jogador, total_acertos, total_erros):
 
 
 def carregar_ranking_srs():
-    #Lê e retorna o Top 10 de srs usando a regra_ordenacao_srs.
     if not os.path.exists(CAMINHO_RANKING_SRS):
         return []
 
@@ -179,7 +164,6 @@ def carregar_ranking_srs():
                 dados_jogador = (nome, int(idade), int(acertos), int(erros))
                 lista_jogadores_srs.append(dados_jogador)
 
-    # Ordena com a função dedicada
     lista_jogadores_srs.sort(key=regra_ordenacao_srs)
 
     return lista_jogadores_srs[:10]

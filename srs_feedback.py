@@ -4,12 +4,10 @@ import funcoes
 import banco
 
 
-
 class VisualizarFeedbacks:
     def __init__(self):
-        # Controle de rolagem
-        self.scroll_y = 0  # Posição atual do scroll
-        self.velocidade_scroll = 20  # Velocidade do scroll ao girar a rodinha
+        self.scroll_y = 0
+        self.velocidade_scroll = 20
 
         self.largura = 900
         self.altura_visivel = 660
@@ -32,81 +30,74 @@ class VisualizarFeedbacks:
         self.senha = "faitec"
         self.modo_senha = False
         self.lendo_senha = False
-
         self.senha_lida = ""
 
-        # ÁREA DE CORTE DO SCROLL
+        # IMAGENS DE ESTRELAS
+       # No __init__ do srs_feedback.py:
+        self.estrela_vazia_img = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS_SRS/estrela_vazia.png")), (22, 22))
+        self.estrela_amarela_img = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS_SRS/estrela_amarela.png")), (22, 22))
+
         self.largura_tabela = self.bloco_feedbacks.width - 20
-        self.altura_area_linhas = 450  # Espaço vertical disponível para mostrar as linhas
-        self.pos_y_tabela = self.bloco_feedbacks.y + 180  # Começa logo abaixo do cabeçalho
+        self.altura_area_linhas = 450
+        self.pos_y_tabela = self.bloco_feedbacks.y + 180
 
         # Pop-up de detalhes da avaliação
         self.popup_visivel = False
         self.popup_texto = ""
         self.popup_jogador = ""
         self.popup_ponto = ""
-        self.popup_rect = pygame.Rect(0, 0, 700, 320)
+        self.popup_estrelas = 5
+        self.popup_rect = pygame.Rect(0, 0, 700, 340)
         self.popup_rect.center = (config.centroX, config.altura // 2)
         self.popup_botao_fechar = pygame.Rect(0, 0, 35, 35)
         self.popup_botao_fechar.topright = (self.popup_rect.right - 15, self.popup_rect.top + 15)
 
-
     def abrir(self):
         self.visivel = True
         self.modo_senha = True
-        self.scroll_y = 0  # Inicia no primeiro
+        self.scroll_y = 0
         self.senha_lida = ""
         self.lendo_senha = False
         self.popup_visivel = False
 
     def gerenciar_eventos(self, evento):
-        # Se a tela NÃO estiver aberta, sai imediatamente e libera o Menu
         if not self.visivel:
             return False
 
         pos_mouse = pygame.mouse.get_pos()
 
-        # Tecla ESC fecha o pop-up de detalhes se ele estiver aberto
         if evento.type == pygame.KEYDOWN and evento.key == pygame.K_ESCAPE and self.popup_visivel:
             self.popup_visivel = False
             return True
 
-        # Se o pop-up da avaliação estiver aberto, apenas ele pode receber cliques
         if self.popup_visivel:
             if evento.type == pygame.MOUSEBUTTONDOWN and evento.button == 1:
                 config.click_sound.play()
                 if self.popup_botao_fechar.collidepoint(pos_mouse):
                     self.popup_visivel = False
-                # Bloqueia qualquer clique de passar para a tela de trás
                 return True
             return True
 
-        # Scroll do mouse na lista (bloqueado se o pop-up estiver aberto)
         if evento.type == pygame.MOUSEWHEEL and not self.modo_senha:
             altura_total_dados = len(self.feedbacks) * 75 + 10
             limite_maximo = max(0, altura_total_dados - self.altura_area_linhas)
             self.scroll_y -= evento.y * self.velocidade_scroll
             self.scroll_y = max(0, min(self.scroll_y, limite_maximo))
 
-        # Cliques do mouse na tela de feedback
         if evento.type == pygame.MOUSEBUTTONDOWN and evento.button == 1 and self.visivel:
-
-            # Botão fechar
             if self.botao_fechar.collidepoint(pos_mouse):
                 self.visivel = False
                 self.modo_senha = False
                 self.lendo_senha = False
                 self.senha_lida = ""
-                return False  # Sai totalmente do modo feedback
+                return False
 
-            # Campo de entrada de senha
             if self.modo_senha and self.input_senha_rect.collidepoint(pos_mouse):
                 self.lendo_senha = True
-                return True  # Foco de digitação ativo
+                return True
             else:
                 self.lendo_senha = False
 
-            # Clique em uma linha de feedback para abrir o popup detalhado
             if not self.modo_senha:
                 area_x = self.bloco_feedbacks.x + 10
                 area_y = self.pos_y_tabela
@@ -114,23 +105,22 @@ class VisualizarFeedbacks:
                     pos_y_clique = (pos_mouse[1] - area_y) + self.scroll_y
                     indice = pos_y_clique // 75
                     if 0 <= indice < len(self.feedbacks):
-                        jogador, ponto_turistico, texto_fb, _ = self.feedbacks[indice]
-                        self.popup_jogador = str(jogador)
-                        self.popup_ponto = str(ponto_turistico)
-                        self.popup_texto = str(texto_fb)
+                        item = self.feedbacks[indice]
+                        self.popup_jogador = str(item[0])
+                        self.popup_ponto = str(item[1])
+                        self.popup_texto = str(item[2])
+                        self.popup_estrelas = item[4] if len(item) >= 5 else 5
                         self.popup_visivel = True
                         return True
 
-        # Digitação da senha
         if self.lendo_senha and self.modo_senha:
             if evento.type == pygame.TEXTINPUT:
                 if len(self.senha_lida) < 6:
-                    self.senha_lida += evento.text  # Grava texto na variável
-            if evento.type == pygame.KEYDOWN:  # Apaga letra na variável
+                    self.senha_lida += evento.text
+            if evento.type == pygame.KEYDOWN:
                 if evento.key == pygame.K_BACKSPACE:
                     self.senha_lida = self.senha_lida[:-1]
 
-        # Validação da senha
         if self.modo_senha and self.senha_lida == self.senha:
             self.modo_senha = False
             self.lendo_senha = False
@@ -160,7 +150,7 @@ class VisualizarFeedbacks:
         if self.modo_senha:
             tela.blit(self.input_senha, self.input_senha_rect)
             senha_escondida = "*" * len(self.senha_lida)
-            if self.lendo_senha == True:
+            if self.lendo_senha:
                 senha_escondida += "|"
             senha_escondida_render = config.fonte_dicas.render(senha_escondida, True, config.branco)
             senha_rect = senha_escondida_render.get_rect(
@@ -175,33 +165,30 @@ class VisualizarFeedbacks:
             )
             tela.blit(texto_tela_feed, texto_tela_feed_rect)
 
-            # Cabeçalhos com centros fixos para cada coluna
             pos_x_jogador = self.bloco_feedbacks.x + 95
             pos_x_ponto = self.bloco_feedbacks.x + 295
             pos_x_avaliacao = self.bloco_feedbacks.x + 620
 
             cabecalho_jog = config.fonte_dicas.render("Jogador", True, config.preto)
-            rect_cab_jog = cabecalho_jog.get_rect(centerx=pos_x_jogador, y=self.bloco_feedbacks.y + 145)
-            tela.blit(cabecalho_jog, rect_cab_jog)
+            tela.blit(cabecalho_jog, cabecalho_jog.get_rect(centerx=pos_x_jogador, y=self.bloco_feedbacks.y + 145))
 
             cabecalho_pto = config.fonte_dicas.render("Ponto Turístico", True, config.preto)
-            rect_cab_pto = cabecalho_pto.get_rect(centerx=pos_x_ponto, y=self.bloco_feedbacks.y + 145)
-            tela.blit(cabecalho_pto, rect_cab_pto)
+            tela.blit(cabecalho_pto, cabecalho_pto.get_rect(centerx=pos_x_ponto, y=self.bloco_feedbacks.y + 145))
 
             cabecalho_av = config.fonte_dicas.render("Avaliação", True, config.preto)
-            rect_cab_av = cabecalho_av.get_rect(centerx=pos_x_avaliacao, y=self.bloco_feedbacks.y + 145)
-            tela.blit(cabecalho_av, rect_cab_av)
+            tela.blit(cabecalho_av, cabecalho_av.get_rect(centerx=pos_x_avaliacao, y=self.bloco_feedbacks.y + 145))
 
-            # DESENHO DAS LINHAS COM SCROLL
             altura_total_dados = max(self.altura_area_linhas, len(self.feedbacks) * 75 + 20)
             superficie_linhas = pygame.Surface((self.largura_tabela, altura_total_dados), pygame.SRCALPHA)
 
             centro_relativo_avaliacao = 620
-
             L = 0
             y_linha = 5
+
             for item in self.feedbacks:
-                jogador, ponto_turistico, texto_fb, data_reg = item
+                jogador, ponto_turistico, texto_fb, data_reg = item[:4]
+                qtd_est = item[4] if len(item) >= 5 else 5
+
                 linha_rect = pygame.Rect(0, y_linha, self.largura_tabela, 68)
 
                 if L == 0:
@@ -211,12 +198,16 @@ class VisualizarFeedbacks:
                     pygame.draw.rect(superficie_linhas, config.verde_pastel, linha_rect, border_radius=6)
                     L = 0
 
-                # Coluna Jogadores
+                # Nome do Jogador
                 texto_nome = config.fonte_dicas.render(str(jogador)[:14], True, config.preto)
-                rect_nome = texto_nome.get_rect(x=15, y=y_linha + 8)
-                superficie_linhas.blit(texto_nome, rect_nome)
+                superficie_linhas.blit(texto_nome, (15, y_linha + 8))
 
-                # Coluna Ponto Turístico com quebra
+                # Estrelas do Jogador
+                for e in range(5):
+                    img_e = self.estrela_amarela_img if e < qtd_est else self.estrela_vazia_img
+                    superficie_linhas.blit(img_e, (15 + (e * 24), y_linha + 36))
+
+                # Ponto Turístico
                 linhas_ponto = funcoes.formatar_texto_largura(str(ponto_turistico), config.fonte_dicas, 180)
                 y_ponto_atual = y_linha + 8
                 for lp in linhas_ponto[:2]:
@@ -224,7 +215,7 @@ class VisualizarFeedbacks:
                     superficie_linhas.blit(render_ponto, (220, y_ponto_atual))
                     y_ponto_atual += 18
 
-                # Coluna Avaliação centralizada
+                # Avaliação em texto
                 linhas_fb = funcoes.formatar_texto_largura(str(texto_fb), config.fonte_dicas, 460)
                 y_fb_atual = y_linha + 10
                 for lfb in linhas_fb[:2]:
@@ -233,15 +224,8 @@ class VisualizarFeedbacks:
                     superficie_linhas.blit(render_fb, rect_fb)
                     y_fb_atual += 18
 
-                # Data do Registro
-                if data_reg:
-                    data_formatada = str(data_reg)[:10]
-                    txt_data = config.fonte_dicas.render(data_formatada, True, (100, 100, 100))
-                    superficie_linhas.blit(txt_data, (15, y_linha + 42))
-
                 y_linha += 75
 
-            # RECORTE DA ÁREA VISÍVEL
             area_corte = pygame.Rect(0, self.scroll_y, self.largura_tabela, self.altura_area_linhas)
             tela.blit(superficie_linhas, (self.bloco_feedbacks.x + 10, self.pos_y_tabela), area_corte)
         else:
@@ -250,15 +234,12 @@ class VisualizarFeedbacks:
 
         pygame.draw.rect(tela, config.vermelho, self.botao_fechar, border_radius=6)
         fechar = config.fonte_fases_bold.render("X", True, config.branco)
-        fechar_rect = fechar.get_rect(center=self.botao_fechar.center)
-        tela.blit(fechar, fechar_rect)
+        tela.blit(fechar, fechar.get_rect(center=self.botao_fechar.center))
 
-        # Pop-up aberto
         if self.popup_visivel:
             self.desenhar_popup(tela)
 
     def desenhar_popup(self, tela):
-        # Fundo escurecido semi-transparente para dar foco exclusivo ao pop-up
         sombra_fundo = pygame.Surface((config.largura, config.altura), pygame.SRCALPHA)
         sombra_fundo.fill((0, 0, 0, 100))
         tela.blit(sombra_fundo, (0, 0))
@@ -272,8 +253,13 @@ class VisualizarFeedbacks:
         sub_popup = config.fonte_dicas.render(f"{self.popup_jogador} - {self.popup_ponto}", True, (90, 90, 90))
         tela.blit(sub_popup, (self.popup_rect.x + 25, self.popup_rect.y + 55))
 
+        # Estrelas no Pop-up detalhado
+        for e in range(5):
+            img_e = self.estrela_amarela_img if e < self.popup_estrelas else self.estrela_vazia_img
+            tela.blit(img_e, (self.popup_rect.x + 25 + (e * 28), self.popup_rect.y + 80))
+
         linhas = funcoes.formatar_texto_largura(self.popup_texto, config.fonte_dicas, 640)
-        y_txt = self.popup_rect.y + 95
+        y_txt = self.popup_rect.y + 115
         for l in linhas[:8]:
             render_l = config.fonte_dicas.render(l, True, (30, 30, 30))
             tela.blit(render_l, (self.popup_rect.x + 25, y_txt))
