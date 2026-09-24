@@ -77,12 +77,8 @@ class JogoSantaRita:
         self.acerto_sound.set_volume(1.0)
 
         # IMAGENS DE ESTRELAS ---------------------------------------------
-        self.estrela_vazia_img = pygame.transform.scale(
-            pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS_SRS/estrela_vazia.png")).convert_alpha(), (32, 32)
-        )
-        self.estrela_amarela_img = pygame.transform.scale(
-            pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS_SRS/estrela_amarela.png")).convert_alpha(), (32, 32)
-        )
+        self.estrela_vazia_img = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS_SRS/estrela_vazia.png")).convert_alpha(), (32, 32))
+        self.estrela_amarela_img = pygame.transform.scale(pygame.image.load(funcoes.obter_caminho_arquivo("assets/IMAGENS_SRS/estrela_amarela.png")).convert_alpha(), (32, 32))
 
         # CONTROLE DE ESTADOS ---------------------------------------------
         self.Errou_status = False
@@ -117,7 +113,7 @@ class JogoSantaRita:
             self.botoes_estrelas.append(rect_est)
 
     def salvar_todos_feedbacks_no_banco(self):
-        """Persiste permanentemente todos os feedbacks da sessão no arquivo .txt ao finalizar."""
+        #Fica permanentemente todos os feedbacks da sessão no arquivo .txt ao finalizar
         for ponto_nome, dados in self.feedbacks_sessao.items():
             texto = dados.get("texto", "")
             estrelas = dados.get("estrelas", 5)
@@ -376,7 +372,7 @@ class JogoSantaRita:
                     # Se já registrou algo na sessão, exibe as estrelas
                     if fb_existe:
                         qtd_est = fb_dados["estrelas"]
-                        for e in range(5):
+                        for e in range(5): #estrelas
                             img_e = self.estrela_amarela_img if e < qtd_est else self.estrela_vazia_img
                             tela.blit(img_e, (item_rect.right - 180 + (e * 32), item_rect.y + 12))
 

@@ -1,7 +1,7 @@
 Estado: Acre
-pergunta: Em qual região do Brasil fica o Acre?
-opcoes: A) Nordeste; B) Sudeste; C) Norte; D) Sul
-correta: 2
+pergunta: Qual é a capital do Acre?
+opcoes: A) Cruzeiro do Sul; B) Rio Branco; C) Xapuri; D) Tarauacá
+correta: 1
 
 pergunta: O que aconteceu com o Acre após o Tratado de Petrópolis, de 1903?
 opcoes: A) Deixou de existir como território.; B) Foi dividido entre estados brasileiros.; C) Virou parte do Chile.; D) Passou a fazer parte do Brasil.
@@ -20,9 +20,9 @@ opcoes: A) Sergipe; B) Acre; C) Paraná; D) Ceará
 correta: 1
 
 Estado: Alagoas
-pergunta: Em qual região do Brasil fica Alagoas?
-opcoes: A) Centro-Oeste; B) Sul; C) Norte; D) Nordeste
-correta: 3
+pergunta: Qual é a capital de Alagoas?
+opcoes: A) Arapiraca; B) Palmeira dos Índios; C) Maceió; D) Penedo
+correta: 2
 
 pergunta: Penedo é uma cidade histórica de Alagoas localizada às margens de qual rio?
 opcoes: A) Rio Paraná; B) Rio São Francisco; C) Rio Negro; D) Rio Amazonas
@@ -41,8 +41,8 @@ opcoes: A) Rio Amazonas.; B) Rio Negro.; C) Rio São Francisco.; D) Rio Madeira.
 correta: 2
 
 Estado: Amapá
-pergunta: Em qual região do Brasil fica o Amapá?
-opcoes: A) Centro-Oeste; B) Sudeste; C) Sul; D) Norte
+pergunta: Qual é a capital do Amapá?
+opcoes: A) Oiapoque; B) Mazagão; C) Santana; D) Macapá
 correta: 3
 
 pergunta: Qual linha imaginária passa pela cidade de Macapá?
@@ -62,9 +62,9 @@ opcoes: A) Corridas de cavalos.; B) Somente teatro.; C) Música e dança com ra�
 correta: 2
 
 Estado: Amazonas
-pergunta: Em qual região do Brasil fica o Amazonas?
-opcoes: A) Sul; B) Nordeste; C) Centro-Oeste; D) Norte
-correta: 3
+pergunta: Qual é a capital do Amazonas?
+opcoes: A) Parintins; B) Manaus; C) Tefé; D) Itacoatiara
+correta: 1
 
 pergunta: O que foi o Ciclo da Borracha, importante para a história de Manaus?
 opcoes: A) Uma época de cultivo de café.; B) Um período de construção de Brasília.; C) Um período de riqueza ligado à extração do látex.; D) Uma guerra entre estados.
@@ -83,9 +83,9 @@ opcoes: A) Seus conhecimentos, línguas e tradições fazem parte da diversidade
 correta: 0
 
 Estado: Bahia
-pergunta: Em qual região do Brasil fica a Bahia?
-opcoes: A) Centro-Oeste; B) Nordeste; C) Norte; D) Sul
-correta: 1
+pergunta: Qual é a capital da Bahia?
+opcoes: A) Feira de Santana; B) Ilhéus; C) Salvador; D) Vitória da Conquista
+correta: 2
 
 pergunta: Qual cidade foi a primeira capital do Brasil?
 opcoes: A) Vitória.; B) Fortaleza.; C) Recife.; D) Salvador.
@@ -104,9 +104,9 @@ opcoes: A) Tradições afro-brasileiras.; B) Cultura japonesa.; C) Cultura gaúc
 correta: 0
 
 Estado: Ceará
-pergunta: Em qual região do Brasil fica o Ceará?
-opcoes: A) Sul; B) Nordeste; C) Centro-Oeste; D) Norte
-correta: 1
+pergunta: Qual é a capital do Ceará?
+opcoes: A) Juazeiro do Norte; B) Sobral; C) Fortaleza; D) Crato
+correta: 2
 
 pergunta: Quem foi conhecido como Dragão do Mar?
 opcoes: A) Um arquiteto de Fortaleza.; B) Um escritor de cordel.; C) Francisco José do Nascimento, líder de uma greve de jangadeiros.; D) Um governador do Ceará.
@@ -125,9 +125,9 @@ opcoes: A) Somente pinturas.; B) Apenas músicas.; C) Apenas receitas.; D) Poema
 correta: 3
 
 Estado: Espírito Santo
-pergunta: Em qual região do Brasil fica o Espírito Santo?
-opcoes: A) Nordeste; B) Norte; C) Sudeste; D) Centro-Oeste
-correta: 2
+pergunta: Como são chamados os habitantes do Espírito Santo?
+opcoes: A) Capixabas; B) Fluminenses; C) Espírito-santenses; D) Vitorianos
+correta: 0
 
 pergunta: Qual é a capital do Espírito Santo?
 opcoes: A) Vila Velha; B) Anchieta; C) Guarapari; D) Vitória
@@ -146,9 +146,9 @@ opcoes: A) É servida somente em festas.; B) É feita em panela de barro e não 
 correta: 1
 
 Estado: Goiás
-pergunta: Em qual região do Brasil fica Goiás?
-opcoes: A) Sul; B) Norte; C) Centro-Oeste; D) Nordeste
-correta: 2
+pergunta: Como são chamados os habitantes de Goiás?
+opcoes: A) Goianenses; B) Goianos; C) Goiasenses; D) Vilaboenses
+correta: 1
 
 pergunta: Qual é a capital atual de Goiás?
 opcoes: A) Anápolis; B) Pirenópolis; C) Cidade de Goiás; D) Goiânia
@@ -167,9 +167,9 @@ opcoes: A) Instrumentos de metal.; B) Máscaras de Carnaval.; C) Bonecas de cer�
 correta: 2
 
 Estado: Maranhão
-pergunta: Em qual região do Brasil fica o Maranhão?
-opcoes: A) Sul; B) Nordeste; C) Sudeste; D) Centro-Oeste
-correta: 1
+pergunta: Como são chamados os habitantes do Maranhão?
+opcoes: A) Maranhoenses; B) Ludovicenses; C) Maranhenses; D) São-luisenses
+correta: 2
 
 pergunta: Qual é a capital do Maranhão?
 opcoes: A) Alcântara; B) Caxias; C) Imperatriz; D) São Luís
@@ -188,8 +188,8 @@ opcoes: A) Corridas de cavalos.; B) Apenas teatro.; C) Dança, canto e percussã
 correta: 2
 
 Estado: Mato Grosso
-pergunta: Em qual região do Brasil fica Mato Grosso?
-opcoes: A) Sudeste; B) Sul; C) Nordeste; D) Centro-Oeste
+pergunta: Qual é a capital de Mato Grosso?
+opcoes: A) Rondonópolis; B) Sinop; C) Várzea Grande; D) Cuiabá
 correta: 3
 
 pergunta: O que ajudou no crescimento de Cuiabá no século XVIII?
@@ -209,8 +209,8 @@ opcoes: A) Uma construção histórica.; B) Uma comida típica.; C) Um instrumen
 correta: 2
 
 Estado: Mato Grosso do Sul
-pergunta: Em qual região do Brasil fica Mato Grosso do Sul?
-opcoes: A) Nordeste; B) Norte; C) Sudeste; D) Centro-Oeste
+pergunta: Qual é a capital de Mato Grosso do Sul?
+opcoes: A) Dourados; B) Corumbá; C) Três Lagoas; D) Campo Grande
 correta: 3
 
 pergunta: Em que ano Mato Grosso do Sul começou a existir oficialmente como estado?
@@ -230,9 +230,9 @@ opcoes: A) Chile e Peru.; B) Paraguai e Bolívia.; C) Venezuela e Guiana.; D) Ar
 correta: 1
 
 Estado: Minas Gerais
-pergunta: Em qual região do Brasil fica Minas Gerais?
-opcoes: A) Sudeste; B) Norte; C) Sul; D) Nordeste
-correta: 0
+pergunta: Qual é a capital de Minas Gerais?
+opcoes: A) Ouro Preto; B) Juiz de Fora; C) Uberlândia; D) Belo Horizonte
+correta: 3
 
 pergunta: Por que Ouro Preto é importante para a história de Minas Gerais?
 opcoes: A) É a atual capital do estado.; B) Foi um importante centro do ciclo do ouro e preserva construções coloniais.; C) Foi construída no século XX.; D) Foi fundada junto com Brasília.
@@ -251,8 +251,8 @@ opcoes: A) Possui apenas cidades litorâneas.; B) É o estado brasileiro com o m
 correta: 1
 
 Estado: Pará
-pergunta: Em qual região do Brasil fica o Pará?
-opcoes: A) Sul; B) Nordeste; C) Norte; D) Centro-Oeste
+pergunta: Qual é a capital do Pará?
+opcoes: A) Marabá; B) Santarém; C) Belém; D) Ananindeua
 correta: 2
 
 pergunta: Para que servia o Mercado Ver-o-Peso no início de sua história?
@@ -272,8 +272,8 @@ opcoes: A) Festival do Açaí.; B) Círio de Nossa Senhora de Nazaré.; C) Revol
 correta: 1
 
 Estado: Paraíba
-pergunta: Em qual região do Brasil fica a Paraíba?
-opcoes: A) Sul; B) Nordeste; C) Norte; D) Centro-Oeste
+pergunta: Como são chamados os habitantes da Paraíba?
+opcoes: A) Paraibeiros; B) Paraibanos; C) Parahybanos; D) Paraibenses
 correta: 1
 
 pergunta: Qual é a capital da Paraíba?
@@ -293,9 +293,9 @@ opcoes: A) Um prato típico.; B) Um instrumento musical.; C) Uma dança.; D) Uma
 correta: 3
 
 Estado: Paraná
-pergunta: Em qual região do Brasil fica o Paraná?
-opcoes: A) Centro-Oeste; B) Nordeste; C) Sul; D) Norte
-correta: 2
+pergunta: Qual é a capital do Paraná?
+opcoes: A) Londrina; B) Maringá; C) Foz do Iguaçu; D) Curitiba
+correta: 3
 
 pergunta: Por que as Cataratas do Iguaçu são famosas?
 opcoes: A) Porque são uma obra construída por pessoas.; B) Por suas centenas de quedas d'água e sua área de preservação.; C) Porque ficam no litoral.; D) Porque são montanhas congeladas.
@@ -314,9 +314,9 @@ opcoes: A) Do sertão nordestino.; B) Das montanhas de Minas.; C) Da Amazônia.;
 correta: 3
 
 Estado: Pernambuco
-pergunta: Em qual região do Brasil fica Pernambuco?
-opcoes: A) Sul; B) Nordeste; C) Centro-Oeste; D) Norte
-correta: 1
+pergunta: Como são chamados os habitantes de Pernambuco?
+opcoes: A) Recifenses; B) Olindenses; C) Pernambucanos; D) Pernambucaneses
+correta: 2
 
 pergunta: Qual é a capital de Pernambuco?
 opcoes: A) Recife; B) Caruaru; C) Garanhuns; D) Olinda
@@ -335,9 +335,9 @@ opcoes: A) Somente literatura.; B) Apenas pintura.; C) Música e dança.; D) Esp
 correta: 2
 
 Estado: Piauí
-pergunta: Em qual região do Brasil fica o Piauí?
-opcoes: A) Sul; B) Centro-Oeste; C) Nordeste; D) Norte
-correta: 2
+pergunta: Qual é a capital do Piauí?
+opcoes: A) Parnaíba; B) Teresina; C) Picos; D) Floriano
+correta: 1
 
 pergunta: Por que o Parque Nacional da Serra da Capivara é importante?
 opcoes: A) É uma grande área de neve.; B) É uma floresta tropical.; C) Foi construído para ser uma cidade.; D) Possui muitas pinturas e gravuras rupestres.
@@ -356,9 +356,9 @@ opcoes: A) Não possui litoral.; B) É o menor litoral entre os estados brasilei
 correta: 1
 
 Estado: Rio de Janeiro
-pergunta: Em qual região do Brasil fica o Rio de Janeiro?
-opcoes: A) Nordeste; B) Centro-Oeste; C) Norte; D) Sudeste
-correta: 3
+pergunta: Qual estátua gigante é um dos maiores símbolos do Rio de Janeiro?
+opcoes: A) Torre Eiffel; B) Cristo Redentor; C) Estátua da Liberdade; D) Coliseu
+correta: 1
 
 pergunta: Em que ano a cidade do Rio de Janeiro foi fundada?
 opcoes: A) 1565; B) 1808; C) 1889; D) 1500
@@ -377,8 +377,8 @@ opcoes: A) Somente óperas.; B) Apenas esportes.; C) Música, dança, fantasias 
 correta: 2
 
 Estado: Rio Grande do Norte
-pergunta: Em qual região do Brasil fica o Rio Grande do Norte?
-opcoes: A) Nordeste; B) Norte; C) Sul; D) Centro-Oeste
+pergunta: Como também são chamados os habitantes do Rio Grande do Norte, além de norte-rio-grandenses?
+opcoes: A) Potiguares; B) Natalenses; C) Rionortenses; D) Seridoenses
 correta: 0
 
 pergunta: Por que a capital do estado se chama Natal?
@@ -398,9 +398,9 @@ opcoes: A) Um líder militar.; B) Um arquiteto do Forte dos Reis Magos.; C) Um i
 correta: 2
 
 Estado: Rio Grande do Sul
-pergunta: Em qual região do Brasil fica o Rio Grande do Sul?
-opcoes: A) Sul; B) Centro-Oeste; C) Nordeste; D) Norte
-correta: 0
+pergunta: Qual é a capital do Rio Grande do Sul?
+opcoes: A) Caxias do Sul; B) Pelotas; C) Santa Maria; D) Porto Alegre
+correta: 3
 
 pergunta: O que foi a Revolução Farroupilha?
 opcoes: A) Uma revolta ocorrida entre 1835 e 1845 contra impostos e o governo imperial.; B) Uma guerra entre Brasil e Argentina.; C) A criação de Porto Alegre.; D) Uma festa tradicional.
@@ -419,8 +419,8 @@ opcoes: A) Dunas do litoral.; B) Florestas tropicais.; C) Montanhas cobertas de 
 correta: 3
 
 Estado: Rondônia
-pergunta: Em qual região do Brasil fica Rondônia?
-opcoes: A) Sul; B) Sudeste; C) Nordeste; D) Norte
+pergunta: Qual é a capital de Rondônia?
+opcoes: A) Ji-Paraná; B) Vilhena; C) Cacoal; D) Porto Velho
 correta: 3
 
 pergunta: Para que servia principalmente a Estrada de Ferro Madeira-Mamoré?
@@ -461,9 +461,9 @@ opcoes: A) Uma paisagem de campos naturais com árvores espalhadas, parecida com
 correta: 0
 
 Estado: Santa Catarina
-pergunta: Em qual região do Brasil fica Santa Catarina?
-opcoes: A) Nordeste; B) Norte; C) Sul; D) Centro-Oeste
-correta: 2
+pergunta: Qual é a capital de Santa Catarina?
+opcoes: A) Joinville; B) Blumenau; C) Chapecó; D) Florianópolis
+correta: 3
 
 pergunta: Quais povos indígenas têm presença histórica em Santa Catarina?
 opcoes: A) Astecas, Maias e Incas.; B) Yanomami e Tikuna.; C) Pataxó e Munduruku.; D) Guarani, Kaingang e Xokleng.
@@ -482,9 +482,9 @@ opcoes: A) Podem ocorrer temperaturas negativas, geada e neve.; B) Faz calor aci
 correta: 0
 
 Estado: São Paulo
-pergunta: Em qual região do Brasil fica São Paulo?
-opcoes: A) Sul; B) Norte; C) Sudeste; D) Nordeste
-correta: 2
+pergunta: Qual é a capital de São Paulo?
+opcoes: A) Campinas; B) Santos; C) Guarulhos; D) São Paulo
+correta: 3
 
 pergunta: Em que ano começou a história de São Paulo com a fundação do colégio no Pátio do Colégio?
 opcoes: A) 1600; B) 1554; C) 1700; D) 1500
