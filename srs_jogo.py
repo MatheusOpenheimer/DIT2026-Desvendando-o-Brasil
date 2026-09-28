@@ -219,16 +219,20 @@ class JogoSantaRita:
                 if self.scroll_y > limite_scroll:
                     self.scroll_y = max(limite_scroll, self.scroll_y - 35)
 
-        if self.estado == "FEEDBACK_POPUP" and evento.type == pygame.KEYDOWN:
-            if evento.key == pygame.K_BACKSPACE:
-                self.texto_feedback = self.texto_feedback[:-1]
-            elif evento.key == pygame.K_ESCAPE:
-                self.estado = "SELECAO_PONTO"
-            elif evento.key == pygame.K_RETURN:
-                self.texto_feedback += " "
-            else:
-                if len(self.texto_feedback) < 250 and evento.unicode.isprintable():
-                    self.texto_feedback += evento.unicode
+        if self.estado == "FEEDBACK_POPUP":
+            # Trata a entrada de texto real com suporte a acentuação (combinação de acentos)
+            if evento.type == pygame.TEXTINPUT:
+                if len(self.texto_feedback) < 250:
+                    self.texto_feedback += evento.text
+
+            # Trata teclas de atalho e navegação
+            elif evento.type == pygame.KEYDOWN:
+                if evento.key == pygame.K_BACKSPACE:
+                    self.texto_feedback = self.texto_feedback[:-1]
+                elif evento.key == pygame.K_ESCAPE:
+                    self.estado = "SELECAO_PONTO"
+                elif evento.key == pygame.K_RETURN:
+                    self.texto_feedback += " "
 
     def atualizar(self, salvarBD):
         if self.finalizar:
