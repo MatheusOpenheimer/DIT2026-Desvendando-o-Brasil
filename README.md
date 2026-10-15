@@ -1,24 +1,100 @@
-# Desvendando o Brasil – Um Jogo Educativo 100% Seguro
+# 🗺️ Desvendando o Brasil
 
-**Desvendando o Brasil** é um jogo de perguntas e respostas desenvolvido em Python/Pygame, com foco no aprendizado de história, cultura e geografia brasileira. Criado com arquitetura modular, o projeto alia engajamento gamificado para os alunos a ferramentas analíticas para a prática pedagógica nas escolas.
+**Jogo educativo de gamificação sobre o Brasil e Santa Rita do Sapucaí (MG)**
+
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Pygame](https://img.shields.io/badge/Pygame-00A859?style=for-the-badge)
+![PyInstaller](https://img.shields.io/badge/PyInstaller-executável-informational?style=for-the-badge)
+![Offline](https://img.shields.io/badge/100%25-offline-success?style=for-the-badge)
+
+🥇 1º lugar — Segundo Período de Sistemas de Informação
+🥉 3º lugar — Desafio Inovação e Turismo
+
+*FAITEC — Feira de Inovação e Empreendedorismo da FAI · 2026*
+
+</div>
 
 ---
 
-## 💡 Inovação e Proposta Pedagógica
+## 📖 Sobre o projeto
 
-Alinhado com a extensão comunitária e com os quesitos de avaliação da FAITEC (como *Aplicabilidade*, *Criatividade*, *Inovação* e *Relevância Social*), o projeto se destaca por:
+O **Desvendando o Brasil** é um jogo educativo que usa gamificação para tornar o aprendizado sobre o Brasil mais interativo e envolvente. O jogo trabalha geografia, história, cultura e pontos turísticos do país, com um módulo dedicado a **Santa Rita do Sapucaí (MG)**, o Vale da Eletrônica.
 
-* **Estatísticas para Educadores:** Armazena dados de desempenho por regiões geográficas (Norte, Nordeste, Centro-Oeste, Sudeste e Sul), permitindo aos professores diagnosticar facilidades e pontos de melhoria de cada aluno ou turma.
-* **Personalização de Questões:** Sistema estruturado via arquivos de dados locais que permite aos docentes editar e cadastrar novos conjuntos de perguntas e respostas.
-* **Integração de Minigames 2D:** Utilização de minigames interativos com movimentação top-down em pixel art para dinamicidade no aprendizado das unidades federativas.
+Foi pensado como **recurso de apoio pedagógico**: complementa as atividades do professor e incentiva o aluno a aprender explorando e interagindo com o conteúdo.
+
+**Público-alvo:** estudantes do 5º ano do ensino fundamental ao ensino médio.
+
+## 🎮 Como funciona
+
+1. **Minigame de exploração:** antes da partida, o jogador explora curiosidades sobre os pontos turísticos e os estados.
+2. **Partida de perguntas (4 minutos):** o jogador responde por **cliques no mapa** ou **cliques em alternativas**.
+3. **Resultado:** ao final, o desempenho é registrado no ranking e nas estatísticas.
+
+## ✨ Funcionalidades
+
+- 🧭 **Minigame de exploração** com curiosidades sobre pontos turísticos e estados
+- 🗺️ **Perguntas interativas** por clique no mapa ou por múltipla escolha
+- ⏱️ **Partidas rápidas** de 4 minutos, adequadas ao tempo de sala de aula
+- 🏆 **Ranking** de jogadores
+- 📊 **Estatísticas de desempenho**, para visualizar resultados e identificar conteúdos que pedem mais atenção
+- 💬 **Coleta de feedback** dentro do jogo
+- ✏️ **Conteúdo editável** em arquivos `.txt`, sem precisar mexer no código
+- 📍 **Módulo Santa Rita do Sapucaí** com história, cultura e pontos turísticos locais
+
+## 🛠️ Tecnologias
+
+| Tecnologia | Uso |
+|---|---|
+| **Python** | Linguagem principal |
+| **Pygame** | Interface gráfica, eventos de clique e loop do jogo |
+| **PyInstaller** | Geração do executável para distribuição |
+| Arquivos `.txt` | Armazenamento de perguntas, conteúdo, ranking, feedback e estatísticas |
+
+## 📁 Estrutura de dados
+
+O jogo é distribuído com duas pastas que ficam ao lado do executável:
+
+📦 Desvendando o Brasil
+
+┣ 📄 DesvendandoOBrasil.exe
+
+┣ 📂 dados/ → perguntas e conteúdos editáveis (.txt)
+
+┗ 📂 jogador/ → ranking, feedback e estatísticas (.txt)
+
+
+- **`dados/`**: o professor ou responsável pode atualizar perguntas e conteúdos editando os arquivos de texto, adaptando o jogo a novas necessidades de ensino.
+- **`jogador/`**: guarda localmente o ranking, o feedback e as estatísticas de desempenho.
+
+## 🔒 Segurança e privacidade
+
+O projeto foi desenvolvido com atenção à proteção do público infantojuvenil. Na prática, o jogo adota estas decisões de projeto:
+
+- **Funciona totalmente offline**, sem conexão com a internet
+- **Armazena todos os dados localmente**, nas pastas do próprio jogo
+- **Sem comunicação externa**, ou seja, nenhum dado sai do computador onde o jogo é executado
+- **Partidas curtas de 4 minutos**, o que limita o tempo de exposição
+
+> Essas escolhas buscam alinhar o projeto aos princípios do ECA, do ECA Digital e da Lei Felca.
+
+## 🏆 Reconhecimentos
+
+| Prêmio | Evento |
+|---|---|
+| 🥇 **1º lugar** | Segundo Período de Sistemas de Informação, FAITEC 2026 |
+| 🥉 **3º lugar** | Desafio Inovação e Turismo | Secretaria Municipal do Turismo
+
+
+
+## 📬 Contato
+
+**Matheus Henrique Openheimer Souza**
+[GitHub](https://github.com/MatheusOpenheimer)
 
 ---
 
-## 🛡️ Segurança e Proteção de Dados
+<div align="center">
 
-O projeto prioriza a privacidade e o bem-estar dos alunos, atendendo a critérios de segurança no ambiente digital:
+*Desvendando o Brasil: tecnologia e gamificação a serviço da educação.*
 
-* **Totalmente Offline:** Não requer conexão com a internet para rodar, eliminando exposição a interações externas.
-* **Zero Anúncios e Rastreamento:** Nenhuma exibição de publicidades comerciais ou coleta de dados de navegação.
-* **Privacidade Local (SQLite):** Os dados de pontuação e ranking são gravados localmente em um banco de dados SQLite (`GameData.db`), solicitando apenas nome e idade para personalização.
-* **Controle de Tempo Nativo:** Possui um temporizador integrado nas fases para estimular o foco e limitar a duração das sessões de jogo.
+</div>
